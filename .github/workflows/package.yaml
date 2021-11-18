@@ -30,7 +30,7 @@ jobs:
       - name: Build .unitypackage
         uses: game-ci/unity-builder@v2
         with:
-          unityVersion: 2020.3.4f1
+          unityVersion: 2020.3.0f1
           buildMethod: NebusokuDev.ShooterWeaponSystem.Editor.PackageTools.UnityPackageExporter.Export
 
       # Upload
