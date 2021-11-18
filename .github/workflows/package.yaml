@@ -31,7 +31,7 @@ jobs:
         uses: game-ci/unity-builder@v2
         with:
           unityVersion: 2020.3.4f1
-          buildMethod: MackySoft.Vision.Editor.PackageTools.UnityPackageExporter.Export
+          buildMethod: NebusokuDev.ShooterWeaponSystem.Editor.PackageTools.UnityPackageExporter.Export
 
       # Upload
       - name: Upload .unitypackage
