@@ -14,7 +14,7 @@ jobs:
   update-packagejson:
     runs-on: ubuntu-latest
     env:
-      TARGET_FILE: ./Assets/MackySoft/MackySoft.Vision/package.json
+      TARGET_FILE: ./Assets/NebusokuDev/ShooterWeaponSystem/package.json
     outputs:
       sha: ${{ steps.commit.outputs.sha }}
     steps:
