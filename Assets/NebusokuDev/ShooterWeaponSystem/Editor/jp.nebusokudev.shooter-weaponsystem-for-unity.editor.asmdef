@@ -1,0 +1,16 @@
+{
+    "name": "jp.nebusokudev.shooter-weaponsystem-for-unity.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4574f4ce037003a4f84d52ef90a1674d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
