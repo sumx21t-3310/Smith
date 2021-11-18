@@ -12,10 +12,10 @@ namespace NebusokuDev.ShooterWeaponSystem.Editor.PackageTools
     public static class UnityPackageExporter
     {
         // The name of the unitypackage to output.
-        const string PackageName = "Vision";
+        const string PackageName = "ShooterWeaponSystemForUnity";
 
         // The path to the package under the `Assets/` folder.
-        const string PackagePath = "MackySoft";
+        const string PackagePath = "NebusokuDev";
 
         // Path to export to.
         const string ExportPath = "Build";
