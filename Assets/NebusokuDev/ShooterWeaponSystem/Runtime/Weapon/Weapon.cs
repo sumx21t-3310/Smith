@@ -58,15 +58,17 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Weapon
 
         private void Update()
         {
-            if (_playerState == null) return;
             if (_input == null) return;
+
+            // Use UnityEngine.Object
+            if (_playerState == null) _playerState = new RestPlayerState();
 
             if (_magazine.IsReloading == false && _input.IsReload) StartCoroutine(_magazine.Reload());
             _magazine.AmmoHolder = _ammoHolder;
 
             _primary?.Action(_input.IsPrimaryAction, _playerState);
             _primary?.AltAction(_input.IsPrimaryAltAction, _playerState);
-            
+
             _secondary?.Action(_input.IsSecondaryAction, _playerState);
             _secondary?.Action(_input.IsSecondaryAltAction, _playerState);
         }
