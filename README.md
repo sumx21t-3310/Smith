@@ -45,7 +45,8 @@ It was created based on the weapons in Riot Games' [Valorant](https://playvalora
 
 # Usage
 ## Install
-D&D the directory as is.
+### Unity Package Manager
+#### git url: `https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem`
 
 ## Setup
 [comment]: <> (Paste images of various inspectors)
