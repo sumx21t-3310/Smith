@@ -1,4 +1,4 @@
-﻿using NebusokuDev.ShooterWeaponSystem.Core.Recoil;
+﻿using NebusokuDev.ShooterWeaponSystem.Runtime.Recoil;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;

@@ -1,4 +1,4 @@
-﻿using NebusokuDev.ShooterWeaponSystem.Core.WeaponAction.Attack.ShotgunDefuse;
+﻿using NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.ShotgunDefuse;
 using UnityEditor;
 using UnityEngine;
 

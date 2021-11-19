@@ -1,4 +1,4 @@
-﻿using NebusokuDev.ShooterWeaponSystem.Core.Input.Legacy;
+﻿using NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy;
 using UnityEngine;
 
 

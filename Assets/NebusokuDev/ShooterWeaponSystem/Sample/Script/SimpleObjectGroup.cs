@@ -1,5 +1,5 @@
 ﻿using System;
-using NebusokuDev.ShooterWeaponSystem.Core.Collision;
+using NebusokuDev.ShooterWeaponSystem.Runtime.Collision;
 using UnityEngine;
 
 

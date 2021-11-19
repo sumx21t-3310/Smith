@@ -1,4 +1,4 @@
-﻿using NebusokuDev.ShooterWeaponSystem.Core.Attribute;
+﻿using NebusokuDev.ShooterWeaponSystem.Runtime.Attribute;
 using UnityEditor;
 using UnityEngine;
 using static UnityEditor.EditorGUI;
