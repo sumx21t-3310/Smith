@@ -125,6 +125,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./ShooterWeaponSystem.unitypackage/ShooterWeaponSystemf.unitypackage
+          asset_path: ./ShooterWeaponSystem.unitypackage/ShooterWeaponSystem.unitypackage
           asset_name: ShooterWeaponSystem.unitypackage
           asset_content_type: application/octet-stream
