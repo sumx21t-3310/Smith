@@ -62,7 +62,7 @@ If you are using ObjectPool, such as ShootingAction, create an empty game object
 # Note
 [comment]: <> (Write any notes you have)
 * If you play the game with the Inspector display open, the frame rate will drop noticeably. Please collapse the Inspector display before playing it.
-* Serializable` attribute must be added to your code.
+* `Serializable` attribute must be added to your code.
 
 # Contact
 If you have any bugs, improvements, requests, or implementation questions, please register them in Issues.
