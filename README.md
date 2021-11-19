@@ -2,10 +2,7 @@
 An FPS / TPS framework that allows you to create weapons without code.
 
 [comment]: <> (Give it a clear and cool name)
-# Shooter Weapon System for Unity
 
-
-[comment]: <> (A brief introduction to what "Weapon System" is)
 The Weapon System is a framework that allows you to create any kind of weapon for FPS/TPS.
 It was created based on the weapons in Riot Games' [Valorant](https://playvalorant.com/en-us/arsenal/).
 
