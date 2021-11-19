@@ -11,7 +11,7 @@ Releases:
 
 ### github URL
 
-`https://github.com/NebusokuDev/ShooterWeaponSystemForUnity?path=Assets/NebusokuDev/ShooterWeaponSystem`
+`https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem`
 
 ### OpenUPM
 ``
