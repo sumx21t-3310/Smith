@@ -10,10 +10,9 @@
     "Shooter",
     "No Code"
   ],
-  "devDependencies": {
-    "MackySoft.SerializeReferenceExtensions" : "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions"
-  },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "MackySoft.SerializeReferenceExtensions": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions"
+  },
   "samples": []
 }

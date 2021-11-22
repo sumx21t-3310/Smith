@@ -15,7 +15,8 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
         [SerializeField] private bool useGravity = true;
         [SerializeField] private float standHeight = 2f;
         [SerializeField] private float crouchHeight = 1.4f;
-        
+        [SerializeField] private float crouchingSpeed = .25f;
+
 
         private IMoverInput _input;
         private CharacterController _controller;
@@ -62,8 +63,8 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
 
             var height = _input.IsCrouch ? crouchHeight : standHeight;
 
-            _controller.height = Mathf.SmoothStep(_controller.height, height, Time.deltaTime);
-            
+            _controller.height = Mathf.Lerp(_controller.height, height, Time.deltaTime / crouchingSpeed);
+
             // direction input
             _direction = rotateReference.rotation * _input.Direction;
 
