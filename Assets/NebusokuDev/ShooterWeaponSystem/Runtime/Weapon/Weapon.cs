@@ -52,7 +52,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Weapon
             _secondary ??= new NoneAction();
             _secondary?.Injection(self, _magazine, _weaponContext);
 
-            _input = GetComponent<IWeaponInput>();
+            if (TryGetComponent(out _input) == false) _input = GetComponentInParent<IWeaponInput>();
         }
 
 

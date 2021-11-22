@@ -1,5 +1,5 @@
 {
-  "name": "jp.nebusokudev.shooter-weaponsystem-for-unity.core",
+  "name": "com.nebusokudev.shooter-weaponsystem-for-unity.core",
   "rootNamespace": "",
   "references": [
     "GUID:49b49c76ee64f6b41bf28ef951cb0e50"

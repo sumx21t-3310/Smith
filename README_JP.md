@@ -27,8 +27,10 @@ url: `https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets
 `com.nebusoku-dev.shooter-weapon-system-for-unity`
 
 # Usage
+## ObjectPoolBinderの設定
 ## Playerの設定
-## 
+
+## Weaponの設定
 
 # Note
 - 
