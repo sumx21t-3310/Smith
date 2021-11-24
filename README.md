@@ -1,76 +1,57 @@
-# ShooterWeaponSystemForUnity
-An FPS / TPS framework that allows you to create weapons without code.
+# Shooter Weapon System For Unity
 
-[comment]: <> (Give it a clear and cool name)
+FPS/TPSの武器をノーコードで武器を作成できるフレームワーク
 
-The Weapon System is a framework that allows you to create any kind of weapon for FPS/TPS.
-It was created based on the weapons in Riot Games' [Valorant](https://playvalorant.com/en-us/arsenal/).
-
-# Features.
-* For general weapons, the inspector is complete. You can create weapons with no code. 
-* The behavior can be extended by simply implementing various interfaces and base classes. 
-* No dependency on effects or built-in audio. Playback timing is represented by UnityEvent. 
-* Projectile and HitScan can be selected. You can select the strength of the sniper. 
-* Can change the firing position of bullets. You can select whether or not there is an advantageous wall. 
-* Changeable magazine type. Trigger happy is not a dream.
-* Changeable bullet storage method. Create your own code to get bullets out of your inventory.
-
-
-[comment]: <> (gif of me tweaking the inspector)
-## Implemented Weapon Actions
-- Aim
-  - Aim
-  - Scope Aim
-  - Zoom Only Aim
-- Attack
-  - Shooting
-  - ShotgunShooting
-- Control
-  - Aim Switching
-  - Selectable
-  - EventInvoke
-- Interact
-  - Grab
-- Template
-  - Interval Action Base
-
-
+# 特徴
+**Weapon System for Unity** はFPS/TPSの武器を作成するためのフレームワークです。
+以下の特徴を持ちます。
+- ノーコード
+- 音声、エフェクトのタイミングはUnityEventで表現、
+- 右クリック、左クリックの
+- 
 # Requirement
 
-[comment]: <> (List the libraries required to run the "Weapon System")
+- Unity 2020 LTS
+- [mackysoft.Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
 
-* Unity 2019 LTS Later.
-* [mackysoft - Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
+# Install
 
+## .unitypackageを使う
+
+1. [mackysoft.Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
+   をインストールします。
+2. [Release](https://github.com/NebusokuDev/ShooterWeaponSystemForUnity/releases) から`.unitypackage`をダウンロードし、インストールします。
+
+## git urlを使う
+
+パッケージマネージャの`Add package from git URL...`に以下のurlを入力してください。
+
+#### URL: `https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem`
+
+[使い方はこちらを参考にしてください](https://docs.unity3d.com/2019.4/Documentation/Manual/upm-ui-giturl.html)
+
+## OpenUPMを使う
+
+Open UPMを利用してインストールすることができます。 OpenUPMレジストリを`Project Settings/Scoped Registry`に登録し、以下のパッケージを登録します。
+
+#### URL: `com.nebusoku-dev.shooter-weapon-system-for-unity`
 
 # Usage
-## Install
-### Unity Package Manager
-#### git url: `https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem`
 
-## Setup
-[comment]: <> (Paste images of various inspectors)
-1. create an empty game object. 2.
-Attach a SingleActionWeapon, DualActionWeapon, or Generic Weapon to the empty game object. 3.
-Attach an Input that matches each Weapon. 4.
-Set the Action, Magazine, and Ammo Holder according to the weapon type. 5.
-If you are using ObjectPool, such as ShootingAction, create an empty game object and attach an ObjectPoolBinder.
-## Extend
+## ObjectPoolBinderの設定
+WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利用し、依存性を解決しています。
+そのため、このフレームワークを利用するシーンでは、`ObjectPoolBinder`をシーンに付与する必要があります。
+
+1. 空のGameObjectを作成し、名前を`ObjectPoolBinder`とします。
+2. `ObjectPoolBinder`を作成したGameObjectにアタッチします。
+
+## Playerの設定
+### 当たり判定の設定
+## 武器の設定
+
+### プロジェクタイル方式を採用する場合
 
 # Note
-[comment]: <> (Write any notes you have)
-* If you play the game with the Inspector display open, the frame rate will drop noticeably. Please collapse the Inspector display before playing it.
-* `Serializable` attribute must be added to your code.
 
-# Contact
-If you have any bugs, improvements, requests, or implementation questions, please register them in Issues.
-Pull requests are also welcome.
-
-
-# License
-
-[comment]: <> (specify the license)
-
-"Shooter Weapon System for Unity" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
-Translated with www.DeepL.com/Translator (free version)
+- `[Serialize Reference]`アトリビュートを使用しているため拡張したクラスには、`[System.Serializable]`アトリビュートを必ず追加してください。
+- インスペクターのGUIを展開するとフレームレートとが急激に下がります。実行する際には、インスペクターのGUIを閉じてから実行してください。

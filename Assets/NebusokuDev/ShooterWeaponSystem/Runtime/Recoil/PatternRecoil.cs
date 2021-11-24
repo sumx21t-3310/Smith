@@ -1,5 +1,6 @@
 ﻿using System;
 using NebusokuDev.ShooterWeaponSystem.Runtime.Camera;
+using NebusokuDev.ShooterWeaponSystem.Runtime.State.Weapon;
 using UnityEngine;
 
 
@@ -31,9 +32,9 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Recoil
         }
 
 
-        public void Generate()
+        public void Generate(IWeaponContext context)
         {
-            _index++;
+            _index = context.ShotCount;
             _easeTime = duration;
         }
 

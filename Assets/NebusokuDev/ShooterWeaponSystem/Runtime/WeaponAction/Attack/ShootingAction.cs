@@ -70,7 +70,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack
 
             rpm.Lap();
             weaponContext.ShotCount++;
-            recoil?.Generate();
+            recoil?.Generate(weaponContext);
             muzzle.Defuse(playerState, weaponContext);
             fire.Invoke();
             Fire();

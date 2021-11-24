@@ -1,5 +1,6 @@
 ﻿using System;
 using NebusokuDev.ShooterWeaponSystem.Runtime.Camera;
+using NebusokuDev.ShooterWeaponSystem.Runtime.State.Weapon;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,7 +26,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Recoil
             rotate.VerticalOffset = Mathf.Lerp(rotate.VerticalOffset, 0f, Time.deltaTime / duration);
         }
 
-        public void Generate() => _easeTime = duration;
+        public void Generate(IWeaponContext context) => _easeTime = duration;
 
         public void Easing()
         {

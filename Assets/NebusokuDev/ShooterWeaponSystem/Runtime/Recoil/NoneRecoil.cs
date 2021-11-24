@@ -1,4 +1,5 @@
 ﻿using System;
+using NebusokuDev.ShooterWeaponSystem.Runtime.State.Weapon;
 
 
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Recoil
@@ -8,7 +9,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Recoil
     {
         void IRecoil.Reset() { }
 
-        void IRecoil.Generate() { }
+        void IRecoil.Generate(IWeaponContext context) { }
 
         void IRecoil.Easing() { }
     }
