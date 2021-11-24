@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace NebusokuDev.ShooterWeaponSystem.Runtime.Camera
+namespace NebusokuDev.ShooterWeaponSystem.Runtime.Camera.Toolkit
 {
     public class CameraRotateHeightSetter : MonoBehaviour
     {
