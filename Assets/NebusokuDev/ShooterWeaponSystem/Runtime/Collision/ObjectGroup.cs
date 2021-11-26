@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NebusokuDev.ShooterWeaponSystem.Sample.Script
 {
-    public class SimpleObjectGroup : MonoBehaviour, IObjectGroup
+    public class ObjectGroup : MonoBehaviour, IObjectGroup
     {
         [SerializeField] private int groupId;
         
