@@ -84,11 +84,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
                 }
             }
 
-            if (IsGrounded)
-            {
-                _moveVelocity += ((_direction * speed) - _moveVelocity) * (Time.deltaTime * damping);
-                _fallVelocity = useGravity ? Vector3.up * constantGravity : Vector3.zero;
-            }
+            if (IsGrounded) { }
             else
             {
                 _moveVelocity += ((_direction * speed) - _moveVelocity) * Time.deltaTime;
@@ -96,6 +92,8 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
                 if (useGravity) _fallVelocity += Vector3.up * gravity * Time.deltaTime;
             }
 
+            HandleMoveVelocity(_direction);
+            HandleFallVelocity();
 
             if (_isJump && IsGrounded) HandleJump();
 
@@ -105,5 +103,27 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
 
 
         private void HandleJump() => _fallVelocity = Vector3.up * Mathf.Sqrt(jumpHeight * gravity * -2f);
+
+
+        private void HandleMoveVelocity(Vector3 direction)
+        {
+            if (IsGrounded == false) return;
+
+            _moveVelocity += ((_direction * speed) - _moveVelocity) * (Time.deltaTime * damping);
+        }
+
+
+        private void HandleFallVelocity()
+        {
+            if (useGravity == false)
+            {
+                _fallVelocity = Vector3.zero;
+                return;
+            }
+            
+            if (IsGrounded == false) { }
+
+            _fallVelocity = constantGravity * Vector3.up;
+        }
     }
 }

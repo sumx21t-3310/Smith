@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Collision
 {
-    public class SimpleHp : MonoBehaviour, IHasHitPoint
+    public class HitPoint : MonoBehaviour, IHasHitPoint
     {
         [SerializeField] private float maxHp;
         [ReadOnly, SerializeField] private float currentHp;
