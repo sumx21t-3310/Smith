@@ -5,24 +5,35 @@ using UnityEngine;
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
 {
     [Serializable]
-    public class InputKeyAxis
+    public class InputKeyAxis : IInputAxis
     {
-        [SerializeField] private InputKeys positiveKeys;
-        [SerializeField] private InputKeys negativeKeys;
+        [SerializeField] private InputButtons positiveButtons;
+        [SerializeField] private InputButtons negativeButtons;
+        private float _value;
 
-
-        public InputKeyAxis(InputKeys positiveKeys, InputKeys negativeKeys)
+        public InputKeyAxis(InputButtons positiveButtons, InputButtons negativeButtons)
         {
-            this.positiveKeys = positiveKeys;
-            this.negativeKeys = negativeKeys;
+            this.positiveButtons = positiveButtons;
+            this.negativeButtons = negativeButtons;
         }
 
 
         public float GetAxis()
         {
-            if (positiveKeys.IsAnyKeyPressed) return 1f;
+            if (positiveButtons.IsPressed) return 1f;
 
-            if (negativeKeys.IsAnyKeyPressed) return -1f;
+            if (negativeButtons.IsPressed) return -1f;
+
+            _value -= _value * Time.deltaTime;
+            return _value;
+        }
+
+
+        public float GetRawAxis()
+        {
+            if (positiveButtons.IsPressed) return 1f;
+
+            if (negativeButtons.IsPressed) return -1f;
 
             return 0f;
         }

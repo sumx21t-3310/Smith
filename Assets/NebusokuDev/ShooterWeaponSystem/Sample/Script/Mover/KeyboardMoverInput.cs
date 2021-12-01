@@ -6,12 +6,12 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
 {
     public class KeyboardMoverInput : MonoBehaviour, IMoverInput
     {
-        [SerializeField] private InputKeys forward = new InputKeys(KeyCode.W);
-        [SerializeField] private InputKeys backward = new InputKeys(KeyCode.S);
-        [SerializeField] private InputKeys left = new InputKeys(KeyCode.A);
-        [SerializeField] private InputKeys right = new InputKeys(KeyCode.D);
-        [SerializeField] private InputKeys jump = new InputKeys(KeyCode.Space);
-        [SerializeField] private InputKeys crouch = new InputKeys(KeyCode.LeftControl);
+        [SerializeField] private InputButtons forward = new InputButtons(KeyCode.W);
+        [SerializeField] private InputButtons backward = new InputButtons(KeyCode.S);
+        [SerializeField] private InputButtons left = new InputButtons(KeyCode.A);
+        [SerializeField] private InputButtons right = new InputButtons(KeyCode.D);
+        [SerializeField] private InputButtons jump = new InputButtons(KeyCode.Space);
+        [SerializeField] private InputButtons crouch = new InputButtons(KeyCode.LeftControl);
 
         public Vector3 Direction => new Vector3(Horizontal, 0f, Vertical);
 
@@ -19,8 +19,8 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
         {
             get
             {
-                if (forward.IsAnyKeyPressed) return 1f;
-                if (backward.IsAnyKeyPressed) return -1f;
+                if (forward.IsPressed) return 1f;
+                if (backward.IsPressed) return -1f;
 
                 return 0f;
             }
@@ -30,14 +30,14 @@ namespace NebusokuDev.ShooterWeaponSystem.Sample.Script.Mover
         {
             get
             {
-                if (left.IsAnyKeyPressed) return -1f;
-                if (right.IsAnyKeyPressed) return 1f;
+                if (left.IsPressed) return -1f;
+                if (right.IsPressed) return 1f;
 
                 return 0f;
             }
         }
 
-        public bool IsJump => jump.IsAnyKeyPressed;
-        public bool IsCrouch => crouch.IsAnyKeyPressed;
+        public bool IsJump => jump.IsPressed;
+        public bool IsCrouch => crouch.IsPressed;
     }
 }

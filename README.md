@@ -3,11 +3,8 @@
 FPS/TPSの武器をノーコードで武器を作成できるフレームワーク
 
 # 特徴
-
 **Weapon System for Unity**はFPS/TPS向けのあらゆる武器をノーコードで作成可能なフレームワークです。 Riot
-Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武器を参考に作成されました。 RiotGames のValorantの武器を参考にし、作成されました。
-以下の特徴を持ちます。
-
+Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武器を参考に作成されました。
 * 一般的な武器であれば、インスペクターで完結。ノーコードで武器が作成できます。
 * 各種インターフェース、基底クラスを実装するだけで動作を拡張することができます。
 * EffectやBuiltin Audioに非依存。再生タイミングはUnityEventで表現。
@@ -49,17 +46,19 @@ Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武�
 - SinRecoil
 - NoneRecoil
 - RandomRecoil
-
-# Install
-
-## Requirement
+---
+# Requirement
 
 Weapon System では、以下の環境が必須になります。
 
 - Unity 2020 LTS Later
 - [mackysoft.Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
 
-## .unitypackageを使う
+# Install
+
+
+
+## `.unitypackage`を使う
 
 - [Release](https://github.com/NebusokuDev/ShooterWeaponSystemForUnity/releases) から`.unitypackage`をダウンロードし、インストールします。
 
@@ -103,6 +102,7 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 
 1. プレイヤーのルートに`HitPoint`, `ObjectGroup`をアタッチします。
 
+> #### info
 > 独自のHitPointを利用したい場合は`IHasHitPoint`を実装してください。
 
 ## 武器の設定
@@ -111,7 +111,6 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 2. 作成したGameObjectに`ObjectPermission`, `Weapon`, `LegacyWeaponInput`をアタッチします。
 3. それぞれのアクションに対し、設定していきます。
 
-# Note
 
 - `[Serialize Reference]`アトリビュートを使用しているため拡張したクラスには、`[System.Serializable]`アトリビュートを必ず追加してください。
 - インスペクターのGUIを展開するとフレームレートとが急激に下がります。実行する際には、インスペクターのGUIを閉じてから実行してください。
@@ -120,11 +119,8 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 
 - NebusokuDev
 
+# Contact
+
 # License
 
 "Shooter Weapon System For Unity" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
-[comment]: <> (# コントリビューション)
-
-[comment]: <> (# コンタクト)
-

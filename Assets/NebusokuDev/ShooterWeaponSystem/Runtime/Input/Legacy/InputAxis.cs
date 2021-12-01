@@ -5,18 +5,18 @@ using UnityEngine;
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
 {
     [Serializable]
-    public class InputAxis
+    public class InputAxis : IInputAxis
     {
         [SerializeField] private string[] axes;
         [SerializeField] private float deadZone = .01f;
 
 
-        public InputAxis(params string[] axis) => this.axes = axis;
+        public InputAxis(params string[] axis) => axes = axis;
 
         public InputAxis(float deadZone) : this() => this.deadZone = deadZone;
 
 
-        public float GetAnyAxis()
+        public float GetAxis()
         {
             foreach (var axis in axes)
             {
@@ -29,7 +29,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
         }
 
 
-        public float GetAnyRawAxis()
+        public float GetRawAxis()
         {
             foreach (var axis in axes)
             {

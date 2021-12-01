@@ -2,8 +2,8 @@
 {
     public interface IInputAxis
     {
-        float ReadValue();
+        float GetAxis();
 
-        float ReadRawValue();
+        float GetRawAxis();
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
 {
     [Serializable]
-    public class InputKeys : IInputButton
+    public class InputButtons : IInputButton
     {
         [SerializeField] private KeyCode[] keys;
 
-        public InputKeys(params KeyCode[] keyCodes) => keys = keyCodes;
+        public InputButtons(params KeyCode[] keyCodes) => keys = keyCodes;
 
         public bool IsPressed
         {
