@@ -3,8 +3,10 @@
 FPS/TPSの武器をノーコードで武器を作成できるフレームワーク
 
 # 特徴
+
 **Weapon System for Unity**はFPS/TPS向けのあらゆる武器をノーコードで作成可能なフレームワークです。 Riot
 Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武器を参考に作成されました。
+
 * 一般的な武器であれば、インスペクターで完結。ノーコードで武器が作成できます。
 * 各種インターフェース、基底クラスを実装するだけで動作を拡張することができます。
 * EffectやBuiltin Audioに非依存。再生タイミングはUnityEventで表現。
@@ -46,7 +48,9 @@ Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武�
 - SinRecoil
 - NoneRecoil
 - RandomRecoil
+
 ---
+
 # Requirement
 
 Weapon System では、以下の環境が必須になります。
@@ -56,8 +60,6 @@ Weapon System では、以下の環境が必須になります。
 
 # Install
 
-
-
 ## `.unitypackage`を使う
 
 - [Release](https://github.com/NebusokuDev/ShooterWeaponSystemForUnity/releases) から`.unitypackage`をダウンロードし、インストールします。
@@ -66,19 +68,25 @@ Weapon System では、以下の環境が必須になります。
 
 git urlを利用してインストールすることができます。 インストールする場合は、 パッケージマネージャの`Add package from git URL...`に以下のurlを入力してください。
 
-#### URL: `https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem`
-
+#### URL
+```text
+https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem
+```
 [使い方はこちらを参考にしてください](https://docs.unity3d.com/2019.4/Documentation/Manual/upm-ui-giturl.html)
 
 ## OpenUPMを使う
 
 OpenUPMを利用してインストールすることができます。 OpenUPMレジストリを`Project Settings/Scoped Registry`に登録し、以下のパッケージを登録します。
 
-#### `com.nebusoku-dev.shooter-weapon-system-for-unity`
+```
+com.nebusoku-dev.shooter-weapon-system-for-unity
+```
 
 もしくは、以下のコマンドラインをプロジェクトディレクトリ配下で入力します。
 
-#### `openupm add com.nebusoku-dev.shooter-weapon-system-for-unity` 
+```
+openupm add com.nebusoku-dev.shooter-weapon-system-for-unity
+```
 
 # Usage
 
