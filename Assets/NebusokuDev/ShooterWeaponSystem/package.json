@@ -12,7 +12,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "MackySoft.SerializeReferenceExtensions": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions"
   },
   "samples": []
 }

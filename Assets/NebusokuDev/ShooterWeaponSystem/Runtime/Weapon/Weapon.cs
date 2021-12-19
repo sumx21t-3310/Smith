@@ -66,6 +66,8 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Weapon
             if (_magazine.IsReloading == false && _input.IsReload) StartCoroutine(_magazine.Reload());
             _magazine.AmmoHolder = _ammoHolder;
 
+            if (_magazine.IsReloading) return;
+
             _primary?.Action(_input.IsPrimaryAction, _playerState);
             _primary?.AltAction(_input.IsPrimaryAltAction, _playerState);
 

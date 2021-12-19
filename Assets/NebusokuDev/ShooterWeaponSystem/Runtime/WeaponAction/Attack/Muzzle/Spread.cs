@@ -9,7 +9,7 @@ using static UnityEngine.AnimationCurve;
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.Muzzle
 {
     [Serializable]
-    public class Spread
+    public class Spread : ISpread
     {
         public static readonly Spread Default = new Spread();
         [SerializeField] private PlayerMovementContext context = PlayerMovementContext.Rest;

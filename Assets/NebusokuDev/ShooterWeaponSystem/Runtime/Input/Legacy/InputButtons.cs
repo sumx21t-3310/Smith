@@ -5,13 +5,13 @@ using UnityEngine;
 namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
 {
     [Serializable]
-    public class InputKeys
+    public class InputButtons : IInputButton
     {
         [SerializeField] private KeyCode[] keys;
 
-        public InputKeys(params KeyCode[] keyCodes) => keys = keyCodes;
+        public InputButtons(params KeyCode[] keyCodes) => keys = keyCodes;
 
-        public bool IsAnyKeyPressed
+        public bool IsPressed
         {
             get
             {
@@ -24,7 +24,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
             }
         }
 
-        public bool IsAnyKeyDown
+        public bool IsPressDown
         {
             get
             {
@@ -37,7 +37,7 @@ namespace NebusokuDev.ShooterWeaponSystem.Runtime.Input.Legacy
             }
         }
 
-        public bool IsAnyKeyUp
+        public bool IsPressUp
         {
             get
             {

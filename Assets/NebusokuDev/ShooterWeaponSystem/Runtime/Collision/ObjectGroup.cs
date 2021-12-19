@@ -1,16 +1,19 @@
 ﻿using System;
-using NebusokuDev.ShooterWeaponSystem.Runtime.Collision;
 using UnityEngine;
 
 
-namespace NebusokuDev.ShooterWeaponSystem.Sample.Script
+namespace NebusokuDev.ShooterWeaponSystem.Runtime.Collision
 {
     public class ObjectGroup : MonoBehaviour, IObjectGroup
     {
         [SerializeField] private int groupId;
-        
-        public Guid SelfId => Guid.NewGuid();
+
+        private Guid? _selfId;
+
+        public Guid SelfId => _selfId ??= Guid.NewGuid();
 
         public int GroupId => groupId;
+
+        public override string ToString() => $"selfId: {_selfId.ToString()}, groupId: {groupId.ToString()}";
     }
 }

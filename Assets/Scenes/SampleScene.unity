@@ -167,15 +167,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abea8e144bb72de4c89d0350198b6423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryKeys:
+  primaryButtons:
+    keys: 31000000
+  primaryAltButtons:
     keys: 
-  primaryAltKeys:
+  secondaryButtons:
     keys: 
-  secondaryKeys:
+  secondaryAltButtons:
     keys: 
-  secondaryAltKeys:
-    keys: 
-  reloadKeys:
+  reloadButtons:
     keys: 
 --- !u!114 &78973700
 MonoBehaviour:
@@ -200,13 +200,103 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: NoneAction, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      type: {class: ShootingAction, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        rpm:
+          id: 4
+        fireMode:
+          id: 5
+        useAmmoAmount: 1
+        muzzle:
+          id: 6
+        recoil:
+          id: 7
+        bullet:
+          id: 8
+        fire:
+          m_PersistentCalls:
+            m_Calls: []
+        ammoEmpty:
+          m_PersistentCalls:
+            m_Calls: []
     00000001:
-      type: {class: NoneAction, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      type: {class: ShootingAction, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        rpm:
+          id: 9
+        fireMode:
+          id: 10
+        useAmmoAmount: 1
+        muzzle:
+          id: 11
+        recoil:
+          id: 12
+        bullet:
+          id: 13
+        fire:
+          m_PersistentCalls:
+            m_Calls: []
+        ammoEmpty:
+          m_PersistentCalls:
+            m_Calls: []
     00000002:
       type: {class: UnlimitedMagazine, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Magazine, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
     00000003:
       type: {class: UnlimitedAmmoHolder, ns: NebusokuDev.ShooterWeaponSystem.Runtime.AmmoHolder, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+    00000004:
+      type: {class: FixedRpmTimer, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Sequence.Timer, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        rpm: 600
+    00000005:
+      type: {class: FullAuto, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Sequence.FireMode, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+    00000006:
+      type: {class: SpreadMuzzle, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.Muzzle, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        reference: {fileID: 78973698}
+        spreadProfile: {fileID: 11400000, guid: 756429bbb90ba364684c1126ed804873, type: 2}
+        maxShotCount: 15
+    00000007:
+      type: {class: NoneRecoil, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Recoil, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+    00000008:
+      type: {class: ProjectileBullet, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.Bullet, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        bulletSpeed: 500
+        ammo: {fileID: 5092967994224709921, guid: ed2ce49e8b0157942a66bb9f4121d816, type: 3}
+    00000009:
+      type: {class: FixedRpmTimer, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Sequence.Timer, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        rpm: 600
+    0000000A:
+      type: {class: FullAuto, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Sequence.FireMode, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+    0000000B:
+      type: {class: SpreadMuzzle, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.Muzzle, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        reference: {fileID: 0}
+        spreadProfile: {fileID: 0}
+        maxShotCount: 15
+    0000000C:
+      type: {class: NoneRecoil, ns: NebusokuDev.ShooterWeaponSystem.Runtime.Recoil, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+    0000000D:
+      type: {class: HitScanBullet, ns: NebusokuDev.ShooterWeaponSystem.Runtime.WeaponAction.Attack.Bullet, asm: com.nebusokudev.shooter-weaponsystem-for-unity.core}
+      data:
+        bulletDamageProfile: {fileID: 0}
+        hitRadius: 0.025
+        bulletImpactPower: 10
+        collisionLayer:
+          serializedVersion: 2
+          m_Bits: 4294967295
+        onShot:
+          m_PersistentCalls:
+            m_Calls: []
+        onSelfHit:
+          m_PersistentCalls:
+            m_Calls: []
+        onFriendlyHit:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnemyHit:
+          m_PersistentCalls:
+            m_Calls: []
 --- !u!1 &184493390
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +634,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2698
+  m_Name: pb_Mesh15996
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
