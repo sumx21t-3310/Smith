@@ -1,4 +1,4 @@
-# Shooter Weapon System For Unity
+![header image](img/icons/SmithLogo.png "HeaderLogo")
 
 FPS/TPSの武器をノーコードで武器を作成できるフレームワーク
 
@@ -79,13 +79,13 @@ https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/Nebus
 OpenUPMを利用してインストールすることができます。 OpenUPMレジストリを`Project Settings/Scoped Registry`に登録し、以下のパッケージを登録します。
 
 ```
-com.nebusoku-dev.shooter-weapon-system-for-unity
+com.nebusoku-dev.smith
 ```
 
 もしくは、以下のコマンドラインをプロジェクトディレクトリ配下で入力します。
 
 ```
-openupm add com.nebusoku-dev.shooter-weapon-system-for-unity
+openupm add com.nebusoku-dev.smith
 ```
 
 # Usage
@@ -123,12 +123,10 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 - `[Serialize Reference]`アトリビュートを使用しているため拡張したクラスには、`[System.Serializable]`アトリビュートを必ず追加してください。
 - インスペクターのGUIを展開するとフレームレートとが急激に下がります。実行する際には、インスペクターのGUIを閉じてから実行してください。
 
-# Author
+# Author Info
 
 - NebusokuDev
 
-# Contact
-
 # License
 
-"Shooter Weapon System For Unity" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+"Smith" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
