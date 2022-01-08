@@ -1,8 +1,8 @@
-![header image](img/icons/SmithLogo.png "HeaderLogo")
-
+# Smith - Shooter weapon system framework for Unity
 FPS/TPSの武器をノーコードで武器を作成できるフレームワーク
 
-# 特徴
+![header image](img/icons/SmithLogo.png "HeaderLogo")
+
 
 **Weapon System for Unity**はFPS/TPS向けのあらゆる武器をノーコードで作成可能なフレームワークです。 Riot
 Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武器を参考に作成されました。
@@ -105,6 +105,8 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 ### Moverのセッティング
 
 テスト用のFPS/TPS向けのキャラクターコントローラーが用意されています。
+
+> 独自のState
 
 ### 当たり判定の設定
 

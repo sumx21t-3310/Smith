@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "ef305d06fe799d43cb38c96ccc18bb585803b5e1"
     },
+    "com.unity.cinemachine": {
+      "version": "2.6.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.4",
       "depth": 0,
@@ -62,6 +69,15 @@
       "source": "registry",
       "dependencies": {
         "com.unity.settings-manager": "1.0.3"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.progrids": {
+      "version": "3.0.3-preview.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.2"
       },
       "url": "https://packages.unity.com"
     },
