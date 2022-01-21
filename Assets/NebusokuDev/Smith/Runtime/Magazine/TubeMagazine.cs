@@ -15,7 +15,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         [SerializeField] private uint reaming = 8;
 
         public UnityEvent<uint> onUseAmmo;
-        
+
         public UnityEvent onReloadStart;
         public UnityEvent onReload;
         public UnityEvent onReloadEnd;
@@ -44,7 +44,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
         public bool IsReloading { get; private set; }
 
-        public IEnumerator Reload()
+        public IEnumerator ReloadCoroutine()
         {
             if (reaming >= capacity) yield break;
 

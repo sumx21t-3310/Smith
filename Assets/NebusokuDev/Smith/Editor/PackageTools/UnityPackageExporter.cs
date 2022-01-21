@@ -30,7 +30,7 @@ namespace NebusokuDev.Smith.Editor.PackageTools
             // Ensure export path.
             var dir = new FileInfo(exportPath).Directory;
 
-            if (dir is { Exists: false }) dir.Create();
+            if (dir is {Exists: false}) dir.Create();
 
             // Export
             AssetDatabase.ExportPackage(GetAssetPaths(), exportPath, ExportPackageOptions.Default);
@@ -44,9 +44,10 @@ namespace NebusokuDev.Smith.Editor.PackageTools
             var path = Path.Combine(Application.dataPath, PackagePath);
 
             var assets = Directory.EnumerateFiles(path, SearchPattern, SearchOption.AllDirectories)
-                                  .Where(x => x.Contains(PackageToolsFolderName) == false)
-                                  .Select(x => "Assets" + x.Replace(Application.dataPath, "").Replace(@"\", "/"))
-                                  .ToArray();
+                .Where(x => x.Contains(PackageToolsFolderName) == false)
+                .Select(x => "Assets" + x.Replace(Application.dataPath, "")
+                    .Replace(@"\", "/"))
+                .ToArray();
 
             return assets;
         }

@@ -8,6 +8,7 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         public UnityEngine.Camera Camera { get; }
 
-        public Transform Center { get; }
+        public Vector3 Center { get; }
+        public Quaternion Rotation { get; }
     }
 }

@@ -25,7 +25,7 @@ namespace NebusokuDev.Smith.Runtime.Camera
         private void LateUpdate() => _camera.fieldOfView = FovScale * FieldOfView;
 
         public override UnityEngine.Camera Camera => _camera;
-
-        public override Transform Center => transform;
+        public override Vector3 Center => transform.position;
+        public override Quaternion Rotation => transform.rotation;
     }
 }

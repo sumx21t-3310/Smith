@@ -18,12 +18,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 
         public override void Defuse(IPlayerState playerState, IWeaponContext weaponContext)
         {
-            var camera = Locator<IReferenceCamera>.Instance.Current.Center;
+            var camera = Locator<IReferenceCamera>.Instance.Current;
             var spread = spreadProfile[playerState.Context];
 
-            var defuse = camera.rotation * spread.Defuse(weaponContext.IsAim, (float)weaponContext.ShotCount / maxShotCount)
-                         + camera.forward;
-            reference.rotation = LookRotation(defuse);
+            var defuse = camera.Rotation * spread.Defuse(weaponContext.IsAim, (float)weaponContext.ShotCount / maxShotCount);
+            shotPoint.rotation = LookRotation(defuse);
         }
     }
 }

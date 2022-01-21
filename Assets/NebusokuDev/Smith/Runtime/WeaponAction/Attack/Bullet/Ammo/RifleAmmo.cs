@@ -1,3 +1,4 @@
+using System;
 using NebusokuDev.Smith.Runtime.Collision;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
         private Vector3 _startPosition;
         public override IObjectPermission ObjectPermission { get; set; }
         public override IObjectGroup ObjectGroup { get; set; }
-        
+
 
         public override void AddForce(Vector3 force)
         {

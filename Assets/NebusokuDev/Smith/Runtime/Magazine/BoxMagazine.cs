@@ -16,7 +16,9 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         [SerializeField, ReadOnly] private uint reaming = 999;
         [SerializeField] private bool isClosedBolt;
 
-        public BoxMagazine() { }
+        public BoxMagazine()
+        {
+        }
 
 
         public BoxMagazine(uint capacity, uint reaming, bool isClosedBolt, IAmmoHolder ammoHolder)
@@ -44,12 +46,11 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
         public override bool UseAmmo(uint useAmount)
         {
-            reaming = (uint)Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
-            useAmount = (uint)Mathf.Clamp(useAmount, 0, Int32.MaxValue);
-            reaming = (uint)Mathf.Clamp(reaming, 0, capacity);
+            reaming = (uint) Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
+            useAmount = (uint) Mathf.Clamp(useAmount, 0, Int32.MaxValue);
+            reaming = (uint) Mathf.Clamp(reaming, 0, capacity);
 
             if (useAmount > Reaming) return false;
-
             reaming -= useAmount;
 
             return true;
@@ -60,9 +61,9 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         private bool _isReloading;
 
 
-        public override IEnumerator Reload()
+        public override IEnumerator ReloadCoroutine()
         {
-            reaming = (uint)Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
+            reaming = (uint) Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
             var reloadAmount = capacity - reaming;
 
             if (AmmoHolder.IsEmpty) yield break;
@@ -77,7 +78,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
                 yield return _tacticalReload ??= new WaitForSeconds(tacticalReloadTime);
 
                 onTacticalReloadEnd.Invoke();
-                reaming += AmmoHolder.GetAmmo(reloadAmount) + (uint)(isClosedBolt ? 1 : 0);
+                reaming += AmmoHolder.GetAmmo(reloadAmount) + (uint) (isClosedBolt ? 1 : 0);
             }
             else
             {

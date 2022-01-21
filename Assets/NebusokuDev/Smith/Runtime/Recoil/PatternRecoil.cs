@@ -10,7 +10,6 @@ namespace NebusokuDev.Smith.Runtime.Recoil
     public class PatternRecoil : IRecoil
     {
         [SerializeField] private RecoilPatternProfile patternProfile;
-        [SerializeField] private float power = 1f;
         [SerializeField] private float duration = .1f;
 
         private int _index;
@@ -48,8 +47,8 @@ namespace NebusokuDev.Smith.Runtime.Recoil
             if (rotate == null) return;
 
             _easeTime -= Time.deltaTime;
-            rotate.HorizontalOffset += patternProfile[_index].x * power * Time.deltaTime / duration;
-            rotate.VerticalOffset += patternProfile[_index].y * power * Time.deltaTime / duration;
+            rotate.HorizontalOffset += patternProfile[_index].x * Mathf.Deg2Rad * Time.deltaTime / duration;
+            rotate.VerticalOffset += patternProfile[_index].y * Mathf.Deg2Rad * Time.deltaTime / duration;
         }
     }
 }

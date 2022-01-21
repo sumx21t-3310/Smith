@@ -31,7 +31,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
             var moa = CalcMoa(Lerp(startMoa, endMoa, t));
             moa *= isAim ? aimingSpreadMultiple : 1f;
 
-            return defuse * moa;
+            return defuse * moa + Vector3.forward;
         }
 
 

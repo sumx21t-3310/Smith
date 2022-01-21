@@ -20,19 +20,24 @@ Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武�
 ### Attack
 
 - ShootingAction
+  - 単発射撃です。Projectile、HitScanが選択できます。
 - ShotgunShootingAction
+  - 複数発動時射撃です。Projectile、HitScanが選択できます。 
 
 ### Aim
 
 - AimAction
-- ScopeAimAction
+  - 武器の位置が変わるエイムです。
 - ZoomOnlyAimAction
+  - ズームのみのエイムです。TPSなどに使用できます。
 
 ### Control
 
 - AimSwitchingAction
+  - Valorantの武器のようにAimによってアクションを切り替えます。
 - EventInvokeAction
 - SelectableAction
+  - セミオート、フルオートの切り替えなどに使用します。
 
 ## Interactable
 
@@ -45,11 +50,10 @@ Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武�
 ## 実装済みリコイル
 
 - PatternRecoil
+  - n発目はランダムにといった指定が可能
 - SinRecoil
+  - Sin波状にリコイルします。RustのAKのようなイメージ。
 - NoneRecoil
-- RandomRecoil
-
----
 
 # Requirement
 
@@ -60,17 +64,13 @@ Weapon System では、以下の環境が必須になります。
 
 # Install
 
-## `.unitypackage`を使う
-
-- [Release](https://github.com/NebusokuDev/ShooterWeaponSystemForUnity/releases) から`.unitypackage`をダウンロードし、インストールします。
-
 ## git urlを使う
 
 git urlを利用してインストールすることができます。 インストールする場合は、 パッケージマネージャの`Add package from git URL...`に以下のurlを入力してください。
 
 #### URL
 ```text
-https://github.com/NebusokuDev/ShooterWeaponSystemForUnity.git?path=Assets/NebusokuDev/ShooterWeaponSystem
+https://github.com/NebusokuDev/Smith.git?path=Assets/NebusokuDev/ShooterWeaponSystem
 ```
 [使い方はこちらを参考にしてください](https://docs.unity3d.com/2019.4/Documentation/Manual/upm-ui-giturl.html)
 
@@ -97,38 +97,54 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 
 1. 空のGameObjectを作成し、名前を`ObjectPoolBinder`とします。
 2. `ObjectPoolBinder`を作成したGameObjectにアタッチします。
-
-> 独自のObjectPoolを利用したい場合は`IObjectPoolFactory`を実装してください。
+> **Info**
+> - 独自のObjectPoolを利用したい場合は`IObjectPoolFactory`を実装してください。
 
 ## プレイヤーの設定
+### ルートのTransformを作成
+1. 空のゲームオブジェクトを作成し、名前を`Player`とします。
+2. `Player`に`Mover` もしくはをアタッチします。
+3. `Player`の子に空のゲームオブジェクトを作成し、名前を`Camera Pivot`とします。このゲームオブジェクトがカメラの回転の基準になります。
+4. `Camera Pivot`に`CameraRotor`、`CameraInput`、`LegacyMouseCameraInput`、をアタッチします。
+5. `Camera Pivot`の子にMain Cameraを設置します。この際、Transform.positionをすべて0にするとFPSに、右寄りに設定するとTPSになります。
+6. 設置したMainCameraに銃弾の発射方向とズームを司る`ReferenceCamera`をアタッチします。
+
 
 ### Moverのセッティング
 
-テスト用のFPS/TPS向けのキャラクターコントローラーが用意されています。
+Smithでは、テスト用のFPS/TPS向けのMoverが用意されています。
+`IPlayerState`が実装されており、IPlayerStateをアタッチせずに使用できます。プロトタイピングの場合は利用することをおすすめします。
 
-> 独自のState
+> **Info** 
+> - 独自のStateを実装したい場合は`IPlayerState`を実装してください。
 
 ### 当たり判定の設定
 
 1. プレイヤーのルートに`HitPoint`, `ObjectGroup`をアタッチします。
+2. Characterのリグのボーンにコライダーと`HitBox`をアタッチし、`HitBox`の`BodyType`を指定します。
 
-> #### info
-> 独自のHitPointを利用したい場合は`IHasHitPoint`を実装してください。
+
+> **Info**
+> - 独自のHitPointを利用したい場合は`IHasHitPoint`を実装してください。
 
 ## 武器の設定
 
 1. 空のGameObjectを作成し、任意の名前にします
 2. 作成したGameObjectに`ObjectPermission`, `Weapon`, `LegacyWeaponInput`をアタッチします。
-3. それぞれのアクションに対し、設定していきます。
+3. それぞれのアクションに対し、各種設定をしていきます。
 
+>  **! Note !**
+> - `[Serialize Reference]`アトリビュートを使用しているため拡張したクラスには、`[System.Serializable]`アトリビュートを必ず追加してください。
+> - インスペクターのGUIを展開するとフレームレートとが急激に下がります。実行する際には、インスペクターのGUIを閉じてから実行してください。
 
-- `[Serialize Reference]`アトリビュートを使用しているため拡張したクラスには、`[System.Serializable]`アトリビュートを必ず追加してください。
-- インスペクターのGUIを展開するとフレームレートとが急激に下がります。実行する際には、インスペクターのGUIを閉じてから実行してください。
+# Contribute
+このリポジトリではReadme、wikiの更新と翻訳、バグ報告と修正、新機能の追加を受け付けています。PR、Issueよろしくおねがいします。
 
+- 不明な点があればIssueまたは[TwitterのDM](https://twitter.com/neubsoku_dev)までお願いします。
 # Author Info
-
 - NebusokuDev
+- [Twitter](https://twitter.com/neubsoku_dev)
+
 
 # License
-
 "Smith" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).

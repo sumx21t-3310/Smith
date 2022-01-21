@@ -13,5 +13,7 @@
 
 
         public int ShotCount { get; set; }
+        
+        public bool IsReload { get; set; }
     }
 }

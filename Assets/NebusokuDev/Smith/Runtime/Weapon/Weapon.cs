@@ -1,4 +1,5 @@
 ﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Input;
 using NebusokuDev.Smith.Runtime.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
@@ -23,6 +24,7 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         private IWeaponInput _input;
         private IPlayerState _playerState;
         private IWeaponContext _weaponContext;
+        
 
         // getter
         public IWeaponAction Primary => _primary;
@@ -30,6 +32,22 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         public IMagazine Magazine => _magazine;
         public IAmmoHolder AmmoHolder => _ammoHolder;
         public IWeaponContext Context => _weaponContext;
+
+        public void Draw()
+        {
+            _primary?.OnDraw();
+            _secondary?.OnDraw();
+            StopCoroutine(ReloadCoroutine);
+        }
+
+        public void Holster()
+        {
+            StopCoroutine(ReloadCoroutine);
+            _primary?.OnHolster();
+            _secondary?.OnHolster();
+        }
+
+        public Coroutine ReloadCoroutine { get; private set; }
 
 
         private void Awake() => HandleInjection();
@@ -62,16 +80,20 @@ namespace NebusokuDev.Smith.Runtime.Weapon
             // Use UnityEngine.Object
             if (_playerState == null) _playerState = new RestPlayerState();
 
-            if (_magazine.IsReloading == false && _input.IsReload) StartCoroutine(_magazine.Reload());
+            if (_magazine.IsReloading == false && _input.IsReload)
+            {
+                ReloadCoroutine = StartCoroutine(_magazine.ReloadCoroutine());
+            }
+
             _magazine.AmmoHolder = _ammoHolder;
 
             if (_magazine.IsReloading) return;
 
-            _primary?.Action(_input.IsPrimaryAction, _playerState);
-            _primary?.AltAction(_input.IsPrimaryAltAction, _playerState);
+            _primary?.Action(_input.IsPrimaryAction && _magazine.IsReloading == false, _playerState);
+            _primary?.AltAction(_input.IsPrimaryAltAction && _magazine.IsReloading == false, _playerState);
 
-            _secondary?.Action(_input.IsSecondaryAction, _playerState);
-            _secondary?.AltAction(_input.IsSecondaryAltAction, _playerState);
+            _secondary?.Action(_input.IsSecondaryAction && _magazine.IsReloading == false, _playerState);
+            _secondary?.AltAction(_input.IsSecondaryAltAction && _magazine.IsReloading == false, _playerState);
         }
     }
 }

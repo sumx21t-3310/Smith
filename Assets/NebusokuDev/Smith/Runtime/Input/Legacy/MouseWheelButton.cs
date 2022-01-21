@@ -1,4 +1,5 @@
 ﻿using System;
+using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Input.Legacy

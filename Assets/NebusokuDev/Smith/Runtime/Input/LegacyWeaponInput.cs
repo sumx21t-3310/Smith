@@ -1,4 +1,5 @@
 using NebusokuDev.Smith.Runtime.Input.Legacy;
+using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using NebusokuDev.Smith.Runtime.Weapon;
 using UnityEngine;
 

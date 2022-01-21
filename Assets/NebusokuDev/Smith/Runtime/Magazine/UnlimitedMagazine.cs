@@ -13,7 +13,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         public bool UseAmmo(uint useAmount) => AmmoHolder.GetAmmo(useAmount) > 0;
         public bool IsReloading => false;
 
-        public IEnumerator Reload()
+        public IEnumerator ReloadCoroutine()
         {
             yield break;
         }

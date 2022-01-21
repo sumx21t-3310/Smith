@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d15ba9897dcc7646875746d7d1213e4, type: 3}
+  m_Name: New DualActionWeapon Recoil Pattern
+  m_EditorClassIdentifier: 
+  pattern:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  - id: 6
+  - id: 7
+  - id: 8
+  - id: 9
+  - id: 10
+  - id: 11
+  - id: 12
+  - id: 13
+  - id: 14
+  - id: 15
+  - id: 16
+  - id: 17
+  - id: 18
+  - id: 19
+  - id: 20
+  - id: 21
+  - id: 22
+  - id: 23
+  - id: 24
+  - id: 25
+  - id: 26
+  - id: 27
+  - id: 28
+  - id: 29
+  - id: 30
+  - id: 31
+  - id: 32
+  - id: 33
+  - id: 34
+  references:
+    version: 1
+    00000000:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 1.1205126, y: 9.320457}
+    00000001:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 4.223939, y: 9.023478}
+    00000002:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.19349214, y: 9.971249}
+    00000003:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -4.859882, y: 9.056292}
+    00000004:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -6.5934014, y: 9.43569}
+    00000005:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -2.793975, y: 9.60235}
+    00000006:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 4.7066627, y: 9.485761}
+    00000007:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 9.596662, y: 9.956934}
+    00000008:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.5263127, y: 9.928556}
+    00000009:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.6824726, y: 9.242466}
+    0000000A:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -9.620189, y: 9.415209}
+    0000000B:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.055820215, y: 9.3817625}
+    0000000C:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.20078, y: 9.8933525}
+    0000000D:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.67208, y: 9.472056}
+    0000000E:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 5.427311, y: 9.591852}
+    0000000F:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.42950547, y: 9.936243}
+    00000010:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -9.200914, y: 9.364331}
+    00000011:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -6.0921297, y: 9.985158}
+    00000012:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 1.3573258, y: 9.923452}
+    00000013:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 4.933741, y: 9.265223}
+    00000014:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 7.40212, y: 9.137111}
+    00000015:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.03624639, y: 9.644023}
+    00000016:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -5.6842604, y: 9.573355}
+    00000017:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -8.484171, y: 9.857861}
+    00000018:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.32926565, y: 9.451617}
+    00000019:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.13853782, y: 9.043333}
+    0000001A:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 7.7833533, y: 9.778622}
+    0000001B:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 2.6842704, y: 9.183448}
+    0000001C:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -0.07477273, y: 9.806183}
+    0000001D:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -3.262088, y: 9.173065}
+    0000001E:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -3.3295093, y: 9.720706}
+    0000001F:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.06330234, y: 9.105686}
+    00000020:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 5.3063564, y: 9.066402}
+    00000021:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: 0.39222077, y: 9.773312}
+    00000022:
+      type: {class: FixedRecoilVector, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+      data:
+        value: {x: -3.2658365, y: 9.290074}

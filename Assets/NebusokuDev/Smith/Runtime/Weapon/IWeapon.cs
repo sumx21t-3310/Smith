@@ -10,5 +10,9 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         public IAmmoHolder AmmoHolder { get; }
 
         public IWeaponContext Context { get; }
+
+        public void Draw();
+
+        public void Holster();
     }
 }
