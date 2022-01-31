@@ -6,8 +6,8 @@ namespace NebusokuDev.Smith.Runtime.Animation
     [CreateAssetMenu]
     public class Kickback : KickbackBase
     {
-        [Header("position"), SerializeField] private Vector3 minMove = new Vector3();
-        [SerializeField] private Vector3 maxMove = new Vector3();
+        [Header("position"), SerializeField] private Vector3 minMove;
+        [SerializeField] private Vector3 maxMove;
 
         [Header("rotate"), SerializeField] private Vector3 minRotate;
         [SerializeField] private Vector3 maxRotate;

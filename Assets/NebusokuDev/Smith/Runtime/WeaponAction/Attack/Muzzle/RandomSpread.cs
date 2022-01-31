@@ -8,7 +8,7 @@ using static UnityEngine.AnimationCurve;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
-    [Serializable]
+    [Serializable, AddTypeMenu("Random")]
     public class Spread : ISpread
     {
         public static readonly Spread Default = new Spread();

@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Animation
+namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
-    public class ProceduralRecoilAnimation : MonoBehaviour
+    public class ProceduralKickbackAnimator : MonoBehaviour, IProceduralAnimator
     {
         [SerializeField] private KickbackBase config;
 
         [SerializeField, Range(Single.Epsilon, 6000f)]
-        private float duration = 100f;
+        private float duration = 50f;
 
         private Transform _self;
 
@@ -26,14 +26,15 @@ namespace NebusokuDev.Smith.Runtime.Animation
 
         private void LateUpdate()
         {
-            _kickbackOffsetPoint = Vector3.Lerp(_kickbackOffsetPoint, Vector3.zero, Time.deltaTime / (duration / 1000f));
+            _kickbackOffsetPoint =
+                Vector3.Lerp(_kickbackOffsetPoint, Vector3.zero, Time.deltaTime / (duration / 1000f));
             _kickbackRotation = Vector3.Slerp(_kickbackRotation, Vector3.zero, Time.deltaTime / (duration / 1000f));
-            
+
             _self.localPosition = _defaultPosition + _kickbackOffsetPoint;
             _self.localRotation = _defaultRotation * Quaternion.Euler(_kickbackRotation);
         }
 
-        public void Fire()
+        public void Play()
         {
             var kickBack = config[0];
             _kickbackOffsetPoint += transform.localRotation * kickBack.position;
