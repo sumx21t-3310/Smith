@@ -4,11 +4,14 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Runtime.Input.Legacy.Button
 {
     [Serializable]
-    public class InputButtons : IInputButton
+    public class InputKeyButton : IInputButton
     {
         [SerializeField] private KeyCode[] keys;
 
-        public InputButtons(params KeyCode[] keyCodes) => keys = keyCodes;
+        public InputKeyButton() => keys = new KeyCode[] { };
+
+
+        public InputKeyButton(params KeyCode[] keyCodes) => keys = keyCodes;
 
         public bool IsPressed
         {

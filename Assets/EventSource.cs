@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class EventSource : MonoBehaviour
 {
-    [SerializeReference] private IRpmTimer _timer = new FixedRpmTimer();
-    [SerializeReference] private IInputButton _button = new InputButtons(KeyCode.Mouse0);
+    [SerializeReference, SubclassSelector] private IRpmTimer _timer = new FixedRpmTimer();
+    [SerializeReference, SubclassSelector] private IInputButton _button = new InputKeyButton(KeyCode.Mouse0);
 
     public UnityEvent overTime;
 

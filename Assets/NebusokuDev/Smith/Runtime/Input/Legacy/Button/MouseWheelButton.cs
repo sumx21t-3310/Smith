@@ -1,14 +1,15 @@
 ﻿using System;
-using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Input.Legacy
+namespace NebusokuDev.Smith.Runtime.Input.Legacy.Button
 {
     [Serializable]
     public class MouseWheelButton : IInputButton
     {
-        public bool IsPressDown => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.x) < 0.1f;
-        public bool IsPressUp => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.x) > 0f;
-        public bool IsPressed => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.x) > 0f;
+        [SerializeField] private float threshold = Single.Epsilon;
+
+        public bool IsPressDown => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.y) > threshold;
+        public bool IsPressUp => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.magnitude) > threshold;
+        public bool IsPressed => Mathf.Abs(UnityEngine.Input.mouseScrollDelta.magnitude) > threshold;
     }
 }

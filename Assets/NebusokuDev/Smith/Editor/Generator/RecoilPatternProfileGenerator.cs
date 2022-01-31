@@ -15,7 +15,7 @@ namespace NebusokuDev.Smith.Editor.Generator
         [SerializeField] private float maxWidth = 1f;
         [SerializeField] private AnimationCurve horizontalWeightCurve = AnimationCurve.EaseInOut(0f, 0.01f, 1f, 1f);
 
-        [MenuItem("WeaponSystem/Recoil Pattern Generator")]
+        [MenuItem("Smith/Recoil Pattern Generator")]
         public static void CreateWizard()
         {
             DisplayWizard<RecoilPatternProfileGenerator>($"{nameof(PatternRecoilProfile)}Generator", "Generate");

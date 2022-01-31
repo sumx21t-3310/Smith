@@ -7,16 +7,16 @@ namespace NebusokuDev.Smith.Runtime.Input
 {
     public class LegacyWeaponInput : MonoBehaviour, IWeaponInput
     {
-        [SerializeField] private InputButtons primaryButtons = new InputButtons(KeyCode.Mouse0);
-        [SerializeField] private InputButtons primaryAltButtons = new InputButtons(KeyCode.B);
-        [SerializeField] private InputButtons secondaryButtons = new InputButtons(KeyCode.Mouse1);
-        [SerializeField] private InputButtons secondaryAltButtons = new InputButtons(KeyCode.LeftAlt);
-        [SerializeField] private InputButtons reloadButtons = new InputButtons(KeyCode.R);
+        [SerializeField] private InputKeyButton primaryKeyButton = new InputKeyButton(KeyCode.Mouse0);
+        [SerializeField] private InputKeyButton primaryAltKeyButton = new InputKeyButton(KeyCode.B);
+        [SerializeField] private InputKeyButton secondaryKeyButton = new InputKeyButton(KeyCode.Mouse1);
+        [SerializeField] private InputKeyButton secondaryAltKeyButton = new InputKeyButton(KeyCode.LeftAlt);
+        [SerializeField] private InputKeyButton reloadKeyButton = new InputKeyButton(KeyCode.R);
 
-        public bool IsPrimaryAction => primaryButtons.IsPressed;
-        public bool IsPrimaryAltAction => primaryAltButtons.IsPressed;
-        public bool IsSecondaryAction => secondaryButtons.IsPressed;
-        public bool IsSecondaryAltAction => secondaryAltButtons.IsPressed;
-        public bool IsReload => reloadButtons.IsPressed;
+        public bool IsPrimaryAction => primaryKeyButton.IsPressed;
+        public bool IsPrimaryAltAction => primaryAltKeyButton.IsPressed;
+        public bool IsSecondaryAction => secondaryKeyButton.IsPressed;
+        public bool IsSecondaryAltAction => secondaryAltKeyButton.IsPressed;
+        public bool IsReload => reloadKeyButton.IsPressed;
     }
 }

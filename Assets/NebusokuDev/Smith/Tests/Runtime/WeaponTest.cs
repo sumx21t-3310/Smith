@@ -7,7 +7,7 @@ namespace NebusokuDev.Smith.Tests.Runtime
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private InputButtons fireButton = new InputButtons(KeyCode.Mouse0);
+        [SerializeField] private InputKeyButton fireKeyButton = new InputKeyButton(KeyCode.Mouse0);
         private ProceduralKickbackAnimation _kickbackAnimation;
         [SerializeField] private FixedRpmTimer timer;
 
@@ -18,7 +18,7 @@ namespace NebusokuDev.Smith.Tests.Runtime
         {
             timer.Update();
 
-            if (timer.IsOverTime && fireButton.IsPressed)
+            if (timer.IsOverTime && fireKeyButton.IsPressed)
             {
                 timer.Lap();
                 _kickbackAnimation.Play();

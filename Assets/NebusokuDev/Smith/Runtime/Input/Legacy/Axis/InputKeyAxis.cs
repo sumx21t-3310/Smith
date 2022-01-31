@@ -7,22 +7,22 @@ namespace NebusokuDev.Smith.Runtime.Input.Legacy.Axis
     [Serializable]
     public class InputKeyAxis : IInputAxis
     {
-        [SerializeField] private InputButtons positiveButtons;
-        [SerializeField] private InputButtons negativeButtons;
+        [SerializeField] private InputKeyButton positiveKeyButton;
+        [SerializeField] private InputKeyButton negativeKeyButton;
         private float _value;
 
-        public InputKeyAxis(InputButtons positiveButtons, InputButtons negativeButtons)
+        public InputKeyAxis(InputKeyButton positiveKeyButton, InputKeyButton negativeKeyButton)
         {
-            this.positiveButtons = positiveButtons;
-            this.negativeButtons = negativeButtons;
+            this.positiveKeyButton = positiveKeyButton;
+            this.negativeKeyButton = negativeKeyButton;
         }
 
 
         public float GetAxis()
         {
-            if (positiveButtons.IsPressed) return 1f;
+            if (positiveKeyButton.IsPressed) return 1f;
 
-            if (negativeButtons.IsPressed) return -1f;
+            if (negativeKeyButton.IsPressed) return -1f;
 
             _value -= _value * Time.deltaTime;
             return _value;
@@ -31,9 +31,9 @@ namespace NebusokuDev.Smith.Runtime.Input.Legacy.Axis
 
         public float GetRawAxis()
         {
-            if (positiveButtons.IsPressed) return 1f;
+            if (positiveKeyButton.IsPressed) return 1f;
 
-            if (negativeButtons.IsPressed) return -1f;
+            if (negativeKeyButton.IsPressed) return -1f;
 
             return 0f;
         }

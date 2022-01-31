@@ -5,13 +5,13 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover.Input
 {
     public class KeyboardMoverInput : MonoBehaviour, IMoverInput
     {
-        [SerializeField] private InputButtons forward = new InputButtons(KeyCode.W);
-        [SerializeField] private InputButtons backward = new InputButtons(KeyCode.S);
-        [SerializeField] private InputButtons left = new InputButtons(KeyCode.A);
-        [SerializeField] private InputButtons right = new InputButtons(KeyCode.D);
-        [SerializeField] private InputButtons jump = new InputButtons(KeyCode.Space);
-        [SerializeField] private InputButtons crouch = new InputButtons(KeyCode.LeftControl);
-        [SerializeField] private InputButtons sprint = new InputButtons(KeyCode.LeftShift);
+        [SerializeReference, SubclassSelector] private IInputButton _forward = new InputKeyButton(KeyCode.W);
+        [SerializeReference, SubclassSelector] private IInputButton _backward = new InputKeyButton(KeyCode.S);
+        [SerializeReference, SubclassSelector] private IInputButton left = new InputKeyButton(KeyCode.A);
+        [SerializeReference, SubclassSelector] private IInputButton right = new InputKeyButton(KeyCode.D);
+        [SerializeReference, SubclassSelector] private IInputButton jump = new InputKeyButton(KeyCode.Space);
+        [SerializeReference, SubclassSelector] private IInputButton crouch = new InputKeyButton(KeyCode.LeftControl);
+        [SerializeReference, SubclassSelector] private IInputButton sprint = new InputKeyButton(KeyCode.LeftShift);
 
         public Vector3 Direction => new Vector3(Horizontal, 0f, Vertical);
 
@@ -19,8 +19,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover.Input
         {
             get
             {
-                if (forward.IsPressed) return 1f;
-                if (backward.IsPressed) return -1f;
+                if (_forward.IsPressed) return 1f;
+                if (_backward.IsPressed) return -1f;
 
                 return 0f;
             }

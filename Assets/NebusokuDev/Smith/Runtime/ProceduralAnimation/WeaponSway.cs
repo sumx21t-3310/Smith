@@ -1,33 +1,36 @@
 using UnityEngine;
 
-public class WeaponSway : MonoBehaviour
+namespace NebusokuDev.Smith.Runtime.ProceduralAnimation
 {
-    [SerializeField] private Vector3 offset;
-    [SerializeField] private float dumpTime = .1f;
-
-
-    private Transform _self;
-    private Quaternion _defaultRotate;
-
-    private void Awake()
+    public class WeaponSway : MonoBehaviour
     {
-        _self = transform;
-        _defaultRotate = _self.localRotation;
-    }
-
-    private void Update()
-    {
-        offset += Vector3.left * Input.GetAxisRaw("Mouse X");
+        [SerializeField] private Vector3 offset;
+        [SerializeField] private float dumpTime = .1f;
 
 
-        if (offset.sqrMagnitude < 0.001f)
+        private Transform _self;
+        private Quaternion _defaultRotate;
+
+        private void Awake()
         {
-            offset = Vector3.zero;
+            _self = transform;
+            _defaultRotate = _self.localRotation;
         }
 
-        offset = Vector3.Slerp(offset, Vector3.zero, Time.deltaTime / dumpTime);
+        private void Update()
+        {
+            offset += Vector3.left * UnityEngine.Input.GetAxisRaw("Mouse X");
 
 
-        _self.localRotation = Quaternion.LookRotation(_defaultRotate * Vector3.forward + offset);
+            if (offset.sqrMagnitude < 0.001f)
+            {
+                offset = Vector3.zero;
+            }
+
+            offset = Vector3.Slerp(offset, Vector3.zero, Time.deltaTime / dumpTime);
+
+
+            _self.localRotation = Quaternion.LookRotation(_defaultRotate * Vector3.forward + offset);
+        }
     }
 }
