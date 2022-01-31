@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
-    [Serializable]
-    public class JumpUpMuzzle : SpreadMuzzle
+    [Serializable, AddTypeMenu("RecoilSync")]
+    public class RecoilSyncMuzzle : SpreadMuzzle
     {
-        [SerializeField] private float power;
+        [SerializeField] private Vector2 scale = Vector2.one / Mathf.Deg2Rad;
         [SerializeField] private float resetDuration;
-        [SerializeField] private RecoilPatternProfileBase _recoilPatternProfileBase;
+        [SerializeField] private RecoilPatternProfileBase recoilPatternProfile;
         private Vector3 _offset;
 
-        public override Vector3 Direction => shotPoint.forward + _offset;
+        public override Vector3 Direction => shotPoint.forward + shotPoint.rotation * _offset;
 
         public override void Reset()
         {
@@ -24,7 +24,9 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
         public override void Defuse(IPlayerState playerState, IWeaponContext weaponContext)
         {
             base.Defuse(playerState, weaponContext);
-            _offset += Vector3.up * Mathf.Deg2Rad * power * Time.deltaTime;
+            var pattern = recoilPatternProfile[weaponContext.ShotCount];
+
+            _offset += new Vector3(pattern.x * scale.x, pattern.y * scale.y) * Mathf.Deg2Rad * Time.deltaTime;
         }
     }
 }

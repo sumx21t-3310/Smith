@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.ShotgunDefuse
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/New ShotgunPatternDefuse")]
+    [CreateAssetMenu(menuName = "Smith/ShotgunDefuse/" + nameof(ShotgunPatternDefuse))]
     public class ShotgunPatternDefuse : ShotgunDefuseBase, IEnumerable<Vector3>
     {
         [SerializeField] private Vector2[] pattern;

@@ -9,9 +9,9 @@ using static UnityEngine.AnimationCurve;
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
     [Serializable, AddTypeMenu("Random")]
-    public class Spread : ISpread
+    public class RandomSpread : ISpread
     {
-        public static readonly Spread Default = new Spread();
+        public static readonly RandomSpread Default = new RandomSpread();
         [SerializeField] private PlayerMovementContext context = PlayerMovementContext.Rest;
         [SerializeField, Range(0f, 100f)] private float startMoa = 5f;
         [SerializeField, Range(0f, 100f)] private float endMoa = 10f;

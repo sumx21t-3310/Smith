@@ -10,7 +10,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
         public void Shot(Vector3 position, Vector3 direction, IObjectPermission permission, IObjectGroup objectGroup)
         {
         #if UNITY_EDITOR
-            
+            Debug.Log("Shot!");
         #endif
         }
     }

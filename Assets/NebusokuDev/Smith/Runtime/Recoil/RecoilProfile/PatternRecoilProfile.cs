@@ -2,8 +2,8 @@
 
 namespace NebusokuDev.Smith.Runtime.Recoil.RecoilProfile
 {
-    [CreateAssetMenu(fileName = "New Recoil Pattern", menuName = "Smith/RecoilProfile/Pattern" + "", order = 0)]
-    public class RecoilPatternProfile : RecoilPatternProfileBase
+    [CreateAssetMenu(menuName = "Smith/RecoilProfile/" + nameof(PatternRecoilProfile))]
+    public class PatternRecoilProfile : RecoilPatternProfileBase
     {
         [SerializeField, Range(float.Epsilon, 10f)]
         private float duration = .1f;

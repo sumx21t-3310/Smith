@@ -1,6 +1,6 @@
 ﻿namespace NebusokuDev.Smith.Runtime.ProceduralAnimation
 {
-    public interface IProceduralAnimator
+    public interface IProceduralAnimation
     {
         public void Play();
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Recoil
+namespace NebusokuDev.Smith.Runtime.Recoil.RecoilProfile
 {
     [Serializable]
     public class FixedRecoilVector : IRecoilVector

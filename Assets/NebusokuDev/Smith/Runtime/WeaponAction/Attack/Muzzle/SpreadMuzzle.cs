@@ -12,7 +12,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
     [Serializable, AddTypeMenu("Spread")]
     public class SpreadMuzzle : IdentityMuzzle
     {
-        [SerializeField] private SpreadProfile spreadProfile;
+        [SerializeField] private SpreadProfileBase spreadProfile;
         [SerializeField] private int maxShotCount = 15;
 
 
@@ -21,7 +21,9 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
             var camera = Locator<IReferenceCamera>.Instance.Current;
             var spread = spreadProfile[playerState.Context];
 
-            var defuse = camera.Rotation * spread.Defuse(weaponContext.IsAim, (float)weaponContext.ShotCount / maxShotCount);
+
+            var defuse = camera.Rotation *
+                         spread.Defuse(weaponContext.IsAim, (float) weaponContext.ShotCount / maxShotCount);
             shotPoint.rotation = LookRotation(defuse);
         }
     }

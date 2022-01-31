@@ -1,9 +1,7 @@
-﻿using NebusokuDev.Smith.Runtime.Input.Legacy;
-using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
-using NebusokuDev.Smith.Samples.StarterKit.Mover.Input;
+﻿using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Mover
+namespace NebusokuDev.Smith.Samples.StarterKit.Mover.Input
 {
     public class KeyboardMoverInput : MonoBehaviour, IMoverInput
     {
@@ -41,7 +39,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             }
         }
 
-        public bool IsJump => jump.IsPressed;
+        public bool IsJump => jump.IsPressDown;
         public bool IsCrouch => crouch.IsPressed;
     }
 }

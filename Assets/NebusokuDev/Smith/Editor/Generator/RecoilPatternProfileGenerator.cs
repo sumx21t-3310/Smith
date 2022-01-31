@@ -1,4 +1,5 @@
 ﻿using NebusokuDev.Smith.Runtime.Recoil;
+using NebusokuDev.Smith.Runtime.Recoil.RecoilProfile;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,14 +18,14 @@ namespace NebusokuDev.Smith.Editor.Generator
         [MenuItem("WeaponSystem/Recoil Pattern Generator")]
         public static void CreateWizard()
         {
-            DisplayWizard<RecoilPatternProfileGenerator>($"{nameof(RecoilPatternProfile)}Generator", "Generate");
+            DisplayWizard<RecoilPatternProfileGenerator>($"{nameof(PatternRecoilProfile)}Generator", "Generate");
         }
 
 
         public void OnWizardCreate()
         {
-            var recoilPattern = CreateInstance<RecoilPatternProfile>();
-            recoilPattern.pattern = CreateRecoilPattern(len);
+            var recoilPattern = CreateInstance<PatternRecoilProfile>();
+            recoilPattern.Pattern = CreateRecoilPattern(len);
             var path = AssetDatabase.GenerateUniqueAssetPath($"Assets/{weaponName}.asset");
             AssetDatabase.CreateAsset(recoilPattern, path);
             AssetDatabase.Refresh();

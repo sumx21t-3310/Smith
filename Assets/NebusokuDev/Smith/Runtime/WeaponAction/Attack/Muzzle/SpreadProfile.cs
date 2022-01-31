@@ -4,11 +4,11 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
     [CreateAssetMenu(menuName = "WeaponSystem/SpreadProfile")]
-    public class SpreadProfile : SpreadSettingBase
+    public class SpreadProfile : SpreadProfileBase
     {
-        [SerializeField] private Spread[] spreads;
+        [SerializeReference, SubclassSelector] private ISpread[] spreads = new RandomSpread[5];
 
-        public override Spread this[PlayerMovementContext context]
+        public override ISpread this[PlayerMovementContext context]
         {
             get
             {
@@ -17,7 +17,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
                     if (spread.Context == context) return spread;
                 }
 
-                return Spread.Default;
+#if UNITY_EDITOR
+                Debug.Log("Spread: undefined...");
+#endif
+
+                return RandomSpread.Default;
             }
         }
     }

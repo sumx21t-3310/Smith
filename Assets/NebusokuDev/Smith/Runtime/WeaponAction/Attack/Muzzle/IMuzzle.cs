@@ -11,6 +11,9 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 
         Quaternion Rotation { get; }
 
+        void Reset();
+
+
         void Defuse(IPlayerState playerState, IWeaponContext weaponContext);
     }
 }

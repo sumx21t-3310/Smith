@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
-    public class ProceduralKickbackAnimator : MonoBehaviour, IProceduralAnimator
+    public class ProceduralKickbackAnimation : MonoBehaviour, IProceduralAnimation
     {
         [SerializeField] private KickbackBase config;
 

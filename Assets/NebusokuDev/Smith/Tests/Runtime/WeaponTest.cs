@@ -1,27 +1,28 @@
-﻿using NebusokuDev.Smith;
-using NebusokuDev.Smith.Runtime.Animation;
-using NebusokuDev.Smith.Runtime.Input.Legacy;
-using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
+﻿using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
+using NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation;
 using NebusokuDev.Smith.Runtime.Sequence.Timer;
 using UnityEngine;
 
-public class WeaponTest : MonoBehaviour
+namespace NebusokuDev.Smith.Tests.Runtime
 {
-    [SerializeField] private InputButtons fireButton = new InputButtons(KeyCode.Mouse0);
-    private ProceduralRecoilAnimation _recoilAnimation;
-    [SerializeField] private FixedRpmTimer timer;
-
-    private void Start() => _recoilAnimation = GetComponent<ProceduralRecoilAnimation>();
-
-
-    private void Update()
+    public class WeaponTest : MonoBehaviour
     {
-        timer.Update();
+        [SerializeField] private InputButtons fireButton = new InputButtons(KeyCode.Mouse0);
+        private ProceduralKickbackAnimation _kickbackAnimation;
+        [SerializeField] private FixedRpmTimer timer;
 
-        if (timer.IsOverTime && fireButton.IsPressed)
+        private void Start() => _kickbackAnimation = GetComponent<ProceduralKickbackAnimation>();
+
+
+        private void Update()
         {
-            timer.Lap();
-            _recoilAnimation.Fire();
+            timer.Update();
+
+            if (timer.IsOverTime && fireButton.IsPressed)
+            {
+                timer.Lap();
+                _kickbackAnimation.Play();
+            }
         }
     }
 }

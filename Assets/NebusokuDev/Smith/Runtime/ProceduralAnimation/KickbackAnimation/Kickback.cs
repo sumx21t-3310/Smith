@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static UnityEngine.Random;
 
-namespace NebusokuDev.Smith.Runtime.Animation
+namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
     [CreateAssetMenu]
     public class Kickback : KickbackBase

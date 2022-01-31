@@ -5,7 +5,7 @@ using static UnityEngine.Random;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.ShotgunDefuse
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/New RandomShotgunDefuse")]
+    [CreateAssetMenu(menuName = "Smith/ShotgunDefuse/" + nameof(RandomShotgunDefuse))]
     public class RandomShotgunDefuse : ShotgunDefuseBase, IEnumerable
     {
         [SerializeField] private int shotgunPellet = 3;

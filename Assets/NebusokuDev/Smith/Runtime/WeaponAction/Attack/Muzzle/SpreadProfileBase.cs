@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
-    public abstract class SpreadSettingBase : ScriptableObject
+    public abstract class SpreadProfileBase : ScriptableObject
     {
-        public abstract Spread this[PlayerMovementContext context] { get; }
+        public abstract ISpread this[PlayerMovementContext context] { get; }
     }
 }

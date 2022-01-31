@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.ProceduralAnimation
 {
-    public class ProceduralAnimationPlayer : MonoBehaviour
+    public class ProceduralAnimator : MonoBehaviour
     {
         private List<IProceduralAnimation> _animators;
 

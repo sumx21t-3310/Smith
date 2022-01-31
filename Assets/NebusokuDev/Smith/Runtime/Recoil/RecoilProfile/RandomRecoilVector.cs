@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace NebusokuDev.Smith.Runtime.Recoil
+namespace NebusokuDev.Smith.Runtime.Recoil.RecoilProfile
 {
     [Serializable]
     public class RandomRecoilVector : IRecoilVector

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Animation
+namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
     public abstract class KickbackBase : ScriptableObject
     {

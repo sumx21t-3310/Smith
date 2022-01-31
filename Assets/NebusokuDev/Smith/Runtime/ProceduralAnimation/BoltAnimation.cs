@@ -2,7 +2,7 @@
 
 namespace NebusokuDev.Smith.Runtime.ProceduralAnimation
 {
-    public class BoltAnimator : MonoBehaviour, IProceduralAnimator
+    public class BoltAnimation : MonoBehaviour, IProceduralAnimation
     {
         [SerializeField] private Vector3 offset = Vector3.back * .1f;
         [SerializeField] private float rollbackTime = .1f;

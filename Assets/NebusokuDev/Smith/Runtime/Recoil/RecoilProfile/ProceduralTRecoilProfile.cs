@@ -3,7 +3,7 @@
 namespace NebusokuDev.Smith.Runtime.Recoil.RecoilProfile
 {
     [CreateAssetMenu(menuName = "Smith/RecoilProfile/ValorantRecoilProfile")]
-    public class ValorantRecoilProfile : RecoilPatternProfileBase
+    public class ProceduralTRecoilProfile : RecoilPatternProfileBase
     {
         [SerializeField] private float horizontalSpeed = 2f;
         [SerializeField] private float duration = .1f;

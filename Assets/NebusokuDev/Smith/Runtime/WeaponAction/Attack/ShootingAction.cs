@@ -54,6 +54,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
             {
                 WeaponContext.ShotCount = 0;
                 Recoil?.Reset();
+                Muzzle?.Reset();
                 Rpm.Reset();
 
                 return;
@@ -63,6 +64,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
             {
                 ammoEmpty.Invoke();
                 Recoil?.Reset();
+                Muzzle?.Reset();
 
                 return;
             }
@@ -82,11 +84,17 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
         }
 
 
-        public virtual void AltAction(bool isAltAction, IPlayerState playerState) { }
+        public virtual void AltAction(bool isAltAction, IPlayerState playerState)
+        {
+        }
 
-        public virtual void OnHolster() { }
+        public virtual void OnHolster()
+        {
+        }
 
 
-        public virtual void OnDraw() { }
+        public virtual void OnDraw()
+        {
+        }
     }
 }

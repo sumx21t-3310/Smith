@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Recoil
+namespace NebusokuDev.Smith.Runtime.Recoil.RecoilProfile
 {
     public interface IRecoilVector
     {
