@@ -3,7 +3,7 @@ using static UnityEngine.Random;
 
 namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Smith/" + nameof(Kickback))]
     public class Kickback : KickbackBase
     {
         [Header("position"), SerializeField] private Vector3 minMove;

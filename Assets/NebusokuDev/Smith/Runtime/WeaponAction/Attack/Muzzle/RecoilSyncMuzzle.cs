@@ -7,18 +7,18 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 {
     [Serializable, AddTypeMenu("RecoilSync")]
-    public class RecoilSyncMuzzle : SpreadMuzzle
+    public class RecoilSyncMuzzle : IdentityMuzzle
     {
-        [SerializeField] private Vector2 scale = Vector2.one / Mathf.Deg2Rad;
+        [SerializeField] private Vector2 scale = Vector2.one;
         [SerializeField] private float resetDuration;
         [SerializeField] private RecoilPatternProfileBase recoilPatternProfile;
-        private Vector3 _offset;
+        private Vector3 _recoilOffset;
 
-        public override Vector3 Direction => shotPoint.forward + shotPoint.rotation * _offset;
+        public override Vector3 Direction => shotPoint.forward + shotPoint.rotation * _recoilOffset;
 
         public override void Reset()
         {
-            _offset = Vector3.Lerp(_offset, Vector3.zero, Time.deltaTime / resetDuration);
+            _recoilOffset = Vector3.Lerp(_recoilOffset, Vector3.zero, Time.deltaTime / resetDuration);
         }
 
         public override void Defuse(IPlayerState playerState, IWeaponContext weaponContext)
@@ -26,7 +26,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
             base.Defuse(playerState, weaponContext);
             var pattern = recoilPatternProfile[weaponContext.ShotCount];
 
-            _offset += new Vector3(pattern.x * scale.x, pattern.y * scale.y) * Mathf.Deg2Rad * Time.deltaTime;
+            _recoilOffset += new Vector3(pattern.x * scale.x, pattern.y * scale.y, 1f) * Mathf.Deg2Rad * Time.deltaTime;
         }
     }
 }

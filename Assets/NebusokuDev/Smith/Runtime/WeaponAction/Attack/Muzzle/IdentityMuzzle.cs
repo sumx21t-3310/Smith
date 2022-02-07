@@ -11,6 +11,8 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
     public class IdentityMuzzle : IMuzzle
     {
         [SerializeField] protected Transform shotPoint;
+        [SerializeField] protected bool isAlignCameraCenter = true;
+        [SerializeField] protected float alignDirection = 75f;
         public virtual Vector3 Position => shotPoint.position;
         public virtual Vector3 Direction => shotPoint.forward;
         public virtual Quaternion Rotation => shotPoint.rotation;
@@ -21,9 +23,29 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 
         public virtual void Defuse(IPlayerState playerState, IWeaponContext weaponContext)
         {
-            var camera = Locator<IReferenceCamera>.Instance.Current;
+            AlignCameraCenter();
+        }
 
-            Debug.DrawRay(camera.Center, camera.Rotation * Vector3.forward * 1000f, Color.red);
+        protected virtual void AlignCameraCenter()
+        {
+            if (isAlignCameraCenter == false) return;
+
+            var refCam = Locator<IReferenceCamera>.Instance.Current;
+
+            if (refCam == null) return;
+            var camera = refCam.Camera;
+
+            var ray = camera.ViewportPointToRay(Vector2.one / 2f);
+
+
+            if (Physics.Raycast(ray, out var hit))
+            {
+                shotPoint.forward = (hit.point - shotPoint.position).normalized;
+            }
+            else
+            {
+                shotPoint.forward = (ray.GetPoint(alignDirection) - shotPoint.position).normalized;
+            }
         }
     }
 }

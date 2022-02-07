@@ -5,10 +5,10 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 {
     public class ProceduralKickbackAnimation : MonoBehaviour, IProceduralAnimation
     {
-        [SerializeField] private KickbackBase config;
+        [SerializeField] private KickbackBase profile;
 
-        [SerializeField, Range(Single.Epsilon, 6000f)]
-        private float duration = 50f;
+        [SerializeField, Range(Single.Epsilon, 6f)]
+        private float duration = .1f;
 
         private Transform _self;
 
@@ -27,8 +27,8 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
         private void LateUpdate()
         {
             _kickbackOffsetPoint =
-                Vector3.Lerp(_kickbackOffsetPoint, Vector3.zero, Time.deltaTime / (duration / 1000f));
-            _kickbackRotation = Vector3.Slerp(_kickbackRotation, Vector3.zero, Time.deltaTime / (duration / 1000f));
+                Vector3.Lerp(_kickbackOffsetPoint, Vector3.zero, Time.deltaTime / duration);
+            _kickbackRotation = Vector3.Slerp(_kickbackRotation, Vector3.zero, Time.deltaTime / duration);
 
             _self.localPosition = _defaultPosition + _kickbackOffsetPoint;
             _self.localRotation = _defaultRotation * Quaternion.Euler(_kickbackRotation);
@@ -36,7 +36,7 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation
 
         public void Play()
         {
-            var kickBack = config[0];
+            var kickBack = profile[0];
             _kickbackOffsetPoint += transform.localRotation * kickBack.position;
             _kickbackRotation += kickBack.rotate;
         }

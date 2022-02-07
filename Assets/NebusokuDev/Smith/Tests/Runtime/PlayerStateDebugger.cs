@@ -1,7 +1,7 @@
 using NebusokuDev.Smith.Runtime.State.Player;
 using UnityEngine;
 
-namespace NebusokuDev.Smith
+namespace NebusokuDev.Smith.Tests.Runtime
 {
     public class PlayerStateDebugger : MonoBehaviour
     {

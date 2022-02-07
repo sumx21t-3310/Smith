@@ -48,9 +48,9 @@ namespace NebusokuDev.Smith.Runtime.Recoil
 
             _easeTime -= Time.deltaTime;
             rotate.HorizontalOffset +=
-                patternProfile[_index].x * Mathf.Deg2Rad * Time.deltaTime / patternProfile.Duration;
+                patternProfile[_index].x * Time.deltaTime / patternProfile.Duration;
             rotate.VerticalOffset +=
-                patternProfile[_index].y * Mathf.Deg2Rad * Time.deltaTime / patternProfile.Duration;
+                patternProfile[_index].y * Time.deltaTime / patternProfile.Duration;
         }
     }
 }

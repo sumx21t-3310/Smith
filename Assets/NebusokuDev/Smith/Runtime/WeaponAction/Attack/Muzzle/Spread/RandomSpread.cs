@@ -4,14 +4,16 @@ using UnityEngine;
 using static UnityEngine.Mathf;
 using static UnityEngine.Random;
 using static UnityEngine.AnimationCurve;
+using Random = System.Random;
 
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
 {
     [Serializable, AddTypeMenu("Random")]
     public class RandomSpread : ISpread
     {
         public static readonly RandomSpread Default = new RandomSpread();
+
         [SerializeField] private PlayerMovementContext context = PlayerMovementContext.Rest;
         [SerializeField, Range(0f, 100f)] private float startMoa = 5f;
         [SerializeField, Range(0f, 100f)] private float endMoa = 10f;
@@ -24,15 +26,20 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 
         public Vector3 Defuse(bool isAim, float t)
         {
-            var defuse = new Vector3(Range(-1f, 1f), Range(-1f, 1f));
-            defuse.y *= horizontalWeightCurve.Evaluate(Abs(defuse.y));
-            defuse.x *= verticalWeightCurve.Evaluate(Abs(defuse.x));
+            var y = Range(-1f, 1f);
+            var x = Range(-1f, 1f);
+
+
+            var defuse = new Vector3(Pulse(x) * horizontalWeightCurve.Evaluate(Abs(x)),
+                Pulse(x) * verticalWeightCurve.Evaluate(Abs(x)));
 
             var moa = CalcMoa(Lerp(startMoa, endMoa, t));
             moa *= isAim ? aimingSpreadMultiple : 1f;
 
             return defuse * moa + Vector3.forward;
         }
+
+        float Pulse(float t) => t > 0.5f ? 1f : -1f;
 
 
         /*

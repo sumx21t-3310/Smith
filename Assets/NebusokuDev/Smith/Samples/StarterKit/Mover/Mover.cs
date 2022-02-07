@@ -1,5 +1,4 @@
-﻿using System;
-using NebusokuDev.Smith.Runtime.State.Player;
+﻿using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Samples.StarterKit.Mover.Input;
 using UnityEngine;
 
@@ -9,12 +8,9 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
     {
         [SerializeField] private Transform rotateReference;
         [SerializeField] private float gravity = -9.81f;
-        [SerializeField] private float groundFriction = 20f;
 
         [SerializeField] private CharacterHeight height;
-        [SerializeField] private CharacterSpeed characterSpeed;
-
-        [SerializeField] private float accel = 10f;
+        [SerializeField] private CharacterSpeedProfile speedProfile;
         [SerializeField] private float jumpHeight = 1.5f;
         [SerializeField] private float minMoveMagnitude = .5f;
         [SerializeField] private float groundDistance;
@@ -53,7 +49,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
 
         private void Update()
         {
-            var speed = characterSpeed.CalcSpeed(_input.IsSprint, _input.IsCrouch, IsGrounded);
+            var characterSpeed = speedProfile[IsGrounded, _input.IsCrouch, _input.IsSprint];
             var wishDirection = rotateReference.rotation * _input.Direction.normalized;
 
             wishDirection = Vector3.ProjectOnPlane(wishDirection, Vector3.up);
@@ -61,11 +57,18 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             _fallVelocity = FallGravity(_fallVelocity, IsGrounded);
             _fallVelocity = Jump(_fallVelocity, IsGrounded, _input.IsJump);
 
-            if (IsGrounded) _moveVelocity = Friction(_moveVelocity);
-            _moveVelocity = Accelerate(_moveVelocity, wishDirection, speed);
+            _moveVelocity = Friction(_moveVelocity, characterSpeed.Friction);
+            _moveVelocity = Accelerate(_moveVelocity, wishDirection, characterSpeed.Speed, characterSpeed.Accel);
 
             _controller.height = height.CalcHeight(_controller.height, _input.IsCrouch);
 
+            var ray = new Ray(transform.position + wishDirection * Time.deltaTime, Vector3.down);
+
+
+            if (Physics.Raycast(ray, out var hit) && IsGrounded)
+            {
+                _moveVelocity = Vector3.ProjectOnPlane(_moveVelocity, hit.normal);
+            }
 
             _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
         }
@@ -84,12 +87,12 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             return velocity + Vector3.up * gravity * Time.deltaTime;
         }
 
-        private Vector3 Friction(Vector3 velocity) => velocity - velocity * Time.deltaTime * groundFriction;
+        private Vector3 Friction(Vector3 velocity, float friction) => velocity - velocity * Time.deltaTime * friction;
 
 
         // I referred to quake movement
         // https://github.com/id-Software/Quake/blob/bf4ac424ce754894ac8f1dae6a3981954bc9852d/WinQuake/sv_user.c#L190
-        private Vector3 Accelerate(Vector3 velocity, Vector3 wishDirection, float wishSpeed)
+        private Vector3 Accelerate(Vector3 velocity, Vector3 wishDirection, float wishSpeed, float accel)
         {
             var currentSpeed = Vector3.Dot(velocity, wishDirection);
 
@@ -130,37 +133,6 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             var position = _controller.transform.position - Vector3.up * centerHeight;
 
             Gizmos.DrawWireSphere(position, radius);
-        }
-    }
-
-    [Serializable]
-    public class CharacterSpeed
-    {
-        [SerializeField] private float crouchSpeed = 3.5f;
-        [SerializeField] private float walkSpeed = 7f;
-        [SerializeField] private float sprintSpeed = 20f;
-        [SerializeField] private float airSpeed = 10f;
-
-        public float CalcSpeed(bool isSprint, bool isCrouch, bool isGrounded)
-        {
-            if (isGrounded == false) return airSpeed;
-            if (isSprint) return sprintSpeed;
-            if (isCrouch) return crouchSpeed;
-            return walkSpeed;
-        }
-    }
-
-    [Serializable]
-    public class CharacterHeight
-    {
-        [SerializeField] private float crouchHeight = 1.2f;
-        [SerializeField] private float standHeight = 2f;
-        [SerializeField] private float switchTime = 0.05f;
-
-        public float CalcHeight(float current, bool isCrouch)
-        {
-            var toHeight = isCrouch ? crouchHeight : standHeight;
-            return Mathf.SmoothStep(current, toHeight, Time.deltaTime / switchTime);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using NebusokuDev.Smith.Runtime.State.Player;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
 {
     public interface ISpread
     {

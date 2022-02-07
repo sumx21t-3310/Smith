@@ -8,13 +8,13 @@ namespace NebusokuDev.Smith.Samples.Support.Cinemachine
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CinemachineVirtualReferenceCamera : ReferenceCameraBase
     {
+        [SerializeField] private Camera mainCamera;
         private CinemachineVirtualCamera _virtualCamera;
         private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
 
         private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
 
         private void Awake() => _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-
 
         public override float FovScale
         {
@@ -24,7 +24,7 @@ namespace NebusokuDev.Smith.Samples.Support.Cinemachine
 
         private float _fovScale = 1f;
 
-        public override Camera Camera { get; }
+        public override Camera Camera => mainCamera;
         public override Vector3 Center => _virtualCamera.State.RawPosition;
         public override Quaternion Rotation => _virtualCamera.State.RawOrientation;
 

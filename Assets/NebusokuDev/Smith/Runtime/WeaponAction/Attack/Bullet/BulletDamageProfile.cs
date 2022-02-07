@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/BulletDamageProfile")]
+    [CreateAssetMenu(menuName = "Smith/" + nameof(BulletDamageProfile))]
     public class BulletDamageProfile : ScriptableObject
     {
         [SerializeField] private float maxDistance = 300f;

@@ -1,12 +1,12 @@
 ﻿using NebusokuDev.Smith.Runtime.State.Player;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
 {
-    [CreateAssetMenu(menuName = "WeaponSystem/SpreadProfile")]
+    [CreateAssetMenu(menuName = "Smith/SpreadProfile")]
     public class SpreadProfile : SpreadProfileBase
     {
-        [SerializeReference, SubclassSelector] private ISpread[] spreads = new RandomSpread[5];
+        [SerializeReference, SubclassSelector] private ISpread[] spreads;
 
         public override ISpread this[PlayerMovementContext context]
         {

@@ -3,8 +3,8 @@ using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
+using NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread;
 using UnityEngine;
-using static UnityEngine.Quaternion;
 
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
@@ -15,16 +15,20 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
         [SerializeField] private SpreadProfileBase spreadProfile;
         [SerializeField] private int maxShotCount = 15;
 
+        public override Vector3 Direction => shotPoint.forward + DefuseOffset;
+
+        protected Vector3 DefuseOffset;
+
 
         public override void Defuse(IPlayerState playerState, IWeaponContext weaponContext)
         {
+            base.Defuse(playerState, weaponContext);
             var camera = Locator<IReferenceCamera>.Instance.Current;
             var spread = spreadProfile[playerState.Context];
 
 
-            var defuse = camera.Rotation *
+            DefuseOffset = camera.Rotation *
                          spread.Defuse(weaponContext.IsAim, (float) weaponContext.ShotCount / maxShotCount);
-            shotPoint.rotation = LookRotation(defuse);
         }
     }
 }
