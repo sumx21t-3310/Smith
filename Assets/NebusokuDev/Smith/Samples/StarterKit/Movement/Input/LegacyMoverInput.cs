@@ -1,7 +1,7 @@
 ﻿using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Mover.Input
+namespace NebusokuDev.Smith.Samples.StarterKit.Movement.Input
 {
     public class KeyboardMoverInput : MonoBehaviour, IMoverInput
     {

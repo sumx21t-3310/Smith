@@ -7,11 +7,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
     public sealed class Mover : MonoBehaviour, IPlayerState
     {
         [SerializeField] private Transform rotateReference;
-        [SerializeField] private float gravity = -9.81f;
-
         [SerializeField] private CharacterHeight height;
-        [SerializeField] private CharacterSpeedProfile speedProfile;
-        [SerializeField] private float jumpHeight = 1.5f;
+        [SerializeField] private CharacterMovementProfile movementProfile;
         [SerializeField] private float minMoveMagnitude = .5f;
         [SerializeField] private float groundDistance;
         [SerializeField] private LayerMask groundLayer = -1;
@@ -49,13 +46,14 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
 
         private void Update()
         {
-            var characterSpeed = speedProfile[IsGrounded, _input.IsCrouch, _input.IsSprint];
+            var characterSpeed = movementProfile[IsGrounded, _input.IsCrouch, _input.IsSprint];
             var wishDirection = rotateReference.rotation * _input.Direction.normalized;
 
             wishDirection = Vector3.ProjectOnPlane(wishDirection, Vector3.up);
 
-            _fallVelocity = FallGravity(_fallVelocity, IsGrounded);
-            _fallVelocity = Jump(_fallVelocity, IsGrounded, _input.IsJump);
+            _fallVelocity = FallGravity(_fallVelocity, movementProfile.Gravity, IsGrounded);
+            _fallVelocity = Jump(_fallVelocity, movementProfile.Gravity, movementProfile.JumpHeight, IsGrounded,
+                _input.IsJump);
 
             _moveVelocity = Friction(_moveVelocity, characterSpeed.Friction);
             _moveVelocity = Accelerate(_moveVelocity, wishDirection, characterSpeed.Speed, characterSpeed.Accel);
@@ -73,14 +71,14 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
         }
 
-        private Vector3 Jump(Vector3 velocity, bool isGrounded, bool isJump)
+        private Vector3 Jump(Vector3 velocity, float gravity, float jumpHeight, bool isGrounded, bool isJump)
         {
             if ((isJump && isGrounded) == false) return velocity;
 
             return velocity + Vector3.up * Mathf.Sqrt(-2f * gravity * jumpHeight);
         }
 
-        private Vector3 FallGravity(Vector3 velocity, bool isGrounded)
+        private Vector3 FallGravity(Vector3 velocity, float gravity, bool isGrounded)
         {
             if (isGrounded) return Vector3.zero;
 
@@ -120,6 +118,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             }
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (_controller == null)
@@ -134,5 +133,6 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
 
             Gizmos.DrawWireSphere(position, radius);
         }
+#endif
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Collision
 {
-    public class ObjectGroup : MonoBehaviour, IObjectGroup
+    public class ObjectGroup<ISelfId, TGroupId> : MonoBehaviour, IObjectGroup<ISelfId, TGroupId>
     {
         [SerializeField] private int groupId;
 
