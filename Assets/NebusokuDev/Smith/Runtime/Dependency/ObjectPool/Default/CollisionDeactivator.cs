@@ -1,3 +1,4 @@
+using NebusokuDev.Smith.Runtime.Extension;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
@@ -11,14 +12,14 @@ namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
         {
             _hitCount++;
             if (_hitCount < maxHitCount) return;
-            gameObject.SetActive(false);
+            gameObject.LightSetActive(false);
         }
 
         private void OnTriggerEnter(Collider _)
         {
             _hitCount++;
             if (_hitCount < maxHitCount) return;
-            gameObject.SetActive(false);
+            gameObject.LightSetActive(false);
         }
     }
 }

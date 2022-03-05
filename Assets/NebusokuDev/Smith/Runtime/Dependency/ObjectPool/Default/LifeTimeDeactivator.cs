@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using NebusokuDev.Smith.Runtime.Extension;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
@@ -14,7 +15,7 @@ namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
         {
             _seconds ??= new WaitForSeconds(duration);
             yield return _seconds;
-            gameObject.SetActive(false);
+            gameObject.LightSetActive(false);
         }
     }
 }

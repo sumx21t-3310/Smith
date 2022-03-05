@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace NebusokuDev.Smith.Runtime.Collision
+﻿namespace NebusokuDev.Smith.Runtime.Collision
 {
     public interface IObjectGroup
     {
-        Guid SelfId { get; }
+        int SelfId { get; }
         int GroupId { get; }
     }
 }

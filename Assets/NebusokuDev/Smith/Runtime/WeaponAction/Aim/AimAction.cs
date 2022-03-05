@@ -43,6 +43,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Aim
 
         public void Action(bool isAction, IPlayerState playerState)
         {
+            _weaponContext.IsAim = isAction;
             var toPosition = isAction ? aimPosition.localPosition : hipPosition.localPosition;
             var toFovScale = isAction ? fovScale : 1f;
             _self.localPosition = Vector3.Slerp(_self.localPosition, -toPosition, Time.deltaTime / duration);

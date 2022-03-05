@@ -1,4 +1,5 @@
 ﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Collision;
 using NebusokuDev.Smith.Runtime.Input;
 using NebusokuDev.Smith.Runtime.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Weapon
 {
+    [RequireComponent(typeof(IObjectPermission))]
     public class Weapon : MonoBehaviour, IWeapon
     {
         // serializable: 
@@ -24,7 +26,7 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         private IWeaponInput _input;
         private IPlayerState _playerState;
         private IWeaponContext _weaponContext;
-        
+
 
         // getter
         public IWeaponAction Primary => _primary;
@@ -78,7 +80,7 @@ namespace NebusokuDev.Smith.Runtime.Weapon
             if (_input == null) return;
 
             // Use UnityEngine.Object
-            if (_playerState == null) _playerState = new RestPlayerState();
+            _playerState ??= new RestPlayerState();
 
             if (_magazine.IsReloading == false && _input.IsReload)
             {

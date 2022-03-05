@@ -7,13 +7,14 @@ namespace NebusokuDev.Smith.Runtime.Camera
     public class CameraRotor : MonoBehaviour, ICameraRotor
     {
         [Header("Rotate Settings")] [SerializeField]
-        private AngleAxis verticalAxis = new AngleAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
+        private DegreeAxis verticalAxis = new DegreeAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
 
         [SerializeField]
-        private AngleAxis verticalOffsetAxis = new AngleAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
+        private DegreeAxis verticalOffsetAxis = new DegreeAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
 
-        [SerializeField] private AngleAxis horizontalAxis;
-        [SerializeField] private AngleAxis horizontalOffsetAxis;
+        [SerializeField] private DegreeAxis horizontalAxis;
+        [SerializeField] private DegreeAxis horizontalOffsetAxis;
+        [SerializeField] private float rollbackTime = .5f;
         [SerializeField] private Vector3 yaw = Vector3.up;
 
 
@@ -83,5 +84,9 @@ namespace NebusokuDev.Smith.Runtime.Camera
             get => horizontalOffsetAxis.Current;
             set => horizontalOffsetAxis.Current = value;
         }
+
+        public void AddHorizontalOffset(float degree) => horizontalOffsetAxis.Current += degree;
+
+        public void AddVerticalOffset(float degree) => verticalOffsetAxis.Current += degree;
     }
 }

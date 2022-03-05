@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Movement.Input
 {
-    public class KeyboardMoverInput : MonoBehaviour, IMoverInput
+    public class LegacyMoverInput : MonoBehaviour, IMoverInput
     {
         [SerializeReference, SubclassSelector] private IInputButton _forward = new InputKeyButton(KeyCode.W);
         [SerializeReference, SubclassSelector] private IInputButton _backward = new InputKeyButton(KeyCode.S);

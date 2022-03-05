@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Runtime.Camera
 {
     [Serializable]
-    public struct AngleAxis
+    public struct DegreeAxis
     {
         [SerializeField] private float maxAngle;
         [SerializeField] private float minAngle;
@@ -17,7 +17,7 @@ namespace NebusokuDev.Smith.Runtime.Camera
             set => _current = isClamp ? Mathf.Clamp(value, minAngle, maxAngle) : value;
         }
 
-        public AngleAxis(float value = 0.1f, float minAngle = 0f, float maxAngle = 0f, bool isClamp = false)
+        public DegreeAxis(float value = 0.1f, float minAngle = 0f, float maxAngle = 0f, bool isClamp = false)
         {
             this.minAngle = minAngle;
             this.maxAngle = maxAngle;

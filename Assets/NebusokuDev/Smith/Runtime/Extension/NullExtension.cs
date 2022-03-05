@@ -1,4 +1,4 @@
-﻿namespace NebusokuDev.Smith.Runtime.Util
+﻿namespace NebusokuDev.Smith.Runtime.Extension
 {
     public static class NullExtension
     {

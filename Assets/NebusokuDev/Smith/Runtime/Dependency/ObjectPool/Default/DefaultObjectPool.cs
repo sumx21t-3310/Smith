@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NebusokuDev.Smith.Runtime.Extension;
 using UnityEngine;
 using static UnityEngine.Object;
 
@@ -20,7 +21,7 @@ namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
             foreach (var _ in Enumerable.Range(0, preInstantiate))
             {
                 var add = Instantiate(_prefab);
-                add.gameObject.SetActive(false);
+                add.gameObject.LightSetActive(false);
                 _observePrefab.Add(add);
             }
         }
@@ -67,6 +68,5 @@ namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
             foreach (var component in _observePrefab) Destroy(component);
             _observePrefab.Clear();
         }
-
     }
 }

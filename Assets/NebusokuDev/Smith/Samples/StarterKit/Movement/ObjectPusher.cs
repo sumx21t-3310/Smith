@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Mover
+namespace NebusokuDev.Smith.Samples.StarterKit.Movement
 {
-    [RequireComponent(typeof(Mover))]
+    [RequireComponent(typeof(Movement.Mover))]
     public class ObjectPusher : MonoBehaviour
     {
-        private Mover _mover;
+        private Movement.Mover _mover;
 
-        private void Start() => _mover = GetComponent<Mover>();
+        private void Start() => _mover = GetComponent<Movement.Mover>();
 
 
         private void OnControllerColliderHit(ControllerColliderHit  collision)

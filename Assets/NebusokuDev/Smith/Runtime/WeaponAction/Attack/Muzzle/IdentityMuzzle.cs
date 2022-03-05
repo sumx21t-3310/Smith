@@ -11,6 +11,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
     public class IdentityMuzzle : IMuzzle
     {
         [SerializeField] protected Transform shotPoint;
+        [SerializeField] protected float minDistance = .5f;
         [SerializeField] protected bool isAlignCameraCenter = true;
         [SerializeField] protected float alignDirection = 75f;
         public virtual Vector3 Position => shotPoint.position;
@@ -28,17 +29,21 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
 
         protected virtual void AlignCameraCenter()
         {
-            if (isAlignCameraCenter == false) return;
+            if (isAlignCameraCenter == false)
+            {
+                shotPoint.localRotation = Quaternion.Euler(Vector3.zero);
+
+                return;
+            }
 
             var refCam = Locator<IReferenceCamera>.Instance.Current;
 
             if (refCam == null) return;
-            var camera = refCam.Camera;
 
-            var ray = camera.ViewportPointToRay(Vector2.one / 2f);
+            var ray = new Ray(refCam.Center, refCam.Rotation * Vector3.forward);
 
 
-            if (Physics.Raycast(ray, out var hit))
+            if (Physics.Raycast(ray, out var hit) && hit.distance > minDistance)
             {
                 shotPoint.forward = (hit.point - shotPoint.position).normalized;
             }

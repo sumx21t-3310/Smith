@@ -1,6 +1,6 @@
 ﻿using NebusokuDev.Smith.Runtime.Recoil.RecoilProfile;
 
-namespace NebusokuDev.Smith.Editor.Generator.GenerateEngine
+namespace NebusokuDev.Smith.Editor.Generator.RecoilGenerateEngine
 {
     public interface IRecoilGenerateEngine
     {

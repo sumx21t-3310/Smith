@@ -6,13 +6,13 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
     [CreateAssetMenu(menuName = "Smith/SpreadProfile")]
     public class SpreadProfile : SpreadProfileBase
     {
-        [SerializeReference, SubclassSelector] private ISpread[] spreads;
+        [SerializeReference, SubclassSelector] private ISpread[] _spreads;
 
         public override ISpread this[PlayerMovementContext context]
         {
             get
             {
-                foreach (var spread in spreads)
+                foreach (var spread in _spreads)
                 {
                     if (spread.Context == context) return spread;
                 }

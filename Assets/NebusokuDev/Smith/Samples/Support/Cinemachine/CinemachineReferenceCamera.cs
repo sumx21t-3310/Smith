@@ -32,10 +32,6 @@ namespace NebusokuDev.Smith.Samples.Support.Cinemachine
 
         private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
 
-
-        public override Camera Camera => _brain.OutputCamera;
-
-
         public override float FovScale
         {
             get => _fovScale;

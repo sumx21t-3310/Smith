@@ -13,16 +13,16 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Control
     [Serializable, AddTypeMenu("Control/AimSwitching")]
     public class AimSwitchingAction : IWeaponAction
     {
-        [SerializeReference, SubclassSelector] private IWeaponAction _attackAction = new NoneAction();
-        [SerializeReference, SubclassSelector] private IWeaponAction _aimingAttackAction = new NoneAction();
+        [SerializeReference, SubclassSelector] private IWeaponAction _defaultAction = new NoneAction();
+        [SerializeReference, SubclassSelector] private IWeaponAction _aimingAction = new NoneAction();
 
         private IWeaponContext _weaponContext;
 
 
         public void Injection(Transform parent, IMagazine magazine, IWeaponContext weaponContext)
         {
-            _attackAction.Injection(parent, magazine, weaponContext);
-            _aimingAttackAction.Injection(parent, magazine, weaponContext);
+            _defaultAction.Injection(parent, magazine, weaponContext);
+            _aimingAction.Injection(parent, magazine, weaponContext);
             _weaponContext = weaponContext;
         }
 
@@ -31,12 +31,12 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Control
         {
             if (_weaponContext.IsAim)
             {
-                _aimingAttackAction.Action(isAction, playerState);
+                _aimingAction.Action(isAction, playerState);
 
                 return;
             }
 
-            _attackAction.Action(isAction, playerState);
+            _defaultAction.Action(isAction, playerState);
         }
 
 

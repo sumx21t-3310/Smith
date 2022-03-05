@@ -4,12 +4,12 @@ using NebusokuDev.Smith.Runtime.Recoil.RecoilProfile;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NebusokuDev.Smith.Editor.Generator.GenerateEngine
+namespace NebusokuDev.Smith.Editor.Generator.RecoilGenerateEngine
 {
-    [Serializable]
+    [Serializable, AddTypeMenu("Sin")]
     public class SinRecoilGenerateEngine : IRecoilGenerateEngine
     {
-        [SerializeField] private float height = 35f;
+        [SerializeField] private float totalHeight = 35f;
         [SerializeField] private float maxWidth = 1f;
         [SerializeField] private AnimationCurve horizontalWeightCurve = AnimationCurve.EaseInOut(0f, 0.01f, 1f, 1f);
 
@@ -25,7 +25,7 @@ namespace NebusokuDev.Smith.Editor.Generator.GenerateEngine
                 horizontal *= maxWidth;
 
                 // vertical pattern generate
-                var vertical = height / length;
+                var vertical = totalHeight / length;
                 vertical *= Random.Range(.9f, 1f);
 
                 recoils.Add(new FixedRecoilVector {Value = new Vector2(horizontal, vertical) * 10f});

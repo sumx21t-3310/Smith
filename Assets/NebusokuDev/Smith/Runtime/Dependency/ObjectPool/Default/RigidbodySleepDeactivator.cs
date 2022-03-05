@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NebusokuDev.Smith.Runtime.Extension;
+using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
 {
@@ -11,7 +12,7 @@ namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool.Default
         private void FixedUpdate()
         {
             if (_rigidbody.IsSleeping() == false) return;
-            gameObject.SetActive(false);
+            gameObject.LightSetActive(false);
         }
     }
 }

@@ -26,12 +26,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
 
         public Vector3 Defuse(bool isAim, float t)
         {
-            var y = Range(-1f, 1f);
-            var x = Range(-1f, 1f);
+            var unitCircle = insideUnitCircle;
 
+            Debug.Log(unitCircle.ToString());
 
-            var defuse = new Vector3(Pulse(x) * horizontalWeightCurve.Evaluate(Abs(x)),
-                Pulse(x) * verticalWeightCurve.Evaluate(Abs(x)));
+            var defuse = new Vector3(unitCircle.x, unitCircle.y);
 
             var moa = CalcMoa(Lerp(startMoa, endMoa, t));
             moa *= isAim ? aimingSpreadMultiple : 1f;
@@ -39,7 +38,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
             return defuse * moa + Vector3.forward;
         }
 
-        float Pulse(float t) => t > 0.5f ? 1f : -1f;
+        float Pulse(float t) => t > 0f ? 1f : -1f;
 
 
         /*

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Mover
+namespace NebusokuDev.Smith.Samples.StarterKit.Movement
 {
     [Serializable]
     public class CharacterSpeed

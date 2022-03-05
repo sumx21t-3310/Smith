@@ -11,9 +11,8 @@ namespace NebusokuDev.Smith.Editor.Inspector
     {
         private Rect _rect;
         private PatternRecoilProfile _profile;
-
-        private int _flameCount;
-
+        private float _scale = .1f;
+        
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -29,7 +28,7 @@ namespace NebusokuDev.Smith.Editor.Inspector
 
             foreach (var dot in dots)
             {
-                current += new Vector3(dot.x, -dot.y) * _rect.height / dots.Length;
+                current += new Vector3(dot.x, -dot.y) * _rect.height / dots.Length * _scale;
                 _rect.DrawWireDot(current + new Vector3(0f, _rect.height / 2f));
             }
         }

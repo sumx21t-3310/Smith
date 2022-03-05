@@ -1,9 +1,7 @@
-using NebusokuDev.Smith.Runtime.Input.Legacy;
 using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
-using NebusokuDev.Smith.Runtime.Weapon;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.Input
+namespace NebusokuDev.Smith.Runtime.Input.Legacy
 {
     public class LegacyWeaponInput : MonoBehaviour, IWeaponInput
     {

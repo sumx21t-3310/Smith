@@ -6,11 +6,33 @@ namespace NebusokuDev.Smith.Runtime.Input.Legacy.Button
     [Serializable]
     public class MouseWheelButton : IInputButton
     {
+        public enum WheelDirection
+        {
+            Up,
+            Down
+        }
 
-        [SerializeField] private float threshold = Single.Epsilon;
+        [SerializeField] private WheelDirection wheelDirection = WheelDirection.Up;
 
-        public bool IsPressDown => UnityEngine.Input.mouseScrollDelta.y > threshold;
-        public bool IsPressUp => UnityEngine.Input.mouseScrollDelta.magnitude > threshold;
-        public bool IsPressed => UnityEngine.Input.mouseScrollDelta.magnitude > threshold;
+        public bool IsPressDown => IsPressed;
+        public bool IsPressUp => IsPressed;
+
+        public bool IsPressed
+        {
+            get
+            {
+                switch (wheelDirection)
+                {
+                    case WheelDirection.Up:
+                        return UnityEngine.Input.mouseScrollDelta.y > 0;
+
+                    case WheelDirection.Down:
+                        return UnityEngine.Input.mouseScrollDelta.y < 0;
+
+                    default:
+                        return false;
+                }
+            }
+        }
     }
 }

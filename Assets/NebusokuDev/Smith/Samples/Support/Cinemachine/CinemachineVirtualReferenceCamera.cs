@@ -24,7 +24,6 @@ namespace NebusokuDev.Smith.Samples.Support.Cinemachine
 
         private float _fovScale = 1f;
 
-        public override Camera Camera => mainCamera;
         public override Vector3 Center => _virtualCamera.State.RawPosition;
         public override Quaternion Rotation => _virtualCamera.State.RawOrientation;
 

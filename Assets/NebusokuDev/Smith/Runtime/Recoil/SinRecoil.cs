@@ -16,7 +16,7 @@ namespace NebusokuDev.Smith.Runtime.Recoil
 
         private float _easeTime;
 
-        public void Reset()
+        void IRecoil.Reset()
         {
             if (_easeTime > 0) return;
             var rotate = Locator<ICameraRotor>.Instance.Current;
@@ -27,9 +27,9 @@ namespace NebusokuDev.Smith.Runtime.Recoil
             rotate.VerticalOffset = Mathf.Lerp(rotate.VerticalOffset, 0f, Time.deltaTime / duration);
         }
 
-        public void Generate(IWeaponContext context) => _easeTime = duration;
+        void IRecoil.Generate(IWeaponContext context) => _easeTime = duration;
 
-        public void Easing()
+        void IRecoil.Easing()
         {
             if (_easeTime < 0f) return;
             var rotate = Locator<ICameraRotor>.Instance.Current;

@@ -11,12 +11,17 @@ namespace NebusokuDev.Smith.Runtime.Collision
 
         public UnityEvent<float, float> onTakeDamage;
         public UnityEvent onDie;
+        private bool _isDeed;
 
-        private void OnEnable() => currentHp = maxHp;
+        private void OnEnable()
+        {
+            _isDeed = false;
+            currentHp = maxHp;
+        }
 
         public void AddDamage(float damage)
         {
-            if (damage >= currentHp)
+            if (damage >= currentHp && _isDeed == false)
             {
                 Death();
                 currentHp = 0f;
@@ -29,6 +34,10 @@ namespace NebusokuDev.Smith.Runtime.Collision
 
         public void AddRecovery(float hitPoint) => currentHp = Mathf.Clamp(currentHp + hitPoint, 0f, maxHp);
 
-        public void Death() => onDie.Invoke();
+        public void Death()
+        {
+            _isDeed = true;
+            onDie.Invoke();
+        }
     }
 }

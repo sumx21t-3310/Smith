@@ -6,8 +6,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
     {
         public float FovScale { get; set; }
 
-        public UnityEngine.Camera Camera { get; }
-
         public Vector3 Center { get; }
         public Quaternion Rotation { get; }
     }

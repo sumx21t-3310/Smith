@@ -1,8 +1,8 @@
 ﻿using NebusokuDev.Smith.Runtime.State.Player;
-using NebusokuDev.Smith.Samples.StarterKit.Mover.Input;
+using NebusokuDev.Smith.Samples.StarterKit.Movement.Input;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Mover
+namespace NebusokuDev.Smith.Samples.StarterKit.Movement
 {
     public sealed class Mover : MonoBehaviour, IPlayerState
     {
@@ -42,6 +42,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
 
         private Vector3 _moveVelocity;
         private Vector3 _fallVelocity;
+        private Vector3 _slipVelociy;
 
 
         private void Update()
@@ -56,19 +57,31 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
                 _input.IsJump);
 
             _moveVelocity = Friction(_moveVelocity, characterSpeed.Friction);
+            _slipVelociy = Friction(_slipVelociy, 5f);
             _moveVelocity = Accelerate(_moveVelocity, wishDirection, characterSpeed.Speed, characterSpeed.Accel);
 
             _controller.height = height.CalcHeight(_controller.height, _input.IsCrouch);
 
-            var ray = new Ray(transform.position + wishDirection * Time.deltaTime, Vector3.down);
+            var ray = new Ray(transform.position + wishDirection.normalized * _controller.radius, Vector3.down);
 
 
             if (Physics.Raycast(ray, out var hit) && IsGrounded)
             {
                 _moveVelocity = Vector3.ProjectOnPlane(_moveVelocity, hit.normal);
+                var angle = Vector3.Angle(hit.normal, Vector3.up);
+
+                _slipVelociy = Slip(_slipVelociy, hit.normal, movementProfile.Gravity, _controller.slopeLimit);
             }
 
-            _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
+            _controller.Move((_moveVelocity + _fallVelocity + _slipVelociy) * Time.deltaTime);
+        }
+
+        private Vector3 Slip(Vector3 velocity, Vector3 normal, float gravity, float limitAngle)
+        {
+            if (Vector3.Angle(normal, Vector3.up) < limitAngle) return _slipVelociy;
+
+
+            return velocity + Vector3.ProjectOnPlane(Vector3.up * gravity, normal) * Time.deltaTime;
         }
 
         private Vector3 Jump(Vector3 velocity, float gravity, float jumpHeight, bool isGrounded, bool isJump)
@@ -80,7 +93,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
 
         private Vector3 FallGravity(Vector3 velocity, float gravity, bool isGrounded)
         {
-            if (isGrounded) return Vector3.zero;
+            if (isGrounded) return Vector3.down;
 
             return velocity + Vector3.up * gravity * Time.deltaTime;
         }
@@ -95,9 +108,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Mover
             var currentSpeed = Vector3.Dot(velocity, wishDirection);
 
             var addSpeed = wishSpeed - currentSpeed;
-            var accelSpeed = wishSpeed * Time.deltaTime * accel;
-
-            if (accelSpeed > addSpeed) accelSpeed = addSpeed;
+            var accelSpeed = Mathf.Clamp(wishSpeed * Time.deltaTime * accel, 0f, addSpeed);
 
             return velocity + wishDirection * accelSpeed;
         }
