@@ -20,7 +20,7 @@
     },
     {
       "displayName": "Cinemachine Support",
-      "path": "Samples~/Support/Cinemachine"
+      "path": "Supports~/Cinemachine"
     }
   ]
 }
