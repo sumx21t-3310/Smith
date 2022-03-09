@@ -15,12 +15,14 @@
   },
   "samples": [
     {
-      "displayName": "Smith Starter kit",
-      "path": "Samples~/StarterKit"
+      "displayName": "[Prototyping] Starter kit",
+      "description": "Prototyping Starter kit",
+      "path": "Samples/StarterKit"
     },
     {
-      "displayName": "Cinemachine Support",
-      "path": "Supports~/Cinemachine"
+      "displayName": "[Support] Cinemachine ",
+      "description": "Particle System and Spatial UI Samples.",
+      "path": "Samples/CinemachineSupport"
     }
   ]
 }
