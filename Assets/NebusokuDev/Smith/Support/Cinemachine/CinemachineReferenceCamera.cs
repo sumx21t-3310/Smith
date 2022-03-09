@@ -3,7 +3,7 @@ using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.Support.Cinemachine
+namespace NebusokuDev.Smith.Support.Cinemachine
 {
     public class CinemachineReferenceCamera : ReferenceCameraBase
     {
