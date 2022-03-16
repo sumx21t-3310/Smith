@@ -3,7 +3,7 @@ using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Support.Cinemachine
+namespace NebusokuDev.Smith.Samples.CinemachineSupport
 {
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CinemachineVirtualReferenceCamera : ReferenceCameraBase
@@ -27,6 +27,6 @@ namespace NebusokuDev.Smith.Support.Cinemachine
         public override Vector3 Center => _virtualCamera.State.RawPosition;
         public override Quaternion Rotation => _virtualCamera.State.RawOrientation;
 
-        private void LateUpdate() => _virtualCamera.m_Lens.FieldOfView = FieldOfView * FovScale;
+        private void LateUpdate() => _virtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * FovScale;
     }
 }

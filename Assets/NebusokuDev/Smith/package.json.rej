@@ -1,0 +1,10 @@
+diff a/Assets/NebusokuDev/Smith/package.json b/Assets/NebusokuDev/Smith/package.json	(rejected hunks)
+@@ -1,7 +1,7 @@
+ {
+   "name": "com.nebusoku-dev.smith",
+   "displayName": "Smith - Shooter Weapon System for Unity -",
+-  "version": "0.0.3",
++  "version": "preview_0.0.4",
+   "unity": "2020.3",
+   "description": "Create FPS/TPS weapons & items framework non code",
+   "keywords": [

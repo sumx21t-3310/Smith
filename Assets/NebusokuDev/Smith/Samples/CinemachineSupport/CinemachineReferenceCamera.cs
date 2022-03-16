@@ -43,6 +43,6 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
         public override Vector3 Center => _inFocusVirtualCamera.State.RawPosition;
         public override Quaternion Rotation => _inFocusVirtualCamera.State.RawOrientation;
 
-        private void LateUpdate() => InFocusVirtualCamera.m_Lens.FieldOfView = FieldOfView * FovScale;
+        private void LateUpdate() => InFocusVirtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * FovScale;
     }
 }
