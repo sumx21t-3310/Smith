@@ -3,6 +3,7 @@ FPS/TPSの武器をノーコードで武器を作成できるフレームワー�
 
 ![header image](img/icons/SmithLogo.png "HeaderLogo")
 
+## Overview
 
 **Weapon System for Unity**はFPS/TPS向けのあらゆる武器をノーコードで作成可能なフレームワークです。 Riot
 Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武器を参考に作成されました。
@@ -57,7 +58,7 @@ Gamesの[Valorant](https://playvalorant.com/en-us/arsenal/) に登場する武�
 
 # Requirement
 
-Weapon System では、以下の環境が必須になります。
+Smithを使用するためには、以下の環境が必須になります。
 
 - Unity 2020 LTS Later
 - [mackysoft.Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
@@ -70,7 +71,7 @@ git urlを利用してインストールすることができます。 インス
 
 #### URL
 ```text
-https://github.com/NebusokuDev/Smith.git?path=Assets/NebusokuDev/ShooterWeaponSystem
+https://github.com/NebusokuDev/Smith.git?path=Assets/NebusokuDev/Smith
 ```
 [使い方はこちらを参考にしてください](https://docs.unity3d.com/2019.4/Documentation/Manual/upm-ui-giturl.html)
 
@@ -82,7 +83,7 @@ OpenUPMを利用してインストールすることができます。 OpenUPM�
 com.nebusoku-dev.smith
 ```
 
-もしくは、以下のコマンドラインをプロジェクトディレクトリ配下で入力します。
+`openupm-cli`を使用する場合は、以下のコマンドラインをプロジェクトディレクトリ配下で入力します。
 
 ```
 openupm add com.nebusoku-dev.smith
@@ -113,7 +114,11 @@ WeaponSystemのObjectPoolは`Locator<T>`からファクトリメソッドを利�
 ### Moverのセッティング
 
 Smithでは、テスト用のFPS/TPS向けのMoverが用意されています。
-`IPlayerState`が実装されており、IPlayerStateをアタッチせずに使用できます。プロトタイピングの場合は利用することをおすすめします。
+Quakeのソースコードを参考に作られており、伝統的なFPSの操作感に近くなるよう実装されています。
+また、`IPlayerState`が実装されており、`IPlayerState`をアタッチせずに使用できます。プロトタイピングの場合は利用することをおすすめします。
+
+1. PlayerのゲームオブジェクトにMoverと`IMoverInput`を実装したコンポーネントをアタッチします。`LegacyMoverInput`が用意されています。
+2. 
 
 > **Info** 
 > - 独自のStateを実装したい場合は`IPlayerState`を実装してください。
