@@ -7,13 +7,17 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
     public class SecondBasedTimer : IRpmTimer
     {
         [SerializeField] private float waitTime = 1f;
-        private float _intervalCounter;
-        public bool IsOverTime => _intervalCounter > waitTime;
+        private float _lastPlayedTime;
+        public bool IsOverTime => Time.time - _lastPlayedTime > waitTime;
 
-        public void Update() => _intervalCounter += IsOverTime ? 0f : Time.deltaTime;
+        public void Update()
+        {
+        }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Lap() => _intervalCounter = 0f;
+        public void Lap() => _lastPlayedTime = Time.time;
     }
 }

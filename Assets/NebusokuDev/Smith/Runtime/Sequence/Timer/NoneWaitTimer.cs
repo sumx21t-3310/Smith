@@ -1,5 +1,8 @@
-﻿namespace NebusokuDev.Smith.Runtime.Sequence.Timer
+﻿using System;
+
+namespace NebusokuDev.Smith.Runtime.Sequence.Timer
 {
+    [Serializable, AddTypeMenu("NoneWait")]
     public class NoneWaitTimer : IRpmTimer
     {
         public bool IsOverTime => true;
