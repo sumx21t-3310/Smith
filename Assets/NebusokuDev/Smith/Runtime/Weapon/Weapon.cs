@@ -1,6 +1,5 @@
 ﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
 using NebusokuDev.Smith.Runtime.Collision;
-using NebusokuDev.Smith.Runtime.Input;
 using NebusokuDev.Smith.Runtime.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;

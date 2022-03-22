@@ -1,4 +1,4 @@
-using NebusokuDev.Smith.Runtime.Input;
+using NebusokuDev.Smith.Runtime.Camera;
 using UnityEngine;
 using static UnityEngine.Quaternion;
 

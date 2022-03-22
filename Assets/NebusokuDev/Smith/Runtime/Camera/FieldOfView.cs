@@ -8,12 +8,7 @@ namespace NebusokuDev.Smith.Runtime.Camera
     [Serializable]
     public class FieldOfView
     {
-        [SerializeField] private float screenHeight = 1080;
-        [SerializeField] private float screenWidth = 1920;
         [SerializeField] private float vertical;
-
-        public float ScreenWidth { get; set; }
-        public float ScreenHeight { get; set; }
 
         public float Vertical
         {
@@ -23,8 +18,8 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         public float Horizontal
         {
-            get => CalcHorizontalFOV(vertical, Aspect);
-            set => vertical = CalcVerticalFOV(value, Aspect);
+            get => CalcHorizontalFOV(Vertical, Aspect);
+            set => Vertical = CalcVerticalFOV(Clamp(value, 1f, 180f), Aspect);
         }
 
         private float CalcHorizontalFOV(float verticalFOV, float aspect)
@@ -37,6 +32,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
             return Atan(Tan(horizontalFOV / 2f * Deg2Rad) / aspect) * 2f * Rad2Deg;
         }
 
-        private float Aspect => screenWidth / screenHeight;
+        private float Aspect => (float) Screen.width / Screen.height;
     }
 }

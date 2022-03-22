@@ -9,8 +9,8 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
         [SerializeField, Range(10f, 2000f)] private float rpm = 600f;
         private const float Minute = 60f;
 
-        private float _lastPlayedTime;
-        public bool IsOverTime => Time.time - _lastPlayedTime > Minute / rpm;
+        private float _elapsedTime;
+        public bool IsOverTime => Time.time - _elapsedTime > Minute / rpm;
 
         // public void Update() => _intervalCounter += IsOverTime ? 0f : Time.deltaTime;
         public void Update()
@@ -21,6 +21,6 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
         {
         }
 
-        public void Lap() => _lastPlayedTime = Time.time;
+        public void Lap() => _elapsedTime = Time.time;
     }
 }

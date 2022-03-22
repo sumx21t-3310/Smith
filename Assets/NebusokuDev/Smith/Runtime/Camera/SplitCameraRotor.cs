@@ -1,12 +1,12 @@
 ﻿using NebusokuDev.Smith.Runtime.Dependency;
-using NebusokuDev.Smith.Runtime.Input;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Camera
 {
     public class SplitCameraRotor : MonoBehaviour, ICameraRotor
     {
-        [SerializeField] private Transform recoilTarget;
+        [SerializeField] private Transform main;
+        [SerializeField] private Transform sub;
 
         [Header("Rotate Settings")] [SerializeField]
         private DegreeAxis verticalAxis = new DegreeAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
@@ -19,7 +19,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
         [SerializeField] private Vector3 yaw = Vector3.up;
 
 
-        private Transform _self;
         private ICameraInput _input;
 
 
@@ -31,7 +30,16 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         private void Awake()
         {
-            _self = transform;
+            if (main == null)
+            {
+                main = transform;
+            }
+
+            if (sub == null)
+            {
+                sub = main;
+            }
+
             _input = GetComponent<ICameraInput>();
         }
 
@@ -47,8 +55,8 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         private void LateUpdate()
         {
-            _self.localRotation = horizontalAxis[yaw] * verticalAxis[Pitch];
-            recoilTarget.localRotation = horizontalOffsetAxis[yaw] * verticalOffsetAxis[Pitch];
+            main.localRotation = horizontalAxis[yaw] * verticalAxis[Pitch];
+            sub.localRotation = horizontalOffsetAxis[main.up] * verticalOffsetAxis[-main.right];
         }
 
 
@@ -82,15 +90,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
         {
             get => horizontalOffsetAxis.Current;
             set => horizontalOffsetAxis.Current = value;
-        }
-
-        public void AddHorizontalOffset(float degree)
-        {
-            horizontalOffsetAxis.Current += degree;
-        }
-
-        public void AddVerticalOffset(float degree)
-        {
         }
     }
 }

@@ -7,8 +7,8 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
     public class SecondBasedTimer : IRpmTimer
     {
         [SerializeField] private float waitTime = 1f;
-        private float _lastPlayedTime;
-        public bool IsOverTime => Time.time - _lastPlayedTime > waitTime;
+        private float _elapsedTime;
+        public bool IsOverTime => Time.time - _elapsedTime > waitTime;
 
         public void Update()
         {
@@ -18,6 +18,6 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
         {
         }
 
-        public void Lap() => _lastPlayedTime = Time.time;
+        public void Lap() => _elapsedTime = Time.time;
     }
 }
