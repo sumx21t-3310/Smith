@@ -92,5 +92,15 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
             _isReloading = false;
         }
+
+        public override void ReloadPause()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ReloadCancel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

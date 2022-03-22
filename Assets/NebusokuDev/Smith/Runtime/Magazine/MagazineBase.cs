@@ -11,5 +11,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         public abstract bool UseAmmo(uint useAmount);
         public abstract bool IsReloading { get; }
         public abstract IEnumerator ReloadCoroutine();
+        public abstract void ReloadPause();
+        public abstract void ReloadCancel();
     }
 }

@@ -63,5 +63,15 @@ namespace NebusokuDev.Smith.Runtime.Magazine
             onReloadEnd.Invoke();
             IsReloading = false;
         }
+
+        public void ReloadPause()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReloadCancel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
