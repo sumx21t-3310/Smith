@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using NebusokuDev.Smith.Runtime.AmmoHolder;
+﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
 
 namespace NebusokuDev.Smith.Runtime.Magazine
 {
@@ -10,9 +9,9 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         public uint Reaming { get; }
         public bool UseAmmo(uint useAmount);
         public bool IsReloading { get; }
-        public IEnumerator ReloadCoroutine();
 
-        public void ReloadPause();
+
+        public void Reload();
         public void ReloadCancel();
     }
 }

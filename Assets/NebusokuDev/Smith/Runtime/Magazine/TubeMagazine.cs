@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Extension;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,6 +25,8 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
         public IAmmoHolder AmmoHolder { get; set; }
 
+        protected Coroutine SavedCoroutine;
+
         public uint Capacity => capacity;
 
         public uint Reaming
@@ -44,7 +47,7 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
         public bool IsReloading { get; private set; }
 
-        public IEnumerator ReloadCoroutine()
+        private IEnumerator ReloadCoroutine()
         {
             if (reaming >= capacity) yield break;
 
@@ -64,14 +67,9 @@ namespace NebusokuDev.Smith.Runtime.Magazine
             IsReloading = false;
         }
 
-        public void ReloadPause()
-        {
-            throw new NotImplementedException();
-        }
+        public void Reload() => SavedCoroutine.Start(ReloadCoroutine());
 
-        public void ReloadCancel()
-        {
-            throw new NotImplementedException();
-        }
+
+        public void ReloadCancel() => SavedCoroutine.Stop();
     }
 }

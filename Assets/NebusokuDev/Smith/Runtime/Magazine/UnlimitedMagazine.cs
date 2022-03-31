@@ -20,7 +20,10 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
         public void ReloadPause()
         {
-            
+        }
+
+        public void Reload()
+        {
         }
 
         public void ReloadCancel()
