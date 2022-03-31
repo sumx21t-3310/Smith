@@ -9,13 +9,18 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
         [SerializeField, Range(10f, 2000f)] private float rpm = 600f;
         private const float Minute = 60f;
 
-        private float _intervalCounter;
-        public bool IsOverTime => _intervalCounter > Minute / rpm;
+        private float _elapsedTime;
+        public bool IsOverTime => Time.time - _elapsedTime > Minute / rpm;
 
-        public void Update() => _intervalCounter += IsOverTime ? 0f : Time.deltaTime;
+        // public void Update() => _intervalCounter += IsOverTime ? 0f : Time.deltaTime;
+        public void Update()
+        {
+        }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Lap() => _intervalCounter = 0f;
+        public void Lap() => _elapsedTime = Time.time;
     }
 }

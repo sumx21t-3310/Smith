@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.HitScanner
 {
     public interface IHitScanner
     {

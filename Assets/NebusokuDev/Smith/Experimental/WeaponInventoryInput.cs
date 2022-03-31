@@ -1,5 +1,6 @@
-using NebusokuDev.Smith.Runtime.Input.Legacy.Button;
 using UnityEngine;
+using IInputButton = NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button.IInputButton;
+using InputKeyButton = NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button.InputKeyButton;
 
 namespace NebusokuDev.Smith.Experimental
 {

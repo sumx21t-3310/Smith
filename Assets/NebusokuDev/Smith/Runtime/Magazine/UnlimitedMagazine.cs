@@ -17,5 +17,17 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         {
             yield break;
         }
+
+        public void ReloadPause()
+        {
+        }
+
+        public void Reload()
+        {
+        }
+
+        public void ReloadCancel()
+        {
+        }
     }
 }

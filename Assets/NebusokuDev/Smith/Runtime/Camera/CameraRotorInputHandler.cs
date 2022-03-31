@@ -1,5 +1,4 @@
-﻿using NebusokuDev.Smith.Runtime.Input;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Camera
 {

@@ -1,6 +1,5 @@
 ﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
 using NebusokuDev.Smith.Runtime.Collision;
-using NebusokuDev.Smith.Runtime.Input;
 using NebusokuDev.Smith.Runtime.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
@@ -39,24 +38,29 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         {
             _primary?.OnDraw();
             _secondary?.OnDraw();
-            StopCoroutine(ReloadCoroutine);
+            _magazine?.ReloadCancel();
         }
 
         public void Holster()
         {
-            StopCoroutine(ReloadCoroutine);
             _primary?.OnHolster();
             _secondary?.OnHolster();
+            _magazine?.ReloadCancel();
         }
-
-        public Coroutine ReloadCoroutine { get; private set; }
 
 
         private void Awake() => HandleInjection();
 
         private void OnEnable() => HandleInjection();
 
-        private void OnDisable() => _playerState = null;
+
+        private void OnDisable()
+        {
+            _playerState = null;
+            _magazine?.ReloadCancel();
+            _primary?.OnHolster();
+            _secondary?.OnHolster();
+        }
 
 
         private void HandleInjection()
@@ -84,12 +88,11 @@ namespace NebusokuDev.Smith.Runtime.Weapon
 
             if (_magazine.IsReloading == false && _input.IsReload)
             {
-                ReloadCoroutine = StartCoroutine(_magazine.ReloadCoroutine());
+                _magazine.Reload();
             }
 
             _magazine.AmmoHolder = _ammoHolder;
 
-            if (_magazine.IsReloading) return;
 
             _primary?.Action(_input.IsPrimaryAction && _magazine.IsReloading == false, _playerState);
             _primary?.AltAction(_input.IsPrimaryAltAction && _magazine.IsReloading == false, _playerState);

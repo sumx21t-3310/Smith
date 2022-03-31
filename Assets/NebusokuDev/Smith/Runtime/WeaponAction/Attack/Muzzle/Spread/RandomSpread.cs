@@ -28,9 +28,10 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
         {
             var unitCircle = insideUnitCircle;
 
-            Debug.Log(unitCircle.ToString());
+            var horizontal = CalcSpread(unitCircle.x, horizontalWeightCurve);
+            var vertical = CalcSpread(unitCircle.y, verticalWeightCurve);
 
-            var defuse = new Vector3(unitCircle.x, unitCircle.y);
+            var defuse = new Vector3(horizontal, vertical);
 
             var moa = CalcMoa(Lerp(startMoa, endMoa, t));
             moa *= isAim ? aimingSpreadMultiple : 1f;
@@ -39,6 +40,8 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
         }
 
         float Pulse(float t) => t > 0f ? 1f : -1f;
+
+        private float CalcSpread(float t, AnimationCurve curve) => Pulse(t) * curve.Evaluate(Abs(t));
 
 
         /*

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Extension;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ using UnityEngine.Events;
 namespace NebusokuDev.Smith.Runtime.Magazine
 {
     [Serializable, AddTypeMenu("Box")]
-    public class BoxMagazine : MagazineBase
+    public class BoxMagazine : IMagazine
     {
         [SerializeField] private float reloadTime = .5f;
         [SerializeField] private float tacticalReloadTime = .3f;
@@ -38,13 +39,15 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         private WaitForSeconds _tacticalReload;
         private WaitForSeconds _reload;
 
-        public override IAmmoHolder AmmoHolder { get; set; }
+        protected Coroutine SavedCoroutine;
 
-        public override uint Capacity => capacity;
-        public override uint Reaming => reaming;
+        public IAmmoHolder AmmoHolder { get; set; }
+
+        public uint Capacity => capacity;
+        public uint Reaming => reaming;
 
 
-        public override bool UseAmmo(uint useAmount)
+        public bool UseAmmo(uint useAmount)
         {
             reaming = (uint) Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
             useAmount = (uint) Mathf.Clamp(useAmount, 0, Int32.MaxValue);
@@ -57,11 +60,11 @@ namespace NebusokuDev.Smith.Runtime.Magazine
         }
 
 
-        public override bool IsReloading => _isReloading;
+        public bool IsReloading => _isReloading;
         private bool _isReloading;
 
 
-        public override IEnumerator ReloadCoroutine()
+        public IEnumerator ReloadCoroutine()
         {
             reaming = (uint) Mathf.Clamp(reaming, 0, capacity + (isClosedBolt ? 1 : 0));
             var reloadAmount = capacity - reaming;
@@ -92,5 +95,9 @@ namespace NebusokuDev.Smith.Runtime.Magazine
 
             _isReloading = false;
         }
+
+        public void Reload() => SavedCoroutine.Start(ReloadCoroutine());
+
+        public void ReloadCancel() => SavedCoroutine.Stop();
     }
 }

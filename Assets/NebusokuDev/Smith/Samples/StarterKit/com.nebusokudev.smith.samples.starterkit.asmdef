@@ -1,0 +1,17 @@
+{
+    "name": "com.nebusokudev.smith.samples.starterkit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4574f4ce037003a4f84d52ef90a1674d",
+        "GUID:49b49c76ee64f6b41bf28ef951cb0e50"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

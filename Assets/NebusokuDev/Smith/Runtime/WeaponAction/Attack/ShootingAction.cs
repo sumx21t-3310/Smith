@@ -53,7 +53,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
             if (FireMode.Evaluate(isAction) == false)
             {
                 WeaponContext.ShotCount = 0;
-                Recoil?.Reset();
+                Recoil?.Reverse();
                 Muzzle?.Reset();
                 Rpm.Reset();
 
@@ -63,7 +63,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
             if (Magazine?.UseAmmo(useAmmoAmount) == false)
             {
                 ammoEmpty.Invoke();
-                Recoil?.Reset();
+                Recoil?.Reverse();
                 Muzzle?.Reset();
 
                 return;
@@ -90,6 +90,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
 
         public virtual void OnHolster()
         {
+            Recoil.Reset();
         }
 
 

@@ -22,7 +22,7 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         private float _fovMultiple = 1f;
 
-        private void LateUpdate() => _camera.fieldOfView = FovScale * FieldOfView;
+        private void LateUpdate() => _camera.fieldOfView = FovScale * FieldOfView.Vertical;
 
         public override Vector3 Center => transform.position;
         public override Quaternion Rotation => transform.rotation;

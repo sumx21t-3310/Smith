@@ -19,6 +19,13 @@ namespace NebusokuDev.Smith.Runtime.Recoil
 
         public void Reset()
         {
+            var rotor = Locator<ICameraRotor>.Instance.Current;
+            rotor.VerticalOffset = 0f;
+            rotor.VerticalOffset = 0f;
+        }
+
+        public void Reverse()
+        {
             _index = 0;
 
             if (_easeTime > 0) return;
