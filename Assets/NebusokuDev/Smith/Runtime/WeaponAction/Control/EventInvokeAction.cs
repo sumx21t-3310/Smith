@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Control
 {
-    [Serializable, AddTypeMenu("Control/EventEventInvoke")]
+    [Serializable, AddTypeMenu("Control/EventInvoke")]
     public class EventInvokeAction : IWeaponAction
     {
         public UnityEvent<bool> onAction;
