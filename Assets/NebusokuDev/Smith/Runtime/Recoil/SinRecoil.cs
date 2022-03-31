@@ -16,7 +16,14 @@ namespace NebusokuDev.Smith.Runtime.Recoil
 
         private float _easeTime;
 
-        void IRecoil.Reset()
+        public void Reset()
+        {
+            var rotor = Locator<ICameraRotor>.Instance.Current;
+            rotor.VerticalOffset = 0f;
+            rotor.VerticalOffset = 0f;
+        }
+
+        void IRecoil.Reverse()
         {
             if (_easeTime > 0) return;
             var rotate = Locator<ICameraRotor>.Instance.Current;

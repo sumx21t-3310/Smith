@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Audio
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Audio
 {
     public class JumpSoundPlayer : MonoBehaviour
     {

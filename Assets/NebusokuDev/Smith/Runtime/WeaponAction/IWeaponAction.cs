@@ -9,7 +9,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction
     {
         /// <summary>
         /// 依存するオブジェクトを注入するためのメソッドです
-        /// 独自にWeaponActionクラスを作成するときはAwake()でコールしてください
+        /// 独自にWeaponクラスを作成するときはAwake()でコールしてください
         /// <param name="parent"></param>
         /// <param name="magazine"></param>
         /// <param name="weaponContext"></param>
@@ -32,7 +32,6 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction
         /// <param name="isAltAction"></param>
         /// <param name="playerState"></param>
         void AltAction(bool isAltAction, IPlayerState playerState);
-
 
         void OnHolster();
 

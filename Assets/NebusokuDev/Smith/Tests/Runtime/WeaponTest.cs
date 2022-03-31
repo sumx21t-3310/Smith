@@ -1,6 +1,6 @@
 ﻿using NebusokuDev.Smith.Runtime.ProceduralAnimation.KickbackAnimation;
 using NebusokuDev.Smith.Runtime.Sequence.Timer;
-using NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Button;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Tests.Runtime

@@ -1,8 +1,8 @@
-﻿using NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Button;
-using NebusokuDev.Smith.Samples.StarterKit.Movement.Input;
+﻿using NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Input
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input
 {
     public class LegacyMoverInput : MonoBehaviour, IMoverInput
     {

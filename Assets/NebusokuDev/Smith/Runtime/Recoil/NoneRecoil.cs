@@ -6,10 +6,20 @@ namespace NebusokuDev.Smith.Runtime.Recoil
     [Serializable, AddTypeMenu("None")]
     public class NoneRecoil : IRecoil
     {
-        void IRecoil.Reset() { }
+        public void Reset()
+        {
+        }
 
-        void IRecoil.Generate(IWeaponContext context) { }
+        void IRecoil.Reverse()
+        {
+        }
 
-        void IRecoil.Easing() { }
+        void IRecoil.Generate(IWeaponContext context)
+        {
+        }
+
+        void IRecoil.Easing()
+        {
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Button
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button
 {
     [Serializable]
     public class InputKeyButton : IInputButton

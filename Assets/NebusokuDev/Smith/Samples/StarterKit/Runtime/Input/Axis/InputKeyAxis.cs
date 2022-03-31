@@ -1,8 +1,8 @@
 ﻿using System;
-using NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Button;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Axis
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Axis
 {
     [Serializable]
     public class InputKeyAxis : IInputAxis

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Axis
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Axis
 {
     [Serializable]
     public class InputAxis : IInputAxis

@@ -1,5 +1,5 @@
 using NebusokuDev.Smith.Runtime.Weapon;
-using NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Button;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Button;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input

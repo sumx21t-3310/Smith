@@ -1,4 +1,4 @@
-﻿namespace NebusokuDev.Smith.Samples.StarterKit.Input.Legacy.Axis
+﻿namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Input.Axis
 {
     public interface IInputAxis
     {

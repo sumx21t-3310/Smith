@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Movement.Input
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     public interface IMoverInput
     {

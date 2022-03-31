@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using NebusokuDev.Smith.Runtime.Sequence.Timer;
-using NebusokuDev.Smith.Samples.StarterKit.Movement;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Audio

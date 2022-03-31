@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Movement
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [CreateAssetMenu(menuName = "Smith/Samples/Mover/" + nameof(CharacterMovementProfile))]
     public class CharacterMovementProfile : ScriptableObject

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Movement
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [RequireComponent(typeof(Movement.Mover))]
     public class ObjectPusher : MonoBehaviour

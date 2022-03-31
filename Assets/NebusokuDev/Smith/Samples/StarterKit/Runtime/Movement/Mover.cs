@@ -1,8 +1,8 @@
 ﻿using NebusokuDev.Smith.Runtime.State.Player;
-using NebusokuDev.Smith.Samples.StarterKit.Movement.Input;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Sensor;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Movement
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     public sealed class Mover : MonoBehaviour, IPlayerState
     {
@@ -10,25 +10,11 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Movement
         [SerializeField] private CharacterHeight height;
         [SerializeField] private CharacterMovementProfile movementProfile;
         [SerializeField] private float minMoveMagnitude = .5f;
-        [SerializeField] private float groundDistance;
-        [SerializeField] private LayerMask groundLayer = -1;
+
+        [SerializeReference, SubclassSelector] private IGroundSensor _sensor = new RayCastSensor();
 
         private CharacterController _controller;
         private IMoverInput _input;
-
-        public bool IsGrounded
-        {
-            get
-            {
-                if (_controller == null) return false;
-
-                var radius = _controller.radius;
-                var centerHeight = _controller.height / 2f - radius + groundDistance;
-                var position = _controller.transform.position - Vector3.up * centerHeight;
-
-                return Physics.CheckSphere(position, _controller.radius, groundLayer);
-            }
-        }
 
         public Vector3 Velocity => _moveVelocity + _fallVelocity;
 
@@ -42,43 +28,45 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Movement
 
         private Vector3 _moveVelocity;
         private Vector3 _fallVelocity;
-        private Vector3 _slipVelociy;
+        private Vector3 _slipVelocity;
 
 
         private void Update()
         {
+            var isGrounded = IsGrounded;
+
             var characterSpeed = movementProfile[IsGrounded, _input.IsCrouch, _input.IsSprint];
             var wishDirection = rotateReference.rotation * _input.Direction.normalized;
 
             wishDirection = Vector3.ProjectOnPlane(wishDirection, Vector3.up);
 
-            _fallVelocity = FallGravity(_fallVelocity, movementProfile.Gravity, IsGrounded);
-            _fallVelocity = Jump(_fallVelocity, movementProfile.Gravity, movementProfile.JumpHeight, IsGrounded,
+            _fallVelocity = FallGravity(_fallVelocity, movementProfile.Gravity, isGrounded);
+            _fallVelocity = Jump(_fallVelocity, movementProfile.Gravity, movementProfile.JumpHeight, isGrounded,
                 _input.IsJump);
 
+
             _moveVelocity = Friction(_moveVelocity, characterSpeed.Friction);
-            _slipVelociy = Friction(_slipVelociy, 5f);
+            _slipVelocity = Friction(_slipVelocity, 5f);
             _moveVelocity = Accelerate(_moveVelocity, wishDirection, characterSpeed.Speed, characterSpeed.Accel);
 
             _controller.height = height.CalcHeight(_controller.height, _input.IsCrouch);
 
-            var ray = new Ray(transform.position + wishDirection.normalized * _controller.radius, Vector3.down);
 
-
-            if (Physics.Raycast(ray, out var hit) && IsGrounded)
+            if (isGrounded)
             {
-                _moveVelocity = Vector3.ProjectOnPlane(_moveVelocity, hit.normal);
-                var angle = Vector3.Angle(hit.normal, Vector3.up);
+                var normal = _sensor.Normal(_controller, wishDirection);
 
-                _slipVelociy = Slip(_slipVelociy, hit.normal, movementProfile.Gravity, _controller.slopeLimit);
+                _moveVelocity = Vector3.ProjectOnPlane(_moveVelocity, normal);
+
+                _slipVelocity = Slip(_slipVelocity, normal, movementProfile.Gravity, _controller.slopeLimit);
             }
 
-            _controller.Move((_moveVelocity + _fallVelocity + _slipVelociy) * Time.deltaTime);
+            _controller.Move((_moveVelocity + _fallVelocity + _slipVelocity) * Time.deltaTime);
         }
 
         private Vector3 Slip(Vector3 velocity, Vector3 normal, float gravity, float limitAngle)
         {
-            if (Vector3.Angle(normal, Vector3.up) < limitAngle) return _slipVelociy;
+            if (Vector3.Angle(normal, Vector3.up) < limitAngle) return _slipVelocity;
 
 
             return velocity + Vector3.ProjectOnPlane(Vector3.up * gravity, normal) * Time.deltaTime;
@@ -93,7 +81,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Movement
 
         private Vector3 FallGravity(Vector3 velocity, float gravity, bool isGrounded)
         {
-            if (isGrounded) return Vector3.down;
+            if (isGrounded) return Vector3.zero;
 
             return velocity + Vector3.up * gravity * Time.deltaTime;
         }
@@ -129,21 +117,6 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Movement
             }
         }
 
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            if (_controller == null)
-            {
-                if (TryGetComponent(out _controller) == false)
-                    _controller = gameObject.AddComponent<CharacterController>();
-            }
-
-            var radius = _controller.radius;
-            var centerHeight = _controller.height / 2f - radius + groundDistance;
-            var position = _controller.transform.position - Vector3.up * centerHeight;
-
-            Gizmos.DrawWireSphere(position, radius);
-        }
-#endif
+        public bool IsGrounded => _controller.isGrounded;
     }
 }

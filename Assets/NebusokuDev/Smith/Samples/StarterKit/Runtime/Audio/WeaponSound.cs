@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Audio
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Audio
 {
     public class WeaponSound : MonoBehaviour
     {

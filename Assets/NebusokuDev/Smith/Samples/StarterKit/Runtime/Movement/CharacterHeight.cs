@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Movement
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [Serializable]
     public class CharacterHeight

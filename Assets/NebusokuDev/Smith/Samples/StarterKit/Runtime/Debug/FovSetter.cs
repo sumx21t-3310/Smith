@@ -1,7 +1,7 @@
 ﻿using NebusokuDev.Smith.Runtime.Camera;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Debug
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Debug
 {
     public class FovSetter : MonoBehaviour
     {
