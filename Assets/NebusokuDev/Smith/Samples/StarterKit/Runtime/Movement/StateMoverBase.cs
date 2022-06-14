@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [RequireComponent(typeof(CharacterController))]
-    public abstract class StatableMoverBase : MonoBehaviour
+    public abstract class StateMoverBase : MonoBehaviour
     {
         [SerializeField] private float groundDistance = .1f;
         [SerializeField] private LayerMask groundLayer = -1;

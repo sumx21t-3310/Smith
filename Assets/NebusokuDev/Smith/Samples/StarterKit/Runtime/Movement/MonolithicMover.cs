@@ -1,5 +1,5 @@
 using UnityEngine;
-using static NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.CharacterMovementHelper;
+using static NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.CharacterControllerHelper;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
@@ -98,7 +98,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
             if (_input.IsJump)
             {
-                _fallVelocity = Jump(Vector3.up, jumpHeight, gravity);
+                // _fallVelocity =  Jump(Vector3.up, jumpHeight, gravity);
             }
 
             var ray = new Ray(transform.position, Vector3.down);
@@ -110,6 +110,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
             _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
         }
-        
+
+
     }
 }
