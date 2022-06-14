@@ -30,7 +30,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Template
             }
 
             _rpm.Lap();
-            OnAction(playerState);
+            OnInterval(playerState);
         }
 
 
@@ -39,7 +39,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Template
 
         protected abstract void OnCancelAction(IPlayerState playerState);
 
-        protected abstract void OnAction(IPlayerState playerState);
+        protected abstract void OnInterval(IPlayerState playerState);
 
         protected abstract void OnEveryUpdate(IPlayerState playerState);
 
