@@ -1,6 +1,7 @@
 ﻿using System;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input;
 using UnityEngine;
-using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement;
+using static NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.CharacterControllerHelper;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
 {
@@ -13,7 +14,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
         [SerializeField] private float friction = 5f;
         [SerializeField] private float accel = 7f;
         [SerializeField] private float characterHeight = 2f;
-        [SerializeField] private bool clampDirection;
+        [SerializeField] private float duckDuration = .25f;
+        [SerializeField] private bool clampDirection = true;
         [SerializeField] private bool resetGravity = true;
 
         public void OnEnter(ref Vector3 moveVelocity, ref Vector3 fallVelocity, ref float height, bool isGrounded,
@@ -37,11 +39,11 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
 
             fallVelocity += Vector3.up * gravity * Time.deltaTime;
 
-            moveVelocity = CharacterControllerHelper.Friction(moveVelocity, friction);
+            moveVelocity = Friction(moveVelocity, friction);
 
-            // moveVelocity = CharacterMovementHelper.Accelerate(moveVelocity, direction, speed, accel);
+            moveVelocity = Accelerate(moveVelocity, direction, speed, accel);
 
-            height = characterHeight;
+            height = Mathf.Lerp(height, characterHeight, duckDuration);
         }
 
         public void OnExit(ref Vector3 moveVelocity, ref Vector3 fallVelocity, ref float height, bool isGrounded,

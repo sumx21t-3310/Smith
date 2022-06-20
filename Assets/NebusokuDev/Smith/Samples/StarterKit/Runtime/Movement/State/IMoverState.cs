@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input;
+using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
 {

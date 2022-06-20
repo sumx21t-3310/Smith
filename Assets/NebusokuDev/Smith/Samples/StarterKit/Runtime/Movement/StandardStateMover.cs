@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
-    public class SimpleStateMover : StateMoverBase
+    public class StandardStateMover : StateMoverBase
     {
-        [SerializeField] private MoveState moveState;
-        [SerializeField] private MoveState fallState;
-        [SerializeField] private JumpState jumpState;
+        [SerializeField] private MoveState moveState = new MoveState();
+        [SerializeField] private MoveState fallState = new MoveState();
+        [SerializeField] private JumpState jumpState = new JumpState();
 
 
         protected override IMoverState GetState(IMoverInput input, bool isGrounded)

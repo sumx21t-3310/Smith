@@ -1,4 +1,4 @@
-﻿namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
+﻿namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input
 {
     public interface IMoverInput
     {
