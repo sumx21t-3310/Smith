@@ -13,4 +13,4 @@ namespace NebusokuDev.Smith.Runtime.Collision
 
         public override string ToString() => $"selfId: {SelfId.ToString()}, groupId: {SelfId.ToString()}";
     }
-}
+}    

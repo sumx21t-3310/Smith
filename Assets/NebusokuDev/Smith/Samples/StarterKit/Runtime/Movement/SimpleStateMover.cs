@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input;
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State;
+using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     public class SimpleStateMover : StateMoverBase
     {
@@ -11,6 +13,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
 
         protected override IMoverState GetState(IMoverInput input, bool isGrounded)
         {
+            UnityEngine.Debug.Log($"isGrounded: {isGrounded}");
+
             if (isGrounded == false) return fallState;
 
             if (input.IsJump) return jumpState;

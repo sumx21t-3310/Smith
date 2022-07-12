@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
+namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input
 {
     public class KeyboardMoverInput : MonoBehaviour, IMoverInput
     {

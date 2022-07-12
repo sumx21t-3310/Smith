@@ -18,12 +18,22 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
             return center2World + top;
         }
 
+        public static Vector3 Fall(Vector3 velocity, float gravity)
+        {
+            return velocity + Vector3.up * gravity * Time.deltaTime;
+        }
+
         public static Vector3 Friction(Vector3 velocity, float friction) =>
             velocity - velocity * Time.deltaTime * friction;
 
-        public static Vector3 Accelerate(Vector3 moveVelocity, Vector3 direction, float f, float groundAccel1)
+        public static Vector3 Accelerate(Vector3 velocity, Vector3 wishDirection, float wishSpeed, float accel)
         {
-            return moveVelocity;
+            var currentSpeed = Vector3.Dot(velocity, wishDirection);
+
+            var addSpeed = wishSpeed - currentSpeed;
+            var accelSpeed = Mathf.Clamp(wishSpeed * Time.deltaTime * accel, 0f, addSpeed);
+
+            return velocity + wishDirection * accelSpeed;
         }
 
         public static Vector3 Jump(Vector3 direction, float height, float gravity)

@@ -1,10 +1,11 @@
+using NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.Input;
 using UnityEngine;
 using static NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.CharacterControllerHelper;
 
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [RequireComponent(typeof(CharacterController))]
-    public sealed class MonolithicPlayerMover : MonoBehaviour
+    public class MonolithicMover : MonoBehaviour, IMover
     {
         [SerializeField] private Transform directionReference;
         [SerializeField] private float speed = 5f;
@@ -22,6 +23,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
         private Vector3 _moveVelocity;
         private Vector3 _fallVelocity;
+
+        public Vector3 Velocity => _moveVelocity + _fallVelocity;
 
         public bool IsGrounded
         {
@@ -59,8 +62,6 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
             return null;
         }
 
-
-        // Update is called once per frame
         private void Update()
         {
             if (_input == null) return;
@@ -98,7 +99,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
             if (_input.IsJump)
             {
-                // _fallVelocity =  Jump(Vector3.up, jumpHeight, gravity);
+                _fallVelocity = Jump(Vector3.up, jumpHeight, gravity);
             }
 
             var ray = new Ray(transform.position, Vector3.down);
@@ -110,7 +111,5 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
             _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
         }
-
-
     }
 }
