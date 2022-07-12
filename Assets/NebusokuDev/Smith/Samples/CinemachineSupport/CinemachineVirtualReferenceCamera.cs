@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cinemachine;
 using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
@@ -8,25 +9,36 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CinemachineVirtualReferenceCamera : ReferenceCameraBase
     {
-        [SerializeField] private Camera mainCamera;
         private CinemachineVirtualCamera _virtualCamera;
+
+        private IDictionary<object, float> _virtualFov;
+
         private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
 
         private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
 
-        private void Awake() => _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-
-        public override float FovScale
+        private void Awake()
         {
-            get => _fovScale;
-            set => _fovScale = Mathf.Abs(value);
+            _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+            _virtualFov ??= new Dictionary<object, float>();
         }
 
-        private float _fovScale = 1f;
 
         public override Vector3 Center => _virtualCamera.State.RawPosition;
         public override Quaternion Rotation => _virtualCamera.State.RawOrientation;
 
-        private void LateUpdate() => _virtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * FovScale;
+        public override IDictionary<object, float> VirtualFov => _virtualFov;
+
+        private void LateUpdate()
+        {
+            var fovScale = 1f;
+
+            foreach (var virtualFov in _virtualFov)
+            {
+                fovScale *= virtualFov.Value;
+            }
+
+            _virtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * fovScale;
+        }
     }
 }

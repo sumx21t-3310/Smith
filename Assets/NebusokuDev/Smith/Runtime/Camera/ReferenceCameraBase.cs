@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Camera
 {
@@ -10,11 +11,11 @@ namespace NebusokuDev.Smith.Runtime.Camera
         }
 
         private static FieldOfView _fieldOfView = new FieldOfView {Horizontal = 103f};
-
-        public abstract float FovScale { get; set; }
+        
 
         public abstract Vector3 Center { get; }
 
         public abstract Quaternion Rotation { get; }
+        public abstract IDictionary<object, float> VirtualFov { get; }
     }
 }
