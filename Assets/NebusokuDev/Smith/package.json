@@ -1,7 +1,7 @@
 {
   "name": "com.nebusoku-dev.smith",
   "displayName": "Smith - Shooter Weapon System for Unity -",
-  "version": "0.0.9",
+  "version": "0.010",
   "unity": "2020.3",
   "description": "Create FPS/TPS weapons & items framework non code",
   "keywords": [
