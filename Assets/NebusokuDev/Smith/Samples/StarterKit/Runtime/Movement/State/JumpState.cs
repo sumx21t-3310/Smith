@@ -14,7 +14,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
         public void OnEnter(ref Vector3 moveVelocity, ref Vector3 fallVelocity, ref float height, bool isGrounded,
             IMoverInput input)
         {
-            moveVelocity = Jump(Vector3.up, jumpHeight, gravity);
+            fallVelocity = Jump(Vector3.up, jumpHeight, gravity);
         }
 
         public void OnUpdate(ref Vector3 moveVelocity, ref Vector3 fallVelocity, ref float height, bool isGrounded,

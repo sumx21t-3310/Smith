@@ -5,7 +5,7 @@ using UnityEngine;
 namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 {
     [RequireComponent(typeof(CharacterController))]
-    public abstract class StateMoverBase : MonoBehaviour
+    public abstract class StateMoverBase : MonoBehaviour, IMover
     {
         [SerializeField] private float groundDistance = .1f;
         [SerializeField] private LayerMask groundLayer = -1;
@@ -18,6 +18,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
         private Vector3 _fallVelocity;
 
         private IMoverState _currentState;
+
+        public Vector3 Velocity => _moveVelocity + _fallVelocity;
 
         public virtual bool IsGrounded
         {
@@ -33,12 +35,17 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
             }
         }
 
-        private void Start()
+        protected virtual void Awake()
         {
             _controller = GetComponent<CharacterController>();
 
+            Init();
+
             _input = GetInput();
         }
+
+
+        protected virtual void Init() { }
 
         protected virtual IMoverInput GetInput()
         {
@@ -73,9 +80,17 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
             }
 
             _currentState?.OnUpdate(ref _moveVelocity, ref _fallVelocity, ref height, isGrounded, _input);
+            var ray = new Ray(transform.position, Vector3.down);
 
 
-            _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
+            if (isGrounded && Physics.Raycast(ray, out var hit) == false)
+            {
+                _controller.Move((Vector3.ProjectOnPlane(_moveVelocity, hit.normal) + _fallVelocity) * Time.deltaTime);
+            }
+            else
+            {
+                _controller.Move((_moveVelocity + _fallVelocity) * Time.deltaTime);
+            }
         }
 
         protected abstract IMoverState GetState(IMoverInput input, bool isGrounded);

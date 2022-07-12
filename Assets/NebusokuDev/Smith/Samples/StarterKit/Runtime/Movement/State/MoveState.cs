@@ -10,13 +10,14 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
     {
         [SerializeField] private Transform directionReference;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private float accel = 7f;
         [SerializeField] private float gravity = -9.81f;
         [SerializeField] private float friction = 5f;
-        [SerializeField] private float accel = 7f;
         [SerializeField] private float characterHeight = 2f;
         [SerializeField] private float duckDuration = .25f;
         [SerializeField] private bool clampDirection = true;
         [SerializeField] private bool resetGravity = true;
+        [SerializeField] private bool useGravity = true;
 
         public void OnEnter(ref Vector3 moveVelocity, ref Vector3 fallVelocity, ref float height, bool isGrounded,
             IMoverInput input)
@@ -36,12 +37,10 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement.State
                 if (clampDirection) direction = Vector3.ProjectOnPlane(direction, Vector3.up);
             }
 
-
-            fallVelocity += Vector3.up * gravity * Time.deltaTime;
-
-            moveVelocity = Friction(moveVelocity, friction);
+            if (useGravity) fallVelocity = Fall(fallVelocity, gravity);
 
             moveVelocity = Accelerate(moveVelocity, direction, speed, accel);
+            moveVelocity = Friction(moveVelocity, friction);
 
             height = Mathf.Lerp(height, characterHeight, duckDuration);
         }

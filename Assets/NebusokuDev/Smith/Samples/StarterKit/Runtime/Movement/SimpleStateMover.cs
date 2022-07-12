@@ -13,6 +13,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
 
         protected override IMoverState GetState(IMoverInput input, bool isGrounded)
         {
+            UnityEngine.Debug.Log($"isGrounded: {isGrounded}");
+
             if (isGrounded == false) return fallState;
 
             if (input.IsJump) return jumpState;
