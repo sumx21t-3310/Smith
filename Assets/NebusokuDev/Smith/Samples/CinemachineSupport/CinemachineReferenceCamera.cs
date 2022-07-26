@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System.Collections.Generic;
+using Cinemachine;
 using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
     {
         private CinemachineBrain _brain;
         private CinemachineVirtualCamera _inFocusVirtualCamera;
+
+        private IDictionary<object, float> _virtualFov;
 
         private void Awake() => _brain = GetComponent<CinemachineBrain>();
 
@@ -31,18 +34,22 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
         private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
 
         private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
-
-        public override float FovScale
-        {
-            get => _fovScale;
-            set => _fovScale = Mathf.Abs(value);
-        }
-
-        private float _fovScale = 1f;
+        
 
         public override Vector3 Center => _inFocusVirtualCamera.State.RawPosition;
         public override Quaternion Rotation => _inFocusVirtualCamera.State.RawOrientation;
+        public override IDictionary<object, float> VirtualFov => _virtualFov;
 
-        private void LateUpdate() => InFocusVirtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * FovScale;
+        private void Start() => _virtualFov = new Dictionary<object, float>();
+
+        private void LateUpdate()
+        {
+            var fovScale = 1f;
+
+            foreach (var fov in _virtualFov) fovScale *= fov.Value;
+
+
+            InFocusVirtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * fovScale;
+        }
     }
 }

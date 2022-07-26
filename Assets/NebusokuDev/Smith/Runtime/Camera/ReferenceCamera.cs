@@ -1,6 +1,6 @@
-﻿using NebusokuDev.Smith.Runtime.Dependency;
+﻿using System.Collections.Generic;
+using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
-using static UnityEngine.Mathf;
 
 namespace NebusokuDev.Smith.Runtime.Camera
 {
@@ -8,23 +8,35 @@ namespace NebusokuDev.Smith.Runtime.Camera
     public class ReferenceCamera : ReferenceCameraBase
     {
         private UnityEngine.Camera _camera;
-        private void Awake() => _camera = GetComponent<UnityEngine.Camera>();
+
+        private Dictionary<object, float> _virtualFov;
+
+        private void Awake()
+        {
+            _virtualFov = new Dictionary<object, float>();
+
+            _camera = GetComponent<UnityEngine.Camera>();
+        }
 
         private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
 
         private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
 
-        public override float FovScale
+
+        private void LateUpdate()
         {
-            get => _fovMultiple;
-            set => _fovMultiple = Abs(value);
+            var fovScale = 1f;
+
+            foreach (var virtualFov in _virtualFov)
+            {
+                fovScale *= virtualFov.Value;
+            }
+
+            _camera.fieldOfView = fovScale * FieldOfView.Vertical;
         }
-
-        private float _fovMultiple = 1f;
-
-        private void LateUpdate() => _camera.fieldOfView = FovScale * FieldOfView.Vertical;
 
         public override Vector3 Center => transform.position;
         public override Quaternion Rotation => transform.rotation;
+        public override IDictionary<object, float> VirtualFov => _virtualFov;
     }
 }

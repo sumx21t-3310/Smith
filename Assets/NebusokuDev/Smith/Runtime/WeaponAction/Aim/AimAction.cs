@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
 using NebusokuDev.Smith.Runtime.Magazine;
-using NebusokuDev.Smith.Runtime.Sequence.FireMode;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
 using UnityEngine;
-using UnityEngine.Events;
 using static UnityEngine.Mathf;
 
 
@@ -19,10 +16,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Aim
     [Serializable, AddTypeMenu("Aim/Aim")]
     public class AimAction : IWeaponAction
     {
-        [SerializeField, Range(Single.Epsilon, 10f)]
+        [SerializeField, Range(float.Epsilon, 10f)]
         private float duration = .1f;
 
-        [SerializeField, Range(Single.Epsilon, 1f)] private float fovScale = .8f;
+        [SerializeField, Range(float.Epsilon, 1f)]
+        private float fovScale = .8f;
 
         // [SerializeField] private Sight sights;
         [SerializeField] private Transform aimPosition;
@@ -47,15 +45,18 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Aim
             var toPosition = isAction ? aimPosition.localPosition : hipPosition.localPosition;
             var toFovScale = isAction ? fovScale : 1f;
             _self.localPosition = Vector3.Slerp(_self.localPosition, -toPosition, Time.deltaTime / duration);
-            var camera = Locator<IReferenceCamera>.Instance.Current;
+            var referenceCamera = Locator<IReferenceCamera>.Instance.Current;
 
-            camera.FovScale = Lerp(camera.FovScale, toFovScale, Time.deltaTime / duration);
+
+            if (referenceCamera.VirtualFov.ContainsKey(this) == false) referenceCamera.VirtualFov[this] = 1f;
+
+
+            var fromFov = referenceCamera.VirtualFov[this];
+            referenceCamera.VirtualFov[this] = Lerp(fromFov, toFovScale, Time.deltaTime / duration);
         }
 
 
-        public void AltAction(bool isAltAction, IPlayerState playerState)
-        {
-        }
+        public void AltAction(bool isAltAction, IPlayerState playerState) { }
 
 
         public void OnHolster()
