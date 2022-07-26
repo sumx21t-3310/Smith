@@ -102,7 +102,7 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
                 _fallVelocity = Jump(Vector3.up, jumpHeight, gravity);
             }
 
-            var ray = new Ray(transform.position, Vector3.down);
+            var ray = new Ray(transform.position + _moveVelocity * Time.deltaTime, Vector3.down);
 
             if (Physics.Raycast(ray, out var hit))
             {

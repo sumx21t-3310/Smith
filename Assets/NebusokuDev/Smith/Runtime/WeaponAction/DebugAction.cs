@@ -27,7 +27,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction
         private void Log(string message)
         {
         #if DEBUG || UNITY_EDITOR
-            UnityEngine.Debug.Log(message);
+            Debug.Log(message);
         #endif
         }
     }
