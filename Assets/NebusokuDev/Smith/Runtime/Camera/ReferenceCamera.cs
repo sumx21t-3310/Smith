@@ -7,7 +7,11 @@ namespace NebusokuDev.Smith.Runtime.Camera
     {
         private UnityEngine.Camera _camera;
 
-        protected override void Awake() => _camera = GetComponent<UnityEngine.Camera>();
+        protected override void Awake()
+        {
+            base.Awake();
+            _camera = GetComponent<UnityEngine.Camera>();
+        }
 
         private void LateUpdate()
         {
