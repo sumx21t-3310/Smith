@@ -24,5 +24,9 @@
       "description": "Particle System and Spatial UI Samples.",
       "path": "Samples/CinemachineSupport"
     }
-  ]
+  ],
+  "author": {
+    "name": "NebusokuDev",
+    "email": "otoro180yen@gmail.com"
+  }
 }
