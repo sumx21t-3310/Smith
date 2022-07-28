@@ -1,7 +1,7 @@
 ﻿using NebusokuDev.Smith.Runtime.Collision;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation
 {
     [CreateAssetMenu(menuName = "Smith/" + nameof(BulletDamageProfile))]
     public class BulletDamageProfile : ScriptableObject
