@@ -14,14 +14,14 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
         [SerializeField] private ProjectileAmmo ammo;
         private IObjectPool<ProjectileAmmo> _ammoPool;
         
-        public void Shot(Vector3 position, Vector3 direction, IObjectPermission permission, IObjectGroup group)
+        public void Shot(Vector3 position, Vector3 direction, IObjectPermission permission, IObjectIdentity identity)
         {
             _ammoPool ??= Locator<IObjectPoolFactory>.Instance.Current.CreatePool(ammo, 10);
 
             var fireAmmo = _ammoPool.GetObject();
             fireAmmo.transform.position = position;
             fireAmmo.gameObject.SetActive(true);
-            fireAmmo.ObjectGroup = group;
+            fireAmmo.ObjectGroup = identity;
             fireAmmo.ObjectPermission = permission;
             fireAmmo.AddForce(direction * bulletSpeed);
         }

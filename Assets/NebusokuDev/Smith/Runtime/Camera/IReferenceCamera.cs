@@ -5,8 +5,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
 {
     public interface IReferenceCamera
     {
-
-
         public Vector3 Center { get; }
         public Quaternion Rotation { get; }
 

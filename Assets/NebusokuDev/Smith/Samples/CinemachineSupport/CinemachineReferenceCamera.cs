@@ -1,55 +1,48 @@
-﻿using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
 using NebusokuDev.Smith.Runtime.Camera;
-using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.CinemachineSupport
 {
+    [RequireComponent(typeof(CinemachineBrain))]
     public class CinemachineReferenceCamera : ReferenceCameraBase
     {
         private CinemachineBrain _brain;
-        private CinemachineVirtualCamera _inFocusVirtualCamera;
+        private CinemachineVirtualCamera _currentFocusVirtualCamera;
 
-        private IDictionary<object, float> _virtualFov;
+        protected override void Awake()
+        {
+            base.Awake();
+            _brain = GetComponent<CinemachineBrain>();
+        }
 
-        private void Awake() => _brain = GetComponent<CinemachineBrain>();
-
-        private CinemachineVirtualCamera InFocusVirtualCamera
+        private CinemachineVirtualCamera CurrentFocusVirtualCamera
         {
             get
             {
-                if (ReferenceEquals(_inFocusVirtualCamera, _brain.ActiveVirtualCamera) && _inFocusVirtualCamera != null)
+                if (ReferenceEquals(_currentFocusVirtualCamera, _brain.ActiveVirtualCamera) && _currentFocusVirtualCamera != null)
                 {
-                    return _inFocusVirtualCamera;
+                    return _currentFocusVirtualCamera;
                 }
 
                 var activeCamera = _brain.ActiveVirtualCamera.VirtualCameraGameObject;
-                _inFocusVirtualCamera = activeCamera.GetComponent<CinemachineVirtualCamera>();
+                _currentFocusVirtualCamera = activeCamera.GetComponent<CinemachineVirtualCamera>();
 
-                return _inFocusVirtualCamera;
+                return _currentFocusVirtualCamera;
             }
         }
 
-        private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
-
-        private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
-        
-
-        public override Vector3 Center => _inFocusVirtualCamera.State.RawPosition;
-        public override Quaternion Rotation => _inFocusVirtualCamera.State.RawOrientation;
-        public override IDictionary<object, float> VirtualFov => _virtualFov;
-
-        private void Start() => _virtualFov = new Dictionary<object, float>();
+        public override Vector3 Center => _currentFocusVirtualCamera.State.RawPosition;
+        public override Quaternion Rotation => _currentFocusVirtualCamera.State.RawOrientation;
 
         private void LateUpdate()
         {
             var fovScale = 1f;
 
-            foreach (var fov in _virtualFov) fovScale *= fov.Value;
+            foreach (var fov in VirtualFov) fovScale *= fov.Value;
 
 
-            InFocusVirtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * fovScale;
+            CurrentFocusVirtualCamera.m_Lens.FieldOfView = BaseFieldOfView * fovScale;
         }
     }
 }

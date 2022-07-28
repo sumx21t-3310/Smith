@@ -1,5 +1,5 @@
-using System;
 using NebusokuDev.Smith.Runtime.Collision;
+using NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
@@ -8,11 +8,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
     [AddComponentMenu("WeaponSystem/RifleAmmo")]
     public class RifleAmmo : ProjectileAmmo
     {
-        [SerializeField] private BulletDamageProfile damageProfile;
+        [SerializeField] private DamageProfile damageProfile;
         private Rigidbody _rigidbody;
         private Vector3 _startPosition;
         public override IObjectPermission ObjectPermission { get; set; }
-        public override IObjectGroup ObjectGroup { get; set; }
+        public override IObjectIdentity ObjectGroup { get; set; }
 
 
         public override void AddForce(Vector3 force)
@@ -24,25 +24,24 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
 
         protected override void OnHitObject(UnityEngine.Collision target)
         {
-            if (target.collider.TryGetComponent(out IHitBox damageable))
+            if (target.collider.TryGetComponent(out IHitBox damageable) == false) return;
+
+            var distance = Mathf.Abs(Vector3.Distance(target.transform.position, _startPosition));
+
+
+            if (damageable.ObjectIdentity.SelfId == ObjectGroup.SelfId && ObjectPermission.SelfDamage)
             {
-                var distance = Mathf.Abs(Vector3.Distance(target.transform.position, _startPosition));
+                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+            }
 
+            if (damageable.ObjectIdentity.TeamId == ObjectGroup.TeamId && ObjectPermission.TeamDamage)
+            {
+                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+            }
 
-                if (damageable.ObjectGroup.SelfId == ObjectGroup.SelfId && ObjectPermission.SelfDamage)
-                {
-                    damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
-                }
-
-                if (damageable.ObjectGroup.GroupId == ObjectGroup.GroupId && ObjectPermission.TeamDamage)
-                {
-                    damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
-                }
-
-                if (damageable.ObjectGroup.GroupId != ObjectGroup.GroupId && ObjectPermission.EnemyDamage)
-                {
-                    damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
-                }
+            if (damageable.ObjectIdentity.TeamId != ObjectGroup.TeamId && ObjectPermission.EnemyDamage)
+            {
+                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
             }
         }
 

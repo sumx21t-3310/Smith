@@ -27,7 +27,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
         public UnityEvent ammoEmpty;
 
         protected IObjectPermission Permission;
-        protected IObjectGroup ObjectGroup;
+        protected IObjectIdentity ObjectGroup;
         protected IMagazine Magazine;
         protected IWeaponContext WeaponContext;
 
@@ -36,7 +36,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
         {
             WeaponContext = weaponContext;
             Permission = parent.GetComponent<IObjectPermission>();
-            ObjectGroup = parent.GetComponentInParent<IObjectGroup>();
+            ObjectGroup = parent.GetComponentInParent<IObjectIdentity>();
             Magazine = magazine;
         }
 
