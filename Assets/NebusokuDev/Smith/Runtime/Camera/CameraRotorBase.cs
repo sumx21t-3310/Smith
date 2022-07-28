@@ -8,7 +8,5 @@ namespace NebusokuDev.Smith.Runtime.Camera
         public abstract float VerticalOffset { get; set; }
         public abstract float HorizontalInput { get; set; }
         public abstract float HorizontalOffset { get; set; }
-        public abstract void AddHorizontalOffset(float degree);
-        public abstract void AddVerticalOffset(float degree);
     }
 }

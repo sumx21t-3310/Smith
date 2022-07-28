@@ -5,7 +5,8 @@ namespace NebusokuDev.Smith.Runtime.Camera
 {
     public class CameraRotor : MonoBehaviour, ICameraRotor
     {
-        [Header("Rotate Settings")] [SerializeField]
+        [Header("Rotate Settings")] 
+        [SerializeField]
         private DegreeAxis verticalAxis = new DegreeAxis(minAngle: -89f, maxAngle: 89f, isClamp: true);
 
         [SerializeField]
@@ -13,7 +14,6 @@ namespace NebusokuDev.Smith.Runtime.Camera
 
         [SerializeField] private DegreeAxis horizontalAxis;
         [SerializeField] private DegreeAxis horizontalOffsetAxis;
-        [SerializeField] private float rollbackTime = .5f;
         [SerializeField] private Vector3 yaw = Vector3.up;
 
 
