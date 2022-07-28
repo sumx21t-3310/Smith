@@ -11,34 +11,26 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
     {
         private CinemachineVirtualCamera _virtualCamera;
 
-        private IDictionary<object, float> _virtualFov;
 
-        private void OnEnable() => Locator<IReferenceCamera>.Instance.Bind(this);
-
-        private void OnDisable() => Locator<IReferenceCamera>.Instance.Unbind(this);
-
-        private void Awake()
+        protected override void Awake()
         {
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-            _virtualFov ??= new Dictionary<object, float>();
         }
-
 
         public override Vector3 Center => _virtualCamera.State.RawPosition;
         public override Quaternion Rotation => _virtualCamera.State.RawOrientation;
 
-        public override IDictionary<object, float> VirtualFov => _virtualFov;
 
         private void LateUpdate()
         {
             var fovScale = 1f;
 
-            foreach (var virtualFov in _virtualFov)
+            foreach (var virtualFov in VirtualFov)
             {
                 fovScale *= virtualFov.Value;
             }
 
-            _virtualCamera.m_Lens.FieldOfView = FieldOfView.Vertical * fovScale;
+            _virtualCamera.m_Lens.FieldOfView = BaseFieldOfView * fovScale;
         }
     }
 }

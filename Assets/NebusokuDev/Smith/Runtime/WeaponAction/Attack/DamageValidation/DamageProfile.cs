@@ -1,18 +1,18 @@
 ﻿using NebusokuDev.Smith.Runtime.Collision;
 using UnityEngine;
 
-namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
+namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation
 {
-    [CreateAssetMenu(menuName = "Smith/" + nameof(BulletDamageProfile))]
-    public class BulletDamageProfile : ScriptableObject
+    [CreateAssetMenu(menuName = "Smith/" + nameof(DamageProfile))]
+    public class DamageProfile : DamageProfileBase
     {
         [SerializeField] private float maxDistance = 300f;
         [SerializeField] private AnimationCurve damageDecayCurve = AnimationCurve.Linear(0f, 1f, 1f, .85f);
         [SerializeField] private HitDamage[] damages;
 
-        public float MaxDistance => maxDistance;
+        public override float MaxDistance => maxDistance;
 
-        public float GetDamage(BodyType bodyType, float distance = 0f)
+        public override float GetDamage(BodyType bodyType, float distance = 0f)
         {
             foreach (var damage in damages)
             {

@@ -7,7 +7,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
     public abstract class ProjectileAmmo : MonoBehaviour
     {
         public abstract IObjectPermission ObjectPermission { get; set; }
-        public abstract IObjectGroup ObjectGroup { get; set; }
+        public abstract IObjectIdentity ObjectGroup { get; set; }
 
         public abstract void AddForce(Vector3 force);
 

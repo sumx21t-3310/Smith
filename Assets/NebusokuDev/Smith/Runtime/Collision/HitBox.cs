@@ -7,14 +7,15 @@ namespace NebusokuDev.Smith.Runtime.Collision
     {
         [SerializeField] private BodyType bodyType;
         private IHasHitPoint _hasHitPoint;
-        private IObjectGroup _group;
+        private IObjectIdentity _objectIdentity;
         public BodyType BodyType => bodyType;
-        public IObjectGroup ObjectGroup => _group;
+        public IObjectIdentity ObjectIdentity => _objectIdentity;
+
 
         private void Awake()
         {
             _hasHitPoint = transform.GetComponentInParent<IHasHitPoint>();
-            _group = transform.GetComponentInParent<IObjectGroup>();
+            _objectIdentity = transform.GetComponentInParent<IObjectIdentity>();
         }
 
         public void AddDamage(float damage) => _hasHitPoint.AddDamage(damage);

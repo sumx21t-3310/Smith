@@ -3,7 +3,7 @@
     public interface IHitBox
     {
         BodyType BodyType { get; }
-        IObjectGroup ObjectGroup { get; }
+        IObjectIdentity ObjectIdentity { get; }
         void AddDamage(float damage);
     }
 }
