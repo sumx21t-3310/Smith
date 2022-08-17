@@ -1,9 +1,11 @@
-﻿using Cinemachine;
+﻿#if SMITH_CINEMACHINE_SUPPORT
+using Cinemachine;
 using NebusokuDev.Smith.Runtime.Camera;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.CinemachineSupport
 {
+
     [RequireComponent(typeof(CinemachineBrain))]
     public class CinemachineReferenceCamera : ReferenceCameraBase
     {
@@ -45,4 +47,6 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
             CurrentFocusVirtualCamera.m_Lens.FieldOfView = BaseFieldOfView * fovScale;
         }
     }
+
 }
+#endif

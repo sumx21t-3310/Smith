@@ -12,7 +12,6 @@ namespace NebusokuDev.Smith.Runtime.Sequence.Timer
         private float _elapsedTime;
         public bool IsOverTime => Time.time - _elapsedTime > Minute / rpm;
 
-        // public void Update() => _intervalCounter += IsOverTime ? 0f : Time.deltaTime;
         public void Update()
         {
         }

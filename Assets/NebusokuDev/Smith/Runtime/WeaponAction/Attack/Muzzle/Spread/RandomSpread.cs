@@ -1,4 +1,5 @@
 ﻿using System;
+using NebusokuDev.Smith.Runtime.Extension;
 using NebusokuDev.Smith.Runtime.State.Player;
 using UnityEngine;
 using static UnityEngine.Mathf;
@@ -26,7 +27,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
 
         public Vector3 Defuse(bool isAim, float t)
         {
-            var unitCircle = insideUnitCircle;
+            var unitCircle = MathExtension.Degree2Vector2(Range(0f, 360f));
 
             var horizontal = CalcSpread(unitCircle.x, horizontalWeightCurve);
             var vertical = CalcSpread(unitCircle.y, verticalWeightCurve);
@@ -39,9 +40,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle.Spread
             return defuse * moa + Vector3.forward;
         }
 
-        float Pulse(float t) => t > 0f ? 1f : -1f;
-
-        private float CalcSpread(float t, AnimationCurve curve) => Pulse(t) * curve.Evaluate(Abs(t));
+        private float CalcSpread(float t, AnimationCurve curve) => t * curve.Evaluate(PerlinNoise(Time.time, Time.time));
 
 
         /*

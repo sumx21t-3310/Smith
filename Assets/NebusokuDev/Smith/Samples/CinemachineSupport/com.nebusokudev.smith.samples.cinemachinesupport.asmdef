@@ -12,6 +12,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.cinemachine",
+            "expression": "",
+            "define": "SMITH_CINEMACHINE_SUPPORT"
+        }
+    ],
     "noEngineReferences": false
 }

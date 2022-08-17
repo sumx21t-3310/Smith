@@ -1,7 +1,6 @@
-using System.Collections.Generic;
+#if SMITH_CINEMACHINE_SUPPORT
 using Cinemachine;
 using NebusokuDev.Smith.Runtime.Camera;
-using NebusokuDev.Smith.Runtime.Dependency;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Samples.CinemachineSupport
@@ -34,3 +33,4 @@ namespace NebusokuDev.Smith.Samples.CinemachineSupport
         }
     }
 }
+#endif

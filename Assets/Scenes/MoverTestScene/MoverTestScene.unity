@@ -25305,7 +25305,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2077754420}
   m_Father: {fileID: 1166617738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25335,7 +25336,7 @@ MonoBehaviour:
       type: {class: ZoomOnlyAimAction, ns: NebusokuDev.Smith.Runtime.WeaponAction.Aim, asm: com.nebusokudev.smith.runtime}
       data:
         zoomScales:
-        - 0.9
+        - 0.35
         duration: 0.1
         useAimFlag: 1
         onZoomIn:
@@ -25345,11 +25346,67 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
     00000001:
-      type: {class: NoneAction, ns: NebusokuDev.Smith.Runtime.WeaponAction, asm: com.nebusokudev.smith.runtime}
+      type: {class: ShootingAction, ns: NebusokuDev.Smith.Runtime.WeaponAction.Attack, asm: com.nebusokudev.smith.runtime}
+      data:
+        Rpm:
+          id: 4
+        FireMode:
+          id: 5
+        useAmmoAmount: 1
+        Muzzle:
+          id: 6
+        Recoil:
+          id: 7
+        Bullet:
+          id: 8
+        fire:
+          m_PersistentCalls:
+            m_Calls: []
+        ammoEmpty:
+          m_PersistentCalls:
+            m_Calls: []
     00000002:
       type: {class: UnlimitedMagazine, ns: NebusokuDev.Smith.Runtime.Magazine, asm: com.nebusokudev.smith.runtime}
     00000003:
       type: {class: UnlimitedAmmoHolder, ns: NebusokuDev.Smith.Runtime.AmmoHolder, asm: com.nebusokudev.smith.runtime}
+    00000004:
+      type: {class: FixedRpmTimer, ns: NebusokuDev.Smith.Runtime.Sequence.Timer, asm: com.nebusokudev.smith.runtime}
+      data:
+        rpm: 600
+    00000005:
+      type: {class: FullAuto, ns: NebusokuDev.Smith.Runtime.Sequence.FireMode, asm: com.nebusokudev.smith.runtime}
+    00000006:
+      type: {class: SpreadMuzzle, ns: NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle, asm: com.nebusokudev.smith.runtime}
+      data:
+        shotPoint: {fileID: 0}
+        minDistance: 0.5
+        isAlignCameraCenter: 1
+        alignDirection: 75
+        spreadProfile: {fileID: 0}
+        maxShotCount: 15
+    00000007:
+      type: {class: NoneRecoil, ns: NebusokuDev.Smith.Runtime.Recoil, asm: com.nebusokudev.smith.runtime}
+    00000008:
+      type: {class: HitScanBullet, ns: NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet, asm: com.nebusokudev.smith.runtime}
+      data:
+        damageProfile: {fileID: 0}
+        _scanner:
+          id: 9
+        _damageValidator:
+          id: 10
+        onShot:
+          m_PersistentCalls:
+            m_Calls: []
+    00000009:
+      type: {class: SphereHitScanner, ns: NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.HitScanner, asm: com.nebusokudev.smith.runtime}
+      data:
+        distance: 1000
+        radius: 0.01
+        collisionLayer:
+          serializedVersion: 2
+          m_Bits: 4294967295
+    0000000A:
+      type: {class: StandardObjectValidator, ns: NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation, asm: com.nebusokudev.smith.runtime}
 --- !u!1 &1413418340
 GameObject:
   m_ObjectHideFlags: 0
@@ -47322,3 +47379,46 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &2077754419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2077754420}
+  - component: {fileID: 2077754421}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2077754420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077754419}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -21.4, y: -1.7105569, z: -20.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1410611666}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2077754421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077754419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
