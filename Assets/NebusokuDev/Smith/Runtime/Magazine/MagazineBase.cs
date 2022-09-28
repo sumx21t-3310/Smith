@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
 
-namespace NebusokuDev.Smith.Runtime.Magazine
+namespace NebusokuDev.Smith.Runtime.Domain.Magazine
 {
     public abstract class MagazineBase : IMagazine
     {

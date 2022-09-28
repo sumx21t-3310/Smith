@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NebusokuDev.Smith.Runtime.AmmoHolder
+namespace NebusokuDev.Smith.Runtime.Domain.AmmoHolder
 {
     [Serializable, AddTypeMenu("Standard")]
     public class StandardAmmoHolder : IAmmoHolder

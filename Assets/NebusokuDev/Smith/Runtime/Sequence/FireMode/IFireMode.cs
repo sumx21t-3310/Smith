@@ -1,4 +1,4 @@
-﻿namespace NebusokuDev.Smith.Runtime.Sequence.FireMode
+namespace NebusokuDev.Smith.Runtime.Sequence.FireMode
 {
     public interface IFireMode
     {

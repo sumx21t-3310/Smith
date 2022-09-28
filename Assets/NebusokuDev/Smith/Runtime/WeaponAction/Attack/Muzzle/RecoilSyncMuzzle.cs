@@ -26,7 +26,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Muzzle
             base.Defuse(playerState, weaponContext);
             var pattern = recoilPatternProfile[weaponContext.ShotCount];
 
-            _recoilOffset += new Vector3(pattern.x * scale.x, pattern.y * scale.y, 1f) * Mathf.Deg2Rad * Time.deltaTime;
+            _recoilOffset += new Vector3(pattern.x * scale.x, pattern.y * scale.y, 1f) * (Mathf.Deg2Rad * Time.deltaTime);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace NebusokuDev.Smith.Runtime.AmmoHolder
+﻿namespace NebusokuDev.Smith.Runtime.Domain.AmmoHolder
 {
     public interface IAmmoHolder
     {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace NebusokuDev.Smith.Runtime.Sequence.FireMode
 {

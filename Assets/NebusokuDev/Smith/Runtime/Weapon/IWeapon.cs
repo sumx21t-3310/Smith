@@ -1,5 +1,5 @@
-﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
-using NebusokuDev.Smith.Runtime.Magazine;
+﻿using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Domain.Magazine;
 using NebusokuDev.Smith.Runtime.State.Weapon;
 
 namespace NebusokuDev.Smith.Runtime.Weapon

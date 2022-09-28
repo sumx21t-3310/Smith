@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Dependency.ObjectPool
 {
-    public class ObjectPoolBinder : MonoBehaviour
+    public class ObjectPoolBinder : ObjectPoolBinderBase
     {
         [SerializeReference, SubclassSelector] private IObjectPoolFactory _factory = new DefaultObjectPoolFactory();
 
-        private void Awake() => Locator<IObjectPoolFactory>.Instance.Bind(_factory);
+
+        protected override IObjectPoolFactory BindObjectPoolFactory() => _factory;
     }
 }

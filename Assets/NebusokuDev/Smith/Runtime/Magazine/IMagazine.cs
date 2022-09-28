@@ -1,6 +1,6 @@
-﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
+﻿using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
 
-namespace NebusokuDev.Smith.Runtime.Magazine
+namespace NebusokuDev.Smith.Runtime.Domain.Magazine
 {
     public interface IMagazine
     {

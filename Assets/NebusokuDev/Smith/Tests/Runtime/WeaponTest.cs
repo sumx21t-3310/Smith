@@ -7,9 +7,9 @@ namespace NebusokuDev.Smith.Tests.Runtime
 {
     public class WeaponTest : MonoBehaviour
     {
-        [SerializeField] private InputKeyButton fireKeyButton = new InputKeyButton(KeyCode.Mouse0);
+        [SerializeField] private InputKeyButton fireKeyButton = new(KeyCode.Mouse0);
         private ProceduralKickbackAnimation _kickbackAnimation;
-        [SerializeField] private FixedRpmTimer timer;
+        [SerializeField] private FixedTickTimer timer;
 
         private void Start() => _kickbackAnimation = GetComponent<ProceduralKickbackAnimation>();
 

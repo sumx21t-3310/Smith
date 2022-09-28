@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
-using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
 using NebusokuDev.Smith.Runtime.Extension;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NebusokuDev.Smith.Runtime.Magazine
+namespace NebusokuDev.Smith.Runtime.Domain.Magazine
 {
     [Serializable, AddTypeMenu("Tube")]
     public class TubeMagazine : IMagazine

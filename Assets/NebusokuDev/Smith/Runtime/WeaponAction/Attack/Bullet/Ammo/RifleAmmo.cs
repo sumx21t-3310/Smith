@@ -31,17 +31,17 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet.Ammo
 
             if (damageable.ObjectIdentity.SelfId == ObjectGroup.SelfId && ObjectPermission.SelfDamage)
             {
-                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+                damageable.AddDamage(damageProfile.GetDamage(damageable.HitType, distance));
             }
 
             if (damageable.ObjectIdentity.TeamId == ObjectGroup.TeamId && ObjectPermission.TeamDamage)
             {
-                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+                damageable.AddDamage(damageProfile.GetDamage(damageable.HitType, distance));
             }
 
             if (damageable.ObjectIdentity.TeamId != ObjectGroup.TeamId && ObjectPermission.EnemyDamage)
             {
-                damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+                damageable.AddDamage(damageProfile.GetDamage(damageable.HitType, distance));
             }
         }
 

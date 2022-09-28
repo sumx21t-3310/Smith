@@ -2,7 +2,7 @@
 {
     public interface IHitBox
     {
-        BodyType BodyType { get; }
+        HitType HitType { get; }
         IObjectIdentity ObjectIdentity { get; }
         void AddDamage(float damage);
     }

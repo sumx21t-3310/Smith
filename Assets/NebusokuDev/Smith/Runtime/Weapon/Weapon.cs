@@ -1,6 +1,6 @@
-﻿using NebusokuDev.Smith.Runtime.AmmoHolder;
-using NebusokuDev.Smith.Runtime.Collision;
-using NebusokuDev.Smith.Runtime.Magazine;
+﻿using NebusokuDev.Smith.Runtime.Collision;
+using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Domain.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
 using NebusokuDev.Smith.Runtime.WeaponAction;
@@ -11,7 +11,6 @@ namespace NebusokuDev.Smith.Runtime.Weapon
     [RequireComponent(typeof(IObjectPermission))]
     public class Weapon : MonoBehaviour, IWeapon
     {
-        // serializable: 
         [SerializeReference, SubclassSelector] private IWeaponAction _primary = new NoneAction();
         [SerializeReference, SubclassSelector] private IWeaponAction _secondary = new NoneAction();
 
@@ -21,7 +20,7 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         [Space(20)] [SerializeReference, SubclassSelector]
         private IAmmoHolder _ammoHolder = new UnlimitedAmmoHolder();
 
-        // private:     
+
         private IWeaponInput _input;
         private IPlayerState _playerState;
         private IWeaponContext _weaponContext;
@@ -66,7 +65,7 @@ namespace NebusokuDev.Smith.Runtime.Weapon
         private void HandleInjection()
         {
             var self = transform;
-            _playerState = GetComponentInParent<IPlayerState>();
+            _playerState = GetPlayerState();
             _weaponContext ??= new WeaponContext();
 
             _primary ??= new NoneAction();
@@ -75,9 +74,12 @@ namespace NebusokuDev.Smith.Runtime.Weapon
             _secondary ??= new NoneAction();
             _secondary?.Injection(self, _magazine, _weaponContext);
 
-            if (TryGetComponent(out _input) == false) _input = GetComponentInParent<IWeaponInput>();
+            _input = GetInput();
         }
 
+        protected virtual IWeaponInput GetInput() => GetComponentInParent<IWeaponInput>();
+
+        protected virtual IPlayerState GetPlayerState() => GetComponentInParent<IPlayerState>();
 
         private void Update()
         {

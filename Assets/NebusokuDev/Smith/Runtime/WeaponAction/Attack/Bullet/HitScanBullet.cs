@@ -43,7 +43,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.Bullet
 
             if (_damageValidator.CanAddDamage(identity, damageable.ObjectIdentity, permission) == false) return;
 
-            damageable.AddDamage(damageProfile.GetDamage(damageable.BodyType, distance));
+            damageable.AddDamage(damageProfile.GetDamage(damageable.HitType, distance));
         }
     }
 }

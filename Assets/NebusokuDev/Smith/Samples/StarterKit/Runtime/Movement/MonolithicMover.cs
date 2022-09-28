@@ -24,6 +24,8 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
         private Vector3 _moveVelocity;
         private Vector3 _fallVelocity;
 
+        private Vector3 _velocity;
+
         public Vector3 Velocity => _moveVelocity + _fallVelocity;
 
         public bool IsGrounded
@@ -71,7 +73,6 @@ namespace NebusokuDev.Smith.Samples.StarterKit.Runtime.Movement
             direction = Vector3.ProjectOnPlane(direction, Vector3.up);
 
             _fallVelocity += Vector3.up * gravity * Time.deltaTime;
-
 
             if (IsGrounded)
             {

@@ -7,9 +7,7 @@ namespace NebusokuDev.Smith.Runtime.Extension
     {
         public Coroutine Execute(IEnumerator coroutine)
         {
-            if (coroutine == null) return null;
-
-            return StartCoroutine(coroutine);
+            return coroutine != null ? StartCoroutine(coroutine) : null;
         }
 
         public void Stop(Coroutine coroutine)

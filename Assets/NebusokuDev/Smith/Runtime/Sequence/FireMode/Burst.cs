@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace NebusokuDev.Smith.Runtime.Sequence.FireMode
@@ -13,18 +13,17 @@ namespace NebusokuDev.Smith.Runtime.Sequence.FireMode
         public bool Evaluate(bool input)
         {
             _count = --_count % maxCount;
-            
+
             if (input == false)
             {
                 _isKeyUp = true;
                 return _count > 0;
             }
 
-            if (_isKeyUp)
-            {
-                _count = maxCount;
-                _isKeyUp = false;
-            }
+            if (_isKeyUp == false) return _count > 0;
+
+            _count = maxCount;
+            _isKeyUp = false;
 
             return _count > 0;
         }

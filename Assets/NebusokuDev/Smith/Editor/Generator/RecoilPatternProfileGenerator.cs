@@ -12,7 +12,7 @@ namespace NebusokuDev.Smith.Editor.Generator
         [SerializeField] private int length = 35;
         [SerializeReference, SubclassSelector] private IRecoilGenerateEngine _engine = new SinRecoilGenerateEngine();
 
-        [MenuItem("Smith/Recoil Pattern Generator")]
+        [MenuItem("Tools/Smith/Recoil Pattern Generator")]
         public static void CreateWizard()
         {
             DisplayWizard<RecoilPatternProfileGenerator>($"{nameof(PatternRecoilProfile)}Generator", "Generate");

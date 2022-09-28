@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99f4bcbbe54415fb347d87ed62cf806, type: 3}
+  m_Name: New Animation Curve Bobbing Profile
+  m_EditorClassIdentifier: 
+  cycle: 1.5
+  positionX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.00045776155
+      outSlope: 0.00045776155
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5000023
+      value: 0.00022888184
+      inSlope: -0.12044727
+      outSlope: -0.12044727
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10924783
+      outWeight: 0.1260464
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.0004577658
+      outSlope: -0.0004577658
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  positionY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.17226386
+      outSlope: 0.17226386
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.39999634
+    - serializedVersion: 3
+      time: 0.23109455
+      value: 0.00024183746
+      inSlope: -0.18360254
+      outSlope: -0.18360254
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07273576
+      outWeight: 0.1935378
+    - serializedVersion: 3
+      time: 0.49160215
+      value: 0
+      inSlope: 0.12741652
+      outSlope: 0.12741652
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.2222071
+    - serializedVersion: 3
+      time: 0.7563012
+      value: 0
+      inSlope: -0.22591648
+      outSlope: -0.22591648
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.15517683
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.009524135
+      outSlope: 0.009524135
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.32758456
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  positionZ:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00000017630946
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.47905263
+      value: -0.012479037
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0125217
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationZ:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

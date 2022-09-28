@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NebusokuDev.Smith.Runtime.AmmoHolder
+namespace NebusokuDev.Smith.Runtime.Domain.AmmoHolder
 {
     [Serializable, AddTypeMenu("Unlimited")]
     public class UnlimitedAmmoHolder : IAmmoHolder

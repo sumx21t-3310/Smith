@@ -7,6 +7,6 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation
     {
         public abstract float MaxDistance { get; }
 
-        public abstract float GetDamage(BodyType bodyType, float distance = 0f);
+        public abstract float GetDamage(HitType hitType, float distance = 0f);
     }
 }

@@ -15,6 +15,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation
             {
                 return true;
             }
+            
 
             return owner.TeamId != target.TeamId && permission.EnemyDamage;
         }

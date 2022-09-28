@@ -5,6 +5,7 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.BobbingAnimation
     public class Bobbing : MonoBehaviour
     {
         [SerializeField, Range(0f, 1f)] private float weight = 1f;
+        [SerializeField, Range(.01f, 2f)] private float speed = 1f;
         [SerializeField] private WeaponBobbingProfileBase profile;
 
         private Vector3 _defaultPosition;
@@ -27,7 +28,7 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.BobbingAnimation
 
         private void Update()
         {
-            var (rotation, position) = profile[Time.time];
+            var (rotation, position) = profile[Time.time * speed];
 
             _self.localPosition = _defaultPosition + position * weight;
             _self.localRotation = _defaultRotation * Quaternion.Euler(rotation * weight);

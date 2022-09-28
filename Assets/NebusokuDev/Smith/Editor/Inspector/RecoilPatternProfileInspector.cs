@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using NebusokuDev.Smith.Runtime.Recoil;
-using NebusokuDev.Smith.Runtime.Recoil.RecoilProfile;
+﻿using NebusokuDev.Smith.Runtime.Recoil.RecoilProfile;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace NebusokuDev.Smith.Editor.Inspector
 {
@@ -12,25 +11,65 @@ namespace NebusokuDev.Smith.Editor.Inspector
         private Rect _rect;
         private PatternRecoilProfile _profile;
         private float _scale = .1f;
-        
-        public override void OnInspectorGUI()
+        private Vector3 _current;
+
+        // public override void OnInspectorGUI()
+        // {
+        //     base.OnInspectorGUI();
+        //
+        //
+        //     if (_profile == null)
+        //     {
+        //         _profile = (PatternRecoilProfile) target;
+        //     }
+        //
+        //
+        //     EditorGUILayout.LabelField("Recoil Pattern Graph");
+        //
+        //     _rect = GUILayoutUtility.GetRect(100f, 200f);
+        //     Vector3 current = Vector3.zero;
+        //     _rect.DrawVerticalLine();
+        //
+        //
+        //     foreach (var dot in _profile.Pattern)
+        //     {
+        //         var value = dot?.Value ?? Vector2.zero;
+        //         current += new Vector3(value.x, -value.y) * _rect.height / _profile.Pattern.Length * _scale;
+        //         _rect.DrawWireDot(current + new Vector3(0f, _rect.height / 2f));
+        //     }
+        // }
+
+        public override VisualElement CreateInspectorGUI()
         {
-            base.OnInspectorGUI();
-            _profile = (PatternRecoilProfile) target;
+            var root = new VisualElement();
 
-            EditorGUILayout.LabelField("Recoil Pattern Graph");
+            root.Add(new IMGUIContainer(() => DrawDefaultInspector()));
 
-            _rect = GUILayoutUtility.GetRect(100f, 200f);
-            Vector3 current = Vector3.zero;
-            _rect.DrawVerticalLine();
+            var box = new Box();
+            box.Add(new Label("Recoil Pattern Graph"));
 
-            var dots = _profile.Pattern.Where(x => x != null).Select(vector => vector.Value).ToArray();
 
-            foreach (var dot in dots)
+            box.Add(new IMGUIContainer(() =>
             {
-                current += new Vector3(dot.x, -dot.y) * _rect.height / dots.Length * _scale;
-                _rect.DrawWireDot(current + new Vector3(0f, _rect.height / 2f));
-            }
+                if (_profile == null)
+                {
+                    _profile = (PatternRecoilProfile) target;
+                }
+
+                _rect = GUILayoutUtility.GetRect(100f, 200f);
+                Vector3 current = Vector3.zero;
+                _rect.DrawVerticalLine();
+
+                foreach (var dot in _profile.Pattern)
+                {
+                    var value = dot?.Value ?? Vector2.zero;
+                    current += new Vector3(value.x, -value.y) * _rect.height / _profile.Pattern.Length * _scale;
+                    _rect.DrawWireDot(current + new Vector3(0f, _rect.height / 2f));
+                }
+            }));
+            root.Add(box);
+
+            return root;
         }
     }
 }

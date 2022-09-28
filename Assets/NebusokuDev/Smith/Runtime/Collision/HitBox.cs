@@ -5,10 +5,10 @@ namespace NebusokuDev.Smith.Runtime.Collision
     [RequireComponent(typeof(Collider))]
     public class HitBox : MonoBehaviour, IHitBox
     {
-        [SerializeField] private BodyType bodyType;
+        [SerializeField] private HitType hitType;
         private IHasHitPoint _hasHitPoint;
         private IObjectIdentity _objectIdentity;
-        public BodyType BodyType => bodyType;
+        public HitType HitType => hitType;
         public IObjectIdentity ObjectIdentity => _objectIdentity;
 
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using NebusokuDev.Smith.Runtime.Camera;
 using NebusokuDev.Smith.Runtime.Dependency;
-using NebusokuDev.Smith.Runtime.Magazine;
+using NebusokuDev.Smith.Runtime.Domain.Magazine;
 using NebusokuDev.Smith.Runtime.State.Player;
 using NebusokuDev.Smith.Runtime.State.Weapon;
 using UnityEngine;

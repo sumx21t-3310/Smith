@@ -12,11 +12,11 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack.DamageValidation
 
         public override float MaxDistance => maxDistance;
 
-        public override float GetDamage(BodyType bodyType, float distance = 0f)
+        public override float GetDamage(HitType hitType, float distance = 0f)
         {
             foreach (var damage in damages)
             {
-                if (bodyType == damage.bodyType) return damage.damage * GetImpact(distance);
+                if (hitType == damage.hitType) return damage.damage * GetImpact(distance);
             }
 
             return 0f;

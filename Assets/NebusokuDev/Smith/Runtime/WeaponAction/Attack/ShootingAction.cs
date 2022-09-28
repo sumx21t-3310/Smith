@@ -1,6 +1,6 @@
 ﻿using System;
 using NebusokuDev.Smith.Runtime.Collision;
-using NebusokuDev.Smith.Runtime.Magazine;
+using NebusokuDev.Smith.Runtime.Domain.Magazine;
 using NebusokuDev.Smith.Runtime.Recoil;
 using NebusokuDev.Smith.Runtime.Sequence.FireMode;
 using NebusokuDev.Smith.Runtime.Sequence.Timer;
@@ -16,7 +16,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
     [Serializable, AddTypeMenu("Attack/Shooting")]
     public class ShootingAction : IWeaponAction
     {
-        [SerializeReference, SubclassSelector] protected IRpmTimer Rpm = new FixedRpmTimer();
+        [SerializeReference, SubclassSelector] protected ITickTimer Rpm = new FixedTickTimer();
         [SerializeReference, SubclassSelector] protected IFireMode FireMode = new FullAuto();
         [SerializeField] private uint useAmmoAmount = 1;
         [SerializeReference, SubclassSelector] protected IMuzzle Muzzle = new SpreadMuzzle();
@@ -84,9 +84,7 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
         }
 
 
-        public virtual void AltAction(bool isAltAction, IPlayerState playerState)
-        {
-        }
+        public virtual void AltAction(bool isAltAction, IPlayerState playerState) { }
 
         public virtual void OnHolster()
         {
@@ -94,8 +92,6 @@ namespace NebusokuDev.Smith.Runtime.WeaponAction.Attack
         }
 
 
-        public virtual void OnDraw()
-        {
-        }
+        public virtual void OnDraw() { }
     }
 }

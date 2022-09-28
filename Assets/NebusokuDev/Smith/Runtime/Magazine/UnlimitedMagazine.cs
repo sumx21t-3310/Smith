@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using NebusokuDev.Smith.Runtime.AmmoHolder;
+using NebusokuDev.Smith.Runtime.Domain.AmmoHolder;
 
-namespace NebusokuDev.Smith.Runtime.Magazine
+namespace NebusokuDev.Smith.Runtime.Domain.Magazine
 {
     [Serializable, AddTypeMenu("Unlimited")]
     public class UnlimitedMagazine : IMagazine

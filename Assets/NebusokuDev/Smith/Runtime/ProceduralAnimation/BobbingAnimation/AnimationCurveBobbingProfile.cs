@@ -2,7 +2,7 @@
 
 namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.BobbingAnimation
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Smith/Bobbing/" + nameof(AnimationCurveBobbingProfile))]
     public class AnimationCurveBobbingProfile : WeaponBobbingProfileBase
     {
         [SerializeField] private float cycle = 2f;
@@ -17,7 +17,7 @@ namespace NebusokuDev.Smith.Runtime.ProceduralAnimation.BobbingAnimation
         {
             get
             {
-                var phase = time % cycle;
+                var phase = time * cycle % 1f;
 
                 var position = new Vector3(positionX.Evaluate(phase), positionY.Evaluate(phase),
                     positionZ.Evaluate(phase));
